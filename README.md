@@ -3,8 +3,8 @@ Sistem Penunjang Keputusan Dengan Metode AHP Dan SAW
 
 Developed By : 
 
-Andy Chahyono
+-Andy Chahyono
 
-Sisca Agdinsa Ramadhan
+-Sisca Agdinsa Ramadhan
 
-Zacky Burhani Hotib
+-Zacky Burhani Hotib
