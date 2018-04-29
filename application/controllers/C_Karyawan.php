@@ -14,3 +14,10 @@ class C_Karyawan extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 }
+
+
+/*
+*
+*INI CONTROLLER SISCA
+*
+*/

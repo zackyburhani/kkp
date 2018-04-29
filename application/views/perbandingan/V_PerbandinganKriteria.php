@@ -7,9 +7,6 @@
   </section>
 
 <section class="content">
-  <div class="panel panel-default">
-    <div class="panel-body"><h4><i class="fa fa-user"></i> Data Matriks Perbandingan</h4></div>
-  </div>
     
 <div class="row">
   <div class="col-lg-12">
@@ -234,6 +231,7 @@
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                   </div>
 
+                  </div>
                 </div>
               </div>
             </div>

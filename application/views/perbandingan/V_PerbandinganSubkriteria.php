@@ -489,6 +489,7 @@
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                   </div>
 
+                  </div>
                 </div>
               </div>
             </div>

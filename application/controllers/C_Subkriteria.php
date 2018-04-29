@@ -14,3 +14,10 @@ class C_Subkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 }
+
+
+/*
+*
+*INI CONTROLLER SISCA
+*
+*/
