@@ -1,15 +1,11 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Dashboard
-      <small>Halaman Data Kriteria</small>
+      <small><b>Halaman Data Kriteria</b></small>
     </h1>
   </section>
 
 <section class="content">
-  <div class="panel panel-default">
-    <div class="panel-body"><h4><i class="fa fa-file-o"></i> Data Kriteria</h4></div>
-  </div>
     
 <div class="row">
   <div class="col-lg-12">
@@ -21,6 +17,7 @@
         <table style="table-layout:fixed" class="table table-striped table-bordered table-hover" id="datatableKriteria">
           <thead>
             <tr>
+              <th width="30px">No. </th>
               <th>Kode Kriteria</th>
               <th>Nama Kriteria</th>
               <th width="40px" align="center;"> <center>Ubah</center> </th>
@@ -29,6 +26,7 @@
           </thead>
           <tbody>
             <tr>
+              <td></td>
               <td></td>
               <td></td>
               <td align="center;"><a href="#ModalUpdateKriteria" class="btn btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a></td>

@@ -1,8 +1,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Dashboard
-      <small>Halaman Data Matriks Perbandingan Subkriteria</small>
+      <small><b>Halaman Data Matriks Perbandingan Subkriteria</b></small>
     </h1>
   </section>
 

@@ -1,8 +1,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Dashboard
-      <small>Halaman Hasil Keputusan</small>
+      <small><b>Halaman Hasil Keputusan</b></small>
     </h1>
   </section>
 

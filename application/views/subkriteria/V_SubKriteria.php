@@ -1,15 +1,11 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Dashboard
-      <small>Halaman Data Subkriteria</small>
+      <small><b>Halaman Data Subkriteria</b></small>
     </h1>
   </section>
 
 <section class="content">
-  <div class="panel panel-default">
-    <div class="panel-body"><h4><i class="fa fa-file-o"></i> Data Subkriteria</h4></div>
-  </div>
     
 <div class="row">
   <div class="col-lg-12">
@@ -21,6 +17,7 @@
         <table style="table-layout:fixed" class="table table-striped table-bordered table-hover" id="datatableSubkriteria">
           <thead>
             <tr>
+              <th width="30px">No. </th>
               <th>Kode Subkriteria</th>
               <th>Nama Subkriteria</th>
               <th width="40px" align="center;"> <center>Ubah</center> </th>
@@ -29,6 +26,7 @@
           </thead>
           <tbody>
             <tr>
+              <td></td>
               <td></td>
               <td></td>
               <td align="center;"><a href="#ModalUpdateSubkriteria" class="btn btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a></td>

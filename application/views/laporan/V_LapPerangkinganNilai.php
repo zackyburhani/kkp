@@ -14,18 +14,38 @@
           <h3 class="box-title"><i class="fa fa-file-text fa-fw"></i> Laporan</h3>
         </div>
         <div class="box-body">
-  
-        
-
-
+          <div class="form-group">
+            <div class="row">
+              <div  class="col-md-6">
+                <label class="col-sm-3 control-label">Tanggal Awal</label>
+                  <div class="input-group col-sm-9">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="date" class="form-control pull-right" id="datepicker">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <label class="col-sm-3 control-label">Tanggal Awal</label>
+                  <div class="input-group col-sm-9">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                      <input type="date" class="form-control pull-right" id="datepicker">
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        
-        </div>
-
         <div class="box-footer">
-          <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Nilai Target</button>
+          <center>
+            <button type="submit" class="btn btn-danger" style="margin-left: 10px"><i class="fa fa-print"></i> Pdf</button>
+            <button type="submit" class="btn btn-success" style="margin-left: 10px"><i class="fa fa-print"></i> Excel</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 10px"><i class="fa fa-print"></i> Word</button>
+          </center>
         </div>
+
+      </div>
       
       </div>  
     </div>
