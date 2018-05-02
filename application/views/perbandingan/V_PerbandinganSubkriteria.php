@@ -38,23 +38,23 @@
                       <table>
                       <tr>
                         <td><b>Skill</b></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="1"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="1"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk1" value="9"></td>
                         <td><b>Jurusan</b></td>
                       </tr>
                       <tr>
@@ -81,23 +81,23 @@
 
                       <tr>
                         <td width="110"><b>Tanggung Jawab</b></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="1"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="1"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk2" value="9"></td>
                         <td><b>Jurusan</b></td>
                       </tr>
                       <tr>
@@ -124,23 +124,23 @@
 
                       <tr>
                         <td><b>Tanggung Jawab</b></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="1"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="1"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk3" value="9"></td>
                         <td><b>Skill</b></td>
                       </tr>
                       <tr>
@@ -182,23 +182,23 @@
                       <table>
                       <tr>
                         <td><b>Perilaku</b></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="1"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                        <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="9"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="1"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="2"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="3"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="4"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="5"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="6"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="7"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="8"></td>
+                        <td align="center" width="50"><input type="radio" name="sk4" value="9"></td>
                         <td width="100"><b>Kesiapan Kerja</b></td>
                       </tr>
                       <tr>
@@ -239,23 +239,23 @@
                       <table>
                         <tr>
                           <td><b>Kejujuran</b></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="1"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="2"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="3"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="4"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="5"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="6"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="7"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="8"></td>
-                          <td align="center" width="50"><input type="radio" name="r2" value="9"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="9"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="8"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="7"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="6"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="5"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="4"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="3"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="2"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="1"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="2"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="3"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="4"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="5"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="6"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="7"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="8"></td>
+                          <td align="center" width="50"><input type="radio" name="sk5" value="9"></td>
                           <td width="100"><b>Ketelitian</b></td>
                         </tr>
                         <tr>
@@ -280,7 +280,7 @@
                           <td></td>
                         </tr>
                       </table>
-                    </div>                
+                    </div>
                   </div>
                 </div>
 
@@ -320,7 +320,7 @@
                           <td align="center">x</td>
                           <td align="center">x</td>
                         </tr>
-                      </table>                      
+                      </table>
                     </div>
                   </div>
 
@@ -350,7 +350,7 @@
                           <td align="center">x</td>
                           <td align="center">x</td>
                         </tr>
-                      </table>                      
+                      </table>
                     </div>
                   </div>
 
@@ -380,7 +380,7 @@
                           <td align="center">x</td>
                           <td align="center">x</td>
                         </tr>
-                      </table>                      
+                      </table>
                     </div>
                   </div>
 
