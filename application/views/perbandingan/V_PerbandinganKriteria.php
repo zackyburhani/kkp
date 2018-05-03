@@ -159,8 +159,8 @@
                   </table>
 
                   <div class="modal-footer" style="margin-top: 30px">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-gears"></i> Proses</button>
                   </div>
                 </form>
                 </div>
@@ -171,6 +171,7 @@
                     <hr>
                   </div>
 
+                  <?php if($matriksA != null) { ?>
                   <table style="table-layout:fixed" class="table table-striped table-bordered">
                     <tr>
                       <td>Kriteria</td>
@@ -178,18 +179,16 @@
                       <th><center>Interview</center></th>
                       <th><center>Konsistensi</center></th>
                     </tr>
-
-                    <?php for ($i=0; $i<sizeof($hasil); $i++) { ?>
-                      <?php echo"<tr>"?>
-                        <?php echo"<td> <b>Kompetensi</b> </td>"?>
-                        <?php for ($j=0; $j<sizeof($hasil[$i]); $j++) { ?>
-                          <?php echo "<td align='center'>". round($hasil[$i][$j], 4)."</td>"; ?>
-                        <?php } ?>
-                      <?php echo"</tr>"?>
+                    <?php foreach($matriksA as $i => $value) { ?>
+                      <tr>
+                        <td>Kompetensi</td>
+                          <?php foreach($matriksA as $j => $value ) { ?>
+                            <td align="center"><?php echo round($matriksA[$i][$j],4) ?></td>
+                          <?php } ?>
+                      </tr>
                     <?php } ?>
-
                   </table>
-                  
+                  <?php } else { echo "ini kosong"; } ?>
                 </div>
 
                 <div class="tab-pane" id="tab_3">
@@ -201,90 +200,30 @@
                   
                   <table style="table-layout:fixed" class="table table-striped table-bordered">
                     <tr>
-                      <td>Kriteria</td>
-                      <th><center>Nilai Banding</center></th>
-                      <th><center>Eigenvector</center></th>
+                      <td width="328px">Kriteria</td>
+                      <th style="padding-left: -100px"><center>Nilai Banding</center></th>
+                      <th></th>
                     </tr>
-
-
-                    <?php 
-
-                    function perkalian_matriks($matriks_a, $matriks_b) {
-                      $hasil = array();
-                      for ($i=0; $i<sizeof($matriks_a); $i++) {
-                        for ($j=0; $j<sizeof($matriks_b[0]); $j++) {
-                          $temp = 0;
-                          for ($k=0; $k<sizeof($matriks_b); $k++) {
-                            $temp += $matriks_a[$i][$k] * $matriks_b[$k][$j];
-                          }
-                          $hasil[$i][$j] = $temp;
-                        }
-                      }
-                      return $hasil;
-                    }
-
-                    function penjumlahan_matriks($matriks1) {
-                      $hasil1 = array();
-                      for ($i=0; $i<sizeof($matriks1); $i++) {
-                          $temp2 = 0;
-                          for ($k=0; $k<sizeof($matriks1); $k++) {
-                            $temp2 = $temp2+$matriks1[$i][$k];
-                          }
-                          $hasil1[$i] = $temp2;
-                      }
-                      return $hasil1;
-                    }
-
-                    function cari_eigenvektor($cari_total) {
-                      $hasil3 = array();
-                      for ($i=0; $i<sizeof($cari_total); $i++) {
-                          $temp2 = $cari_total[$i];
-                          $hasil3[$i] = $temp2;
-                      }
-                      $total = array_sum($hasil3);
-                      for ($j=0; $j<sizeof($cari_total); $j++) {
-                        $eigenvektor = $cari_total[$j]/$total;
-                        $hasil3[$j] = $eigenvektor;
-                      }
-                      return $hasil3;
-                    }
-
-                    //ga tau dipake apa engga
-                    function cari_total($cari_total) {
-                      $hasil2 = array();
-                      for ($i=0; $i<sizeof($cari_total); $i++) {
-                          $temp2 = $cari_total[$i];
-                          $hasil2[$i] = $temp2;
-                      }
-                      $total = array_sum($hasil2);
-                      return $total;
-                    }
-
-                    ?>
-
-                    <?php $matriksB = $hasil;
-
-                    $perkalianMatriks = perkalian_matriks($hasil, $matriksB);
-                    
-                    $penjumlahanMatriks = penjumlahan_matriks($perkalianMatriks);
-                    $eigenvektor = cari_eigenvektor($penjumlahanMatriks);
-                      for ($i=0; $i<sizeof($penjumlahanMatriks); $i++) {
-                        echo "<tr>";
-                          echo "<td><b>Kriteria<b></td>";
-                          echo "<td>". round($penjumlahanMatriks[$i], 4) ."</td>";  
-                      }
-                      for ($i=0; $i<sizeof($eigenvektor); $i++) {
-                        echo "<tr>";
-                          echo "<td>". round($eigenvektor[$i], 4) ."</td>";
-                            
-                      }
-                      echo "</tr>";
-                      
-
-                    ?>
-
+                    <?php foreach($penjumlahanMatriks as $i => $value) { ?>
+                      <tr>
+                        <td><b>Kriteria</b></td>
+                        <td><center><?php echo round($penjumlahanMatriks[$i],4) ?></center></td>
+                      </tr>
+                    <?php } ?>
                   </table>
 
+                  <div class="col-sm-offset-8">
+                    <table style="width: 334px; margin-left: -4px; margin-top: -169px" class="table table-striped table-bordered">
+                      <tr>
+                       <th><center>Eigenvector</center></th>
+                      </tr>
+                      <?php foreach($eigenvector as $j => $value) { ?>
+                        <tr>
+                          <td><center><?php echo round($eigenvector[$j],4) ?></center></td>
+                        </tr>
+                      <?php } ?>                    
+                    </table>  
+                  </div>
                   </div>
                 </div>
               </div>
