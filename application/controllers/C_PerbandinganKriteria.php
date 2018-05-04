@@ -37,12 +37,38 @@ class C_PerbandinganKriteria extends CI_Controller {
 			'eigenvector' => $eigenvector
 		];
 
-		$this->load->view('template/V_Header');
-		$this->load->view('template/V_Sidebar');
-		$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
-		$this->load->view('template/V_Footer');
+		$alert = $this->alert($data);
+
+		if ($data){
+			$this->load->view('template/V_Header');
+		 	$this->load->view('template/V_Sidebar');
+		 	$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
+		 	$this->load->view('template/V_Footer');	   	
+		}else{
+			$this->load->view('template/V_Header');
+		 	$this->load->view('template/V_Sidebar');
+		 	$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
+		 	$this->load->view('template/V_Footer');
+		}
 	}
 
+	//fungsi untuk menghapus data session matriks
+	public function batal()
+	{
+		redirect('C_PerbandinganKriteria');
+	}
+
+	//memunculkan alert sukses
+	public function alert($nilai)
+	{	
+		if($nilai != null){
+			$alert = $this->session->set_flashdata('pesan','Data Berhasil Disimpan');
+			return $alert;
+		} else {
+			$alert = $this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
+			return $alert;
+		}
+	}
 
 	//fungsi menghitung perkalian matriks
 	public function perkalian_matriks($matriks_a, $matriks_b) 

@@ -26,7 +26,7 @@
                   </div>
               </div>
               <div class="col-md-6">
-                <label class="col-sm-3 control-label">Tanggal Awal</label>
+                <label class="col-sm-3 control-label">Tanggal Akhir</label>
                   <div class="input-group col-sm-9">
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
