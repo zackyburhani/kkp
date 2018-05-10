@@ -3,11 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_PerbandinganKriteria extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('M_Kriteria');
+	}
+
 	public function index()
 	{
+
+		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
+
+		$data = [
+			'getAllKriteria' => $getAllKriteria
+		];
+
 		$this->load->view('template/V_Header');
 		$this->load->view('template/V_Sidebar');
-		$this->load->view('perbandingan/V_PerbandinganKriteria');
+		$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
 		$this->load->view('template/V_Footer');
 	}
 
@@ -28,13 +40,14 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$perkalianMatriks = $this->perkalian_matriks($matriksB,$matriksA);
 		$penjumlahanMatriks = $this->penjumlahan_matriks($perkalianMatriks);
 		$eigenvector = $this->cari_eigenvector($penjumlahanMatriks);
-                 
+        $getAllKriteria = $this->M_Kriteria->getAllKriteria();
 
 		$data = [
 			'matriksA' => $matriksA,
 			'perkalianMatriks' => $perkalianMatriks,
 			'penjumlahanMatriks' => $penjumlahanMatriks,
-			'eigenvector' => $eigenvector
+			'eigenvector' => $eigenvector,
+			'getAllKriteria' => $getAllKriteria
 		];
 
 		$alert = $this->alert($data);
@@ -128,6 +141,8 @@ class C_PerbandinganKriteria extends CI_Controller {
         $total = array_sum($hasil2);
         return $total;
     }
+
+
 
 
 }

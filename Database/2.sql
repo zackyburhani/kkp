@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 10, 2018 at 09:39 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: May 02, 2018 at 01:51 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `banding` (
   `kd_kriteria` char(2) NOT NULL,
   `kd_kriteria2` char(2) NOT NULL,
-  `nilaibanding` decimal(5,4) DEFAULT NULL
+  `nilaibanding` decimal(5,4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -43,7 +43,7 @@ CREATE TABLE `banding` (
 CREATE TABLE `banding2` (
   `kd_subkriteria` char(3) NOT NULL,
   `kd_subkriteria2` char(3) NOT NULL,
-  `nilaibanding2` decimal(5,4) DEFAULT NULL
+  `nilaibanding2` decimal(5,4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -63,17 +63,6 @@ CREATE TABLE `calon` (
   `pendidikan_terakhir` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `calon`
---
-
-INSERT INTO `calon` (`id_calon`, `nm_calon`, `tgl_lahir`, `alamat`, `jk`, `email`, `no_telp`, `pendidikan_terakhir`) VALUES
-('CL001', 'Zacky Burhani Hotib', '1997-09-13', 'Pondok Kacang', 'L', 'zackyburhani99@gmail.com', '083891778014', 'S1'),
-('CL002', 'Andy Chahyono', '1997-09-09', 'Cipadu', 'L', 'andy@gmail.com', '08389188291', 'S1'),
-('CL003', 'Aldis Fakhri Sorengpati', '1997-01-08', 'Pamulang', 'L', 'aldis@gmail.com', '081253664736', 'S1'),
-('CL004', 'Sisca Agdinsa Ramadhan', '1996-07-07', 'Graha Raya', 'P', 'sisca@gmail.com', '083891778022', 'S1'),
-('CL005', 'Tia Selviana', '1997-06-06', 'Pondok Pisang', 'P', 'akes@gmail.com', '081253664733', 'D3');
-
 -- --------------------------------------------------------
 
 --
@@ -82,8 +71,8 @@ INSERT INTO `calon` (`id_calon`, `nm_calon`, `tgl_lahir`, `alamat`, `jk`, `email
 
 CREATE TABLE `hasil` (
   `id_calon` char(5) NOT NULL,
-  `keterangan` varchar(15) DEFAULT NULL,
-  `hasil_akhir` decimal(5,4) DEFAULT NULL
+  `keterangan` varchar(15) NOT NULL,
+  `hasil_akhir` decimal(5,4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -94,18 +83,9 @@ CREATE TABLE `hasil` (
 
 CREATE TABLE `kriteria` (
   `kd_kriteria` char(2) NOT NULL,
-  `nm_kriteria` varchar(30) DEFAULT NULL,
-  `eigenvector` decimal(5,4) DEFAULT NULL
+  `nm_kriteria` varchar(30) NOT NULL,
+  `eigenvector` decimal(5,4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `kriteria`
---
-
-INSERT INTO `kriteria` (`kd_kriteria`, `nm_kriteria`, `eigenvector`) VALUES
-('K1', 'Kompetensi', NULL),
-('K2', 'Interview', NULL),
-('K3', 'Konsistensi', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,23 +95,10 @@ INSERT INTO `kriteria` (`kd_kriteria`, `nm_kriteria`, `eigenvector`) VALUES
 
 CREATE TABLE `subkriteria` (
   `kd_subkriteria` char(3) NOT NULL,
-  `nm_subkriteria` varchar(30) DEFAULT NULL,
-  `eigenvector_sub` decimal(5,4) DEFAULT NULL,
+  `nm_subkriteria` varchar(30) NOT NULL,
+  `eigenvector_sub` decimal(5,4) NOT NULL,
   `kd_kriteria` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `subkriteria`
---
-
-INSERT INTO `subkriteria` (`kd_subkriteria`, `nm_subkriteria`, `eigenvector_sub`, `kd_kriteria`) VALUES
-('SK1', 'Jurusan', NULL, 'K1'),
-('SK2', 'Skill', NULL, 'K1'),
-('SK3', 'Tanggung Jawab', NULL, 'K1'),
-('SK4', 'Kesiapan Kerja', NULL, 'K2'),
-('SK5', 'Perilaku', NULL, 'K2'),
-('SK6', 'Ketelitian', NULL, 'K3'),
-('SK7', 'Kejujuran', NULL, 'K3');
 
 -- --------------------------------------------------------
 
@@ -142,7 +109,7 @@ INSERT INTO `subkriteria` (`kd_subkriteria`, `nm_subkriteria`, `eigenvector_sub`
 CREATE TABLE `target` (
   `kd_kriteria` char(2) NOT NULL,
   `id_calon` char(5) NOT NULL,
-  `nilai_target` varchar(4) DEFAULT NULL
+  `nilai_target` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -154,7 +121,7 @@ CREATE TABLE `target` (
 CREATE TABLE `target2` (
   `kd_subkriteria` char(3) NOT NULL,
   `id_calon` char(5) NOT NULL,
-  `nilai_target2` varchar(4) DEFAULT NULL
+  `nilai_target2` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

@@ -40,6 +40,7 @@
                 <li><a href="#tab_2" data-toggle="tab">Matriks Banding</a></li>
                 <li><a href="#tab_3" data-toggle="tab">Eigenvector</a></li>
               </ul>
+
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
                   <div class="container-fluid" style="margin-bottom: 10px;">
@@ -48,8 +49,13 @@
                   </div>       
                   <form method="POST" action="<?php echo base_url('C_PerbandinganKriteria/perbandinganMatriks') ?>">
                     <table>
+                      <?php 
+                        $K1 = $this->db->query("SELECT * FROM kriteria where kd_kriteria='K1'")->row_array();
+                        $K2 = $this->db->query("SELECT * FROM kriteria where kd_kriteria='K2'")->row_array();
+                        $K3 = $this->db->query("SELECT * FROM kriteria where kd_kriteria='K3'")->row_array();
+                      ?>
                       <tr>
-                        <td><b>Kompetensi</b></td>
+                        <td><b><?php echo $K1['nm_kriteria']; ?></b></td>
                         <td align="center" width="50"><input type="radio" name="k1" value="9" required></td>
                         <td align="center" width="50"><input type="radio" name="k1" value="8" required></td>
                         <td align="center" width="50"><input type="radio" name="k1" value="7" required></td>
@@ -67,7 +73,7 @@
                         <td align="center" width="50"><input type="radio" name="k1" value="7" required></td>
                         <td align="center" width="50"><input type="radio" name="k1" value="8" required></td>
                         <td align="center" width="50"><input type="radio" name="k1" value="9" required></td>
-                        <td><b>Interview</b></td>
+                        <td><b><?php echo $K2['nm_kriteria']; ?></b></td>
                       </tr>
                       <tr>
                         <td></td>
@@ -92,7 +98,7 @@
                       </tr>
 
                       <tr>
-                        <td><b>Konsistensi</b></td>
+                        <td><b><?php echo $K1['nm_kriteria']; ?></b></td>
                         <td align="center" width="50"><input type="radio" name="k2" value="9" required></td>
                         <td align="center" width="50"><input type="radio" name="k2" value="8" required></td>
                         <td align="center" width="50"><input type="radio" name="k2" value="7" required></td>
@@ -110,7 +116,7 @@
                         <td align="center" width="50"><input type="radio" name="k2" value="7" required></td>
                         <td align="center" width="50"><input type="radio" name="k2" value="8" required></td>
                         <td align="center" width="50"><input type="radio" name="k2" value="9" required></td>
-                        <td><b>Kompetensi</b></td>
+                        <td><b><?php echo $K3['nm_kriteria']; ?></b></td>
                       </tr>
                       <tr>
                         <td></td>
@@ -135,7 +141,7 @@
                       </tr>
 
                       <tr>
-                        <td><b>Konsistensi</b></td>
+                        <td><b><?php echo $K2['nm_kriteria']; ?></b></td>
                         <td align="center" width="50"><input type="radio" name="k3" value="9" required></td>
                         <td align="center" width="50"><input type="radio" name="k3" value="8" required></td>
                         <td align="center" width="50"><input type="radio" name="k3" value="7" required></td>
@@ -153,7 +159,7 @@
                         <td align="center" width="50"><input type="radio" name="k3" value="7" required></td>
                         <td align="center" width="50"><input type="radio" name="k3" value="8" required></td>
                         <td align="center" width="50"><input type="radio" name="k3" value="9" required></td>
-                        <td><b>Interview</b></td>
+                        <td><b><?php echo $K3['nm_kriteria']; ?></b></td>
                       </tr>
                       <tr>
                         <td></td>
@@ -176,6 +182,7 @@
                         <td align="center" width="50">9</td>
                         <td></td>
                       </tr>
+                     
 
                     </table>
 
@@ -195,23 +202,37 @@
                   <?php if(isset($matriksA)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
-                        <td>Kriteria</td>
-                        <th><center>Kompetensi</center></th>
-                        <th><center>Interview</center></th>
-                        <th><center>Konsistensi</center></th>
+                        <td></td>
+                        <?php foreach($getAllKriteria as $data) { ?>
+                          <th><center><?php echo $data->nm_kriteria ?></center></th>
+                        <?php } ?>
                       </tr>
                       <?php foreach($matriksA as $i => $value) { ?>
                         <tr>
-                          <td>Kompetensi</td>
+                          <td></td>
                             <?php foreach($matriksA as $j => $value ) { ?>
                               <td align="center"><?php echo round($matriksA[$i][$j],4) ?></td>
                             <?php } ?>
                         </tr>
                       <?php } ?>
                     </table>
+
+                    <!-- Table Tambahan -->
+                    <table style="width: 250px;margin-top: -169px" class="table table-striped table-bordered">
+                      <tr>
+                        <td>Kriteria</td>
+                      </tr>
+                      <?php foreach($getAllKriteria as $data) { ?>
+                      <tr>
+                        <td><b><?php echo $data->nm_kriteria ?></b></td>
+                      </tr>
+                      <?php } ?>
+                    </table>
+
                   <?php } else { ?>
                     <h3><center><i>Data Belum Dimasukkan</i></center></h3>
                   <?php } ?>
+                
                 </div>
 
                 <div class="tab-pane" id="tab_3">
@@ -224,13 +245,13 @@
                   <?php if(isset($eigenvector)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
-                        <td width="328px">Kriteria</td>
+                        <td width="328px"></td>
                         <th style="padding-left: -100px"><center>Nilai Banding</center></th>
                         <th></th>
                       </tr>
                       <?php foreach($penjumlahanMatriks as $i => $value) { ?>
                         <tr>
-                          <td><b>Kriteria</b></td>
+                          <td><b></b></td>
                           <td><center><?php echo round($penjumlahanMatriks[$i],4) ?></center></td>
                         </tr>
                       <?php } ?>
@@ -246,10 +267,31 @@
                             <td><center><?php echo round($eigenvector[$j],4) ?></center></td>
                           </tr>
                         <?php } ?>                    
-                      </table>  
+                      </table>
+
+                      <!-- Table Tambahan -->
+                      <table style="width: 328px;margin-left: -665px; margin-top: -169px" class="table table-striped table-bordered">
+                        <tr>
+                          <td>Kriteria</td>
+                        </tr>
+                        <?php foreach($getAllKriteria as $data) { ?>
+                        <tr>
+                          <td><b><?php echo $data->nm_kriteria ?></b></td>
+                        </tr>
+                        <?php } ?>
+                      </table>
+
+                      <div class="modal-footer" style="margin-top: 30px">
+                        <a href="<?php echo site_url('C_PerbandinganKriteria/batal') ?>" type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</a>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Eigenvector</button>
+                      </div>
+
                       <?php } else { ?>
                         <h3><center><i>Data Belum Dimasukkan</i></center></h3>
                       <?php } ?>
+                    
+
+
                     </div>
 
                   </div>
