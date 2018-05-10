@@ -3,21 +3,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_Subkriteria extends CI_Controller {
 
+	public function __construct() 
+	{
+		parent::__construct();
+		$this->load->model(['M_Subkriteria','M_Kriteria']);
+	}
+
 	public function index()
 	{
+		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
+		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
+		$getKdSubkriteria = $this->M_Subkriteria->getKdSubkriteria();
+		$data = [
+			'getKdSubkriteria' => $getKdSubkriteria,
+			'getAllSubkriteria' => $getAllSubkriteria,
+			'getAllKriteria' => $getAllKriteria
+		];
+
 		$this->load->view('template/V_Header');
 		$this->load->view('template/V_Sidebar');
-		$this->load->view('subkriteria/V_SubKriteria');
-		$this->load->view('subkriteria/V_EntrySubKriteria');
-		$this->load->view('subkriteria/V_UpdateSubKriteria');
-		$this->load->view('subkriteria/V_HapusSubKriteria');
+		$this->load->view('subkriteria/V_SubKriteria',$data);
+		$this->load->view('subkriteria/V_EntrySubKriteria',$data);
+		$this->load->view('subkriteria/V_UpdateSubKriteria',$data);
+		$this->load->view('subkriteria/V_HapusSubKriteria',$data);
 		$this->load->view('template/V_Footer');
 	}
+
+	public function tambahSubkriteria() 
+	{
+		$kriteria = $this->input->post('kriteria');
+		$kd_subkriteria = $this->input->post('kd_subkriteria');
+		$nm_subkriteria = $this->input->post('nm_subkriteria');
+		
+		$data = [
+			'kd_subkriteria' => $kd_subkriteria,
+			'nm_subkriteria' => $nm_subkriteria,
+			'kd_kriteria'=> $kriteria
+		];
+
+		$result = $this->M_Subkriteria->tambahSubkriteria($data);
+		
+		if ($result){
+			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
+	   		redirect('C_Subkriteria');
+		}else{
+			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
+    		redirect('C_Subkriteria');
+		}
+	}
+
+	public function deleteSubkriteria()
+	{
+		$kd_subkriteria= $this->input->post('kd_subkriteria');
+		
+		$result = $this->M_Subkriteria->DeleteSubkriteria($kd_subkriteria);
+		
+		if ($result){
+			$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
+	   		redirect('C_Subkriteria');
+		}else{
+			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
+    		redirect('C_Subkriteria');
+		}
+	}
+
 }
-
-
-/*
-*
-*INI CONTROLLER SISCA
-*
-*/

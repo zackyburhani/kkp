@@ -5,19 +5,25 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel"><i class="fa fa-file-o"></i> Tambah Data Subkriteria</h4>
       </div>
-      <form method="POST" action="<?php echo site_url('')?>" enctype="multipart/form-data">
+      <form method="POST" action="<?php echo site_url('C_Subkriteria/tambahSubkriteria')?>" enctype="multipart/form-data">
         <div class="modal-body">
 
           <div class="form-group"><label>Nama Kriteria</label>
             <div class="custom-select my-1 mr-sm-2">
               <select class="form-control" name="kriteria">
-                <option value="#">#</option>
+                <?php if($getAllKriteria == null) { ?>
+                  <option value="">-</option>
+                <?php } else { ?>
+                  <?php foreach($getAllKriteria as $data){ ?>
+                    <option value="<?php echo $data->kd_kriteria; ?>"><?php echo $data->nm_kriteria; ?></option>
+                  <?php } ?> 
+                <?php } ?>
               </select>
             </div>
           </div>
-
+          
           <div class="form-group"><label>Kode Subkriteria</label>
-            <input required class="form-control required text-capitalize" value="" data-placement="top" data-trigger="manual" type="text" name="kd_subkriteria">
+            <input required class="form-control required text-capitalize" data-placement="top" data-trigger="manual" value="<?php echo $getKdSubkriteria ?>" type="text" name="kd_subkriteria" readonly>
           </div>
                 
           <div class="form-group"><label>Nama Subkriteria</label>
