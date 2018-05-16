@@ -67,6 +67,7 @@ class M_Calon extends CI_Model {
 
 		return $checkupdate;
 	}
+
 	public function getKodeCalon()
      {
        $q = $this->db->query("select MAX(RIGHT(id_calon,3)) as kd_max from calon");
@@ -83,4 +84,23 @@ class M_Calon extends CI_Model {
        }
        return "CL".$kd;
      }
+
+     public function periode($periode_masuk)
+     {
+     	$result = $this->db->query("SELECT * FROM calon WHERE periode_masuk = '".$periode_masuk."'");
+     	return $result->result();
+     }
+
+     public function CetakPeriode($periode)
+     {
+     	$result = $this->db->query("SELECT * FROM calon WHERE periode_masuk = '".$periode."'");
+     	return $result->result();
+     }
+
+    public function jumlah($table)
+  	{
+    	$query = $this->db->query("SELECT * FROM $table");
+    	return $query->num_rows();
+  	}
+
 }

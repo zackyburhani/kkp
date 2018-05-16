@@ -11,6 +11,10 @@
           <div class="form-group"><label>ID Calon</label>
             <input required class="form-control required text-capitalize" value="<?php echo $getKodeCalon ?>" data-placement="top" data-trigger="manual" type="text" name="id_calon" readonly>
           </div>
+
+          <div class="form-group"><label>Periode Masuk</label>
+            <input required class="form-control required text-capitalize" value="" data-placement="top" data-trigger="manual" type="date" name="periode_masuk">
+          </div>
                 
           <div class="form-group"><label>Nama Calon Karyawan</label>
             <input required class="form-control required text-capitalize" placeholder="Input Nama Calon Karyawan" data-placement="top" data-trigger="manual" type="text" name="nm_calon">

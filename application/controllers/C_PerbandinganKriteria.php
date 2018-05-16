@@ -20,7 +20,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$this->load->view('template/V_Header');
 		$this->load->view('template/V_Sidebar');
 		$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
-		$this->load->view('template/V_Footer');
+	$this->load->view('template/V_Footer');
 	}
 
 	public function perbandinganMatriks()

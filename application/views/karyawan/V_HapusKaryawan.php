@@ -11,7 +11,7 @@
       <div class='modal-footer'>
         <form class="" action="<?php echo site_url('C_Karyawan/deleteKaryawan') ?>" method="post">
           <input type="hidden" value="<?php echo $data->id_calon ?>" name="id_calon">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>Batal</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
           <button class="btn btn-danger" aria-label="Delete" type="submit" name="hapus"><i class="fa fa-trash fa-fw"></i> Hapus</button>
         </form>
       </div>

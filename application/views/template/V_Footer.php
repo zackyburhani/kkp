@@ -70,6 +70,10 @@ $(document).ready( function () {
   }, 3000); 
 </script>
 
+<script type="text/javascript">
+        $('#myModal').modal('show');
+    </script>
+
 
 </body>
 </html>

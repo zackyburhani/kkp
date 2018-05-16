@@ -47,7 +47,7 @@
           <!-- small box -->
           <div class="small-box bg-blue">
             <div class="inner">
-              <h3><?php echo "12" ?></h3>
+              <h3><?php echo $totalCalon ?></h3>
 
               <p>Data Karyawan</p>
             </div>
@@ -61,7 +61,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo "12" ?></h3>
+              <h3><?php echo $totalKriteria ?></h3>
 
               <p>Data Kriteria</p>
             </div>
@@ -76,7 +76,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><?php echo "14" ?></h3>
+              <h3><?php echo $totalSubkriteria ?></h3>
 
               <p>Data Subkriteria</p>
             </div>
