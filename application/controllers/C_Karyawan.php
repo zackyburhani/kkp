@@ -148,38 +148,41 @@ class C_Karyawan extends CI_Controller {
         $pdf->AddPage();
         // setting jenis font yang akan digunakan
         $pdf->SetFont('Arial','B',16);
+        //cetak gambar
+        $image1 = "assets/img/logo2.png";
+        $pdf->Cell(1, 0, $pdf->Image($image1, $pdf->GetX(), $pdf->GetY(), 20.10), 0, 0, 'L', false );
         // mencetak string
-        $pdf->Cell(190,7,'PT. BIYA MAESTRO HARDSCAPE',0,1,'C');
-        $pdf->Cell(10,10,'',0,1);
+        $pdf->Cell(186,10,'PT. BIYA MAESTRO HARDSCAPE',0,1,'C');
+        $pdf->Cell(9,1,'',0,1);
         $pdf->SetFont('Arial','B',12);
         
         //penilaian Kriteria
-        $pdf->Cell(190,10,'Penilaian Kriteria ',0,1,'C');
-        // Memberikan space kebawah agar tidak terlalu rapat
-        $pdf->Cell(10,1,'',0,1);
-        $pdf->SetFont('Arial','B',10);
-        $pdf->Cell(10,6,'No.',1,0,'C');
-        $pdf->Cell(50,6,'Nama Calon',1,0,'C');
-        $pdf->Cell(43,6,'Kompetensi',1,0,'C');
-        $pdf->Cell(43,6,'Interview',1,0,'C');
-        $pdf->Cell(43,6,'Konsistensi',1,1,'C');
-        $pdf->SetFont('Arial','',10);
-        $getPeriodeCalon = $this->M_Calon->CetakPeriode($periode);
-        $no = 1;
-        foreach ($getPeriodeCalon as $row){
-        	$pdf->Cell(10,6,$no++.".",1,0,'C');
-            $pdf->Cell(50,6,$row->nm_calon,1,0);
-            $pdf->Cell(43,6,"",1,0,'C');
-            $pdf->Cell(43,6,"",1,0);
-            $pdf->Cell(43,6,"",1,1,'C');
-        }
+        // $pdf->Cell(190,10,'Penilaian Kriteria ',0,1,'C');
+        // // Memberikan space kebawah agar tidak terlalu rapat
+        // $pdf->Cell(10,1,'',0,1);
+        // $pdf->SetFont('Arial','B',10);
+        // $pdf->Cell(10,6,'No.',1,0,'C');
+        // $pdf->Cell(50,6,'Nama Calon',1,0,'C');
+        // $pdf->Cell(43,6,'Kompetensi',1,0,'C');
+        // $pdf->Cell(43,6,'Interview',1,0,'C');
+        // $pdf->Cell(43,6,'Konsistensi',1,1,'C');
+        // $pdf->SetFont('Arial','',10);
+        // $getPeriodeCalon = $this->M_Calon->CetakPeriode($periode);
+        // $no = 1;
+        // foreach ($getPeriodeCalon as $row){
+        // 	$pdf->Cell(10,6,$no++.".",1,0,'C');
+        //     $pdf->Cell(50,6,$row->nm_calon,1,0);
+        //     $pdf->Cell(43,6,"",1,0,'C');
+        //     $pdf->Cell(43,6,"",1,0);
+        //     $pdf->Cell(43,6,"",1,1,'C');
+        // }
 
-        //spasi
-        $pdf->Cell(10,5,'',0,1);
+        // //spasi
+        // $pdf->Cell(10,5,'',0,1);
 
         //penilaian subkriteria kompetensi
         $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(190,10,'Penilaian Subkriteria Kompetensi ',0,1,'C');
+        $pdf->Cell(190,15,'Penilaian Subkriteria Kompetensi ',0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,1,'',0,1);
         $pdf->SetFont('Arial','B',10);

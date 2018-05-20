@@ -20,14 +20,16 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$this->load->view('template/V_Header');
 		$this->load->view('template/V_Sidebar');
 		$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
-	$this->load->view('template/V_Footer');
+		$this->load->view('template/V_Footer');
 	}
 
 	public function perbandinganMatriks()
 	{
-		$k1 = $this->input->post('k1');	
-		$k2 = $this->input->post('k2');	
-		$k3 = $this->input->post('k3');	
+		$k1 = $this->input->post('K1');	
+		$k2 = $this->input->post('K2');	
+		$k3 = $this->input->post('K3');
+		$kriteria1 = $this->input->post('kriteria1');
+		$kriteria2 = $this->input->post('kriteria2');	
 
 		$matriksA = [ 
 			[1     ,  $k1/1 , 1/$k2],
@@ -81,6 +83,34 @@ class C_PerbandinganKriteria extends CI_Controller {
 			$alert = $this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
 			return $alert;
 		}
+	}
+
+	public function simpanEigenvector()
+	{
+		$e1 = $this->input->post('E1');	
+		$e2 = $this->input->post('E2');	
+		$e3 = $this->input->post('E3');
+
+		$k1 = $this->input->post('K1');	
+		$k2 = $this->input->post('K2');	
+		$k3 = $this->input->post('K3');
+
+		$data1['eigenvector'] = $e1;
+		$data2['eigenvector'] = $e2;
+		$data3['eigenvector'] = $e3;
+
+		$result1 = $this->M_Kriteria->InsertEigenvector($k1,$data1);
+		$result2 = $this->M_Kriteria->InsertEigenvector($k2,$data2);
+		$result3 = $this->M_Kriteria->InsertEigenvector($k3,$data3);
+
+		if ($result1 && $result2 && $result3){
+			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
+	   		redirect('C_PerbandinganKriteria');
+		}else{
+			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
+    		redirect('C_PerbandinganKriteria');
+		}
+
 	}
 
 	//fungsi menghitung perkalian matriks

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
 
   <!-- LOGO -->
-  <link rel="SHORTCUT ICON" href="<?php echo base_url('assets/img/by2.png') ?>">
+  <link rel="SHORTCUT ICON" href="<?php echo base_url('assets/img/logo2.png') ?>">
 
 </head>
 <body class="hold-transition skin-green sidebar-mini">

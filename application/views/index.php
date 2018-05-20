@@ -32,7 +32,7 @@
         </style>
         <div class="row">
           <div class="form-group">
-            <img class="col-md-1" src="<?php echo site_url('assets/img/by2.png')?>" width="500px">
+            <img class="col-md-1" src="<?php echo site_url('assets/img/logo2.png')?>" width="500px">
             <div class="col-md-4">
               <h4 style="margin-top: 20px;">Selamat Datang <i><?php echo "nama"; ?></i> !</h4>
             </div>

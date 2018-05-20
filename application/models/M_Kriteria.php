@@ -70,4 +70,17 @@ class M_Kriteria extends CI_Model {
        }
        return "K".$kd;
      }
+
+     public function InsertEigenvector($id,$data){
+		$checkupdate = false;
+		try{
+			$this->db->where('kd_kriteria',$id);
+			$this->db->update('kriteria',$data);
+			$checkupdate = true;
+		}catch (Exception $ex) {
+
+			$checkupdate = false;
+		}
+		return $checkupdate;
+	}
 }

@@ -48,143 +48,70 @@
                     <hr>
                   </div>       
                   <form method="POST" action="<?php echo base_url('C_PerbandinganKriteria/perbandinganMatriks') ?>">
-                    <table>
-                      <?php 
-                        $K1 = $this->db->query("SELECT * FROM kriteria where kd_kriteria='K1'")->row_array();
-                        $K2 = $this->db->query("SELECT * FROM kriteria where kd_kriteria='K2'")->row_array();
-                        $K3 = $this->db->query("SELECT * FROM kriteria where kd_kriteria='K3'")->row_array();
-                      ?>
-                      <tr>
-                        <td><b><?php echo $K1['nm_kriteria']; ?></b></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="9" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="8" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="7" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="6" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="5" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="4" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="3" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="2" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="1" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="2" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="3" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="4" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="5" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="6" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="7" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="8" required></td>
-                        <td align="center" width="50"><input type="radio" name="k1" value="9" required></td>
-                        <td><b><?php echo $K2['nm_kriteria']; ?></b></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td align="center" width="50">9</td>
-                        <td align="center" width="50">8</td>
-                        <td align="center" width="50">7</td>
-                        <td align="center" width="50">6</td>
-                        <td align="center" width="50">5</td>
-                        <td align="center" width="50">4</td>
-                        <td align="center" width="50">3</td>
-                        <td align="center" width="50">2</td>
-                        <td align="center" width="50">1</td>
-                        <td align="center" width="50">2</td>
-                        <td align="center" width="50">3</td>
-                        <td align="center" width="50">4</td>
-                        <td align="center" width="50">5</td>
-                        <td align="center" width="50">6</td>
-                        <td align="center" width="50">7</td>
-                        <td align="center" width="50">8</td>
-                        <td align="center" width="50">9</td>
-                        <td></td>
-                      </tr>
+                    
+                    <div class="row" style="margin-bottom: 10px">
+                      <div class="col-md-4">
+                        <center><b>Kriteria</b></center>
+                      </div>
+                      <div class="col-md-4">
+                        <center><b>Nilai Banding</b></center>
+                      </div>
+                      <div class="col-md-4">
+                        <center><b>Kriteria</b></center>
+                      </div>
+                    </div>
 
-                      <tr>
-                        <td><b><?php echo $K1['nm_kriteria']; ?></b></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="9" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="8" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="7" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="6" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="5" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="4" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="3" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="2" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="1" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="2" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="3" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="4" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="5" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="6" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="7" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="8" required></td>
-                        <td align="center" width="50"><input type="radio" name="k2" value="9" required></td>
-                        <td><b><?php echo $K3['nm_kriteria']; ?></b></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td align="center" width="50">9</td>
-                        <td align="center" width="50">8</td>
-                        <td align="center" width="50">7</td>
-                        <td align="center" width="50">6</td>
-                        <td align="center" width="50">5</td>
-                        <td align="center" width="50">4</td>
-                        <td align="center" width="50">3</td>
-                        <td align="center" width="50">2</td>
-                        <td align="center" width="50">1</td>
-                        <td align="center" width="50">2</td>
-                        <td align="center" width="50">3</td>
-                        <td align="center" width="50">4</td>
-                        <td align="center" width="50">5</td>
-                        <td align="center" width="50">6</td>
-                        <td align="center" width="50">7</td>
-                        <td align="center" width="50">8</td>
-                        <td align="center" width="50">9</td>
-                        <td></td>
-                      </tr>
-
-                      <tr>
-                        <td><b><?php echo $K2['nm_kriteria']; ?></b></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="9" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="8" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="7" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="6" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="5" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="4" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="3" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="2" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="1" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="2" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="3" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="4" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="5" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="6" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="7" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="8" required></td>
-                        <td align="center" width="50"><input type="radio" name="k3" value="9" required></td>
-                        <td><b><?php echo $K3['nm_kriteria']; ?></b></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td align="center" width="50">9</td>
-                        <td align="center" width="50">8</td>
-                        <td align="center" width="50">7</td>
-                        <td align="center" width="50">6</td>
-                        <td align="center" width="50">5</td>
-                        <td align="center" width="50">4</td>
-                        <td align="center" width="50">3</td>
-                        <td align="center" width="50">2</td>
-                        <td align="center" width="50">1</td>
-                        <td align="center" width="50">2</td>
-                        <td align="center" width="50">3</td>
-                        <td align="center" width="50">4</td>
-                        <td align="center" width="50">5</td>
-                        <td align="center" width="50">6</td>
-                        <td align="center" width="50">7</td>
-                        <td align="center" width="50">8</td>
-                        <td align="center" width="50">9</td>
-                        <td></td>
-                      </tr>
-                     
-
-                    </table>
+                    <?php foreach($getAllKriteria as $row) { ?>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <div class="custom-select">
+                              <select class="form-control" name="kriteria1">
+                                <?php if($getAllKriteria == null) { ?>
+                                  <option value="">-</option>
+                                <?php } else { ?>
+                                  <?php foreach($getAllKriteria as $data){ ?>
+                                    <option value="<?php echo $data->kd_kriteria; ?>"><?php echo $data->nm_kriteria; ?></option>
+                                  <?php } ?>  
+                                <?php } ?>
+                              </select>
+                             </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <div class="custom-select">
+                              <select class="form-control" name="<?php echo $row->kd_kriteria ?>">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                              </select>
+                             </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <div class="custom-select">
+                              <select class="form-control" name="kriteria2">
+                                <?php if($getAllKriteria == null) { ?>
+                                  <option value="">-</option>
+                                <?php } else { ?>
+                                  <?php foreach($getAllKriteria as $data){ ?>
+                                    <option value="<?php echo $data->kd_kriteria; ?>"><?php echo $data->nm_kriteria; ?></option>
+                                  <?php } ?>  
+                                <?php } ?>
+                              </select>
+                             </div>
+                           </div>
+                        </div>
+                      </div>
+                    <?php } ?>
 
                     <div class="modal-footer" style="margin-top: 30px">
                       <a href="<?php echo site_url('C_PerbandinganKriteria/batal') ?>" type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</a>
@@ -198,13 +125,15 @@
                     <center><b>Matriks Perbandingan Kriteria</b></center>
                     <hr>
                   </div>
-
+                  <form action="<?php echo site_url('C_PerbandinganKriteria/simpanEigenvector') ?>" method="POST">
                   <?php if(isset($matriksA)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
                         <td></td>
+                        <?php $kd = 1; ?>
                         <?php foreach($getAllKriteria as $data) { ?>
                           <th><center><?php echo $data->nm_kriteria ?></center></th>
+                          <input type="hidden" name="<?php echo "K".$kd++ ?>" value="<?php echo $data->kd_kriteria; ?>">
                         <?php } ?>
                       </tr>
                       <?php foreach($matriksA as $i => $value) { ?>
@@ -260,37 +189,38 @@
                     <div class="col-sm-offset-8">
                       <table style="width: 334px; margin-left: -4px; margin-top: -169px" class="table table-striped table-bordered">
                         <tr>
-                         <th><center>Eigenvector</center></th>
+                          <th><center>Eigenvector</center></th>
                         </tr>
-                        <?php foreach($eigenvector as $j => $value) { ?>
+                          <?php $kd = 1; ?>
+                            <?php foreach($eigenvector as $j => $value) { ?>
+                            <tr>
+                              <td><center><?php echo round($eigenvector[$j],4) ?></center></td>
+                                <input type="hidden" name="<?php echo "E".$kd++ ?>" value="<?php echo round($eigenvector[$j],4) ?>">
+                            </tr>
+                          <?php } ?>                    
+                        </table>
+
+                        <!-- Table Tambahan -->
+                        <table style="width: 328px;margin-left: -665px; margin-top: -169px" class="table table-striped table-bordered">
                           <tr>
-                            <td><center><?php echo round($eigenvector[$j],4) ?></center></td>
+                            <td>Kriteria</td>
                           </tr>
-                        <?php } ?>                    
-                      </table>
+                          <?php foreach($getAllKriteria as $data) { ?>
+                          <tr>
+                            <td><b><?php echo $data->nm_kriteria ?></b></td>
+                          </tr>
+                          <?php } ?>
+                        </table>
 
-                      <!-- Table Tambahan -->
-                      <table style="width: 328px;margin-left: -665px; margin-top: -169px" class="table table-striped table-bordered">
-                        <tr>
-                          <td>Kriteria</td>
-                        </tr>
-                        <?php foreach($getAllKriteria as $data) { ?>
-                        <tr>
-                          <td><b><?php echo $data->nm_kriteria ?></b></td>
-                        </tr>
-                        <?php } ?>
-                      </table>
-
-                      <div class="modal-footer" style="margin-top: 30px">
-                        <a href="<?php echo site_url('C_PerbandinganKriteria/batal') ?>" type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</a>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Eigenvector</button>
-                      </div>
+                        <div class="modal-footer" style="margin-top: 30px">
+                          <a href="<?php echo site_url('C_PerbandinganKriteria/batal') ?>" type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</a>
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Eigenvector</button>
+                        </div>
+                      </form>
 
                       <?php } else { ?>
                         <h3><center><i>Data Belum Dimasukkan</i></center></h3>
                       <?php } ?>
-                    
-
 
                     </div>
 
