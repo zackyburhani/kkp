@@ -66,7 +66,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <div class="custom-select">
-                              <select class="form-control" name="kriteria1">
+                              <select class="form-control" name="K_<?php echo $row->kd_kriteria; ?>">
                                 <?php if($getAllKriteria == null) { ?>
                                   <option value="">-</option>
                                 <?php } else { ?>
@@ -98,7 +98,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <div class="custom-select">
-                              <select class="form-control" name="kriteria2">
+                              <select class="form-control" name="K2_<?php echo $row->kd_kriteria; ?>">
                                 <?php if($getAllKriteria == null) { ?>
                                   <option value="">-</option>
                                 <?php } else { ?>
@@ -106,7 +106,7 @@
                                     <option value="<?php echo $data->kd_kriteria; ?>"><?php echo $data->nm_kriteria; ?></option>
                                   <?php } ?>  
                                 <?php } ?>
-                              </select>
+                              </select> 
                              </div>
                            </div>
                         </div>

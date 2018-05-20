@@ -6,11 +6,10 @@ class C_PerbandinganKriteria extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('M_Kriteria');
-	}
+	} 
 
 	public function index()
 	{
-
 		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
 
 		$data = [
@@ -22,14 +21,21 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$this->load->view('perbandingan/V_PerbandinganKriteria',$data);
 		$this->load->view('template/V_Footer');
 	}
-
+ 
 	public function perbandinganMatriks()
 	{
+		
 		$k1 = $this->input->post('K1');	
 		$k2 = $this->input->post('K2');	
 		$k3 = $this->input->post('K3');
-		$kriteria1 = $this->input->post('kriteria1');
-		$kriteria2 = $this->input->post('kriteria2');	
+
+		$k_k1 = $this->input->post('K_K1');
+		$k_k2 = $this->input->post('K_K2');
+		$k_k3 = $this->input->post('K_K3');
+
+		$k2_k1 = $this->input->post('K2_K1');
+		$k2_k2 = $this->input->post('K2_K2');
+		$k2_k3 = $this->input->post('K2_K3');
 
 		$matriksA = [ 
 			[1     ,  $k1/1 , 1/$k2],

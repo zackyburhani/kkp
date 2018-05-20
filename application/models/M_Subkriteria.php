@@ -27,8 +27,8 @@ class M_Subkriteria extends CI_Model {
 
 	public function getSubkriteria($id)
 	{
-		$result = $this->db->where('kd_subkriteria',$id)->get('subkriteria');
-		return $result->row();
+		$result = $this->db->query("SELECT * FROM subkriteria WHERE kd_kriteria = '".$id."'");
+		return $result->result();
 	}
 
 	public function UpdateSubkriteria($id,$data)
