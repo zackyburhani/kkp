@@ -58,7 +58,7 @@ class M_Subkriteria extends CI_Model {
 	}
 
 	public function getKdSubkriteria()
-     {
+    {
        $q = $this->db->query("select MAX(RIGHT(kd_subkriteria,1)) as kd_max from subkriteria");
        $kd = "";
        if($q->num_rows() > 0)
@@ -73,4 +73,18 @@ class M_Subkriteria extends CI_Model {
        }
        return "SK".$kd;
      }
+
+     public function InsertEigenvector($id,$data)
+     {
+		$checkupdate = false;
+		try{
+			$this->db->where('kd_kriteria',$id);
+			$this->db->update('subkriteria',$data);
+			$checkupdate = true;
+		}catch (Exception $ex) {
+
+			$checkupdate = false;
+		}
+		return $checkupdate;
+	}
 }

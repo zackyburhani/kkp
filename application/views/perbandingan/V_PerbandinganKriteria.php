@@ -10,20 +10,20 @@
 <?php if($this->session->flashdata('pesan') == TRUE ) { ?>
 <div class="row">
   <div class="col-md-12">
-  <div class="alert alert-success fade in" id="alert">
-    <p><center><b><?php echo $this->session->flashdata('pesan') ?></b></center></p>
+    <div class="alert alert-success fade in" id="alert">
+      <p><center><b><?php echo $this->session->flashdata('pesan') ?></b></center></p>
+    </div>
   </div>
-</div>
 </div>
 <?php } ?>
 
 <?php if($this->session->flashdata('pesanGagal') == TRUE ) { ?>
 <div class="row">
   <div class="col-md-12">
-  <div class="alert alert-danger" id="alert">
-    <p><center><b><?php echo $this->session->flashdata('pesanGagal') ?></b></center></p>
+    <div class="alert alert-danger" id="alert">
+      <p><center><b><?php echo $this->session->flashdata('pesanGagal') ?></b></center></p>
+    </div>  
   </div>
-</div>
 </div>
 <?php } ?>
 

@@ -91,6 +91,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 		}
 	}
 
+	//fungsi simpan nilai eigenvector
 	public function simpanEigenvector()
 	{
 		$e1 = $this->input->post('E1');	
