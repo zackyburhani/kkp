@@ -310,6 +310,10 @@
                 <div class="tab-pane" id="tab_2">
                   <form action="<?php echo site_url('C_PerbandinganSubkriteria/simpanEigenvector') ?>" method="POST">
                   <?php if(isset($matriksA)) { ?>
+                    <?php $kd = 1; ?>
+                      <?php foreach ($getAllSubkriteria as $hitung) { ?>
+                        <input type="hidden" name="<?php echo "SK".$kd++ ?>" value="<?php echo $hitung->kd_subkriteria; ?>">
+                      <?php } ?>
                     <div class="box box-default">
                       <div class="box-header with-border">
                         <h3 class="box-title"><b>Matriks Perbandingan Subkriteria <i>Kompetensi</i></b></h3>
@@ -323,10 +327,8 @@
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
                             <td></td>
-                            <?php $kd = 1; ?>
                             <?php foreach($getSubkriteria as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
-                              <input type="hidden" name="<?php echo "SK_kompetensi".$kd++ ?>" value="<?php echo $data->kd_kriteria; ?>">
                             <?php } ?>
                           </tr>
                           <?php foreach($matriksA as $i => $value) { ?>
@@ -373,10 +375,8 @@
                           <?php foreach($matriksA2 as $i => $value) { ?>
                             <tr>
                               <td></td>
-                                <?php $kd = 1; ?>
                                 <?php foreach($matriksA2 as $j => $value ) { ?>
                                   <td align="center"><?php echo round($matriksA2[$i][$j],4) ?></td>
-                                  <input type="hidden" name="<?php echo "SK_interview".$kd++ ?>" value="<?php echo $data->kd_kriteria; ?>">
                                 <?php } ?>
                             </tr>
                           <?php } ?>
@@ -409,10 +409,8 @@
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
                             <td></td>
-                            <?php $kd = 1; ?>
                             <?php foreach($getSubkriteria3 as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
-                              <input type="hidden" name="<?php echo "SK_konsistensi".$kd++ ?>" value="<?php echo $data->kd_kriteria; ?>">
                             <?php } ?>
                           </tr>
                           <?php foreach($matriksA3 as $i => $value) { ?>

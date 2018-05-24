@@ -78,7 +78,7 @@ class M_Subkriteria extends CI_Model {
      {
 		$checkupdate = false;
 		try{
-			$this->db->where('kd_kriteria',$id);
+			$this->db->where('kd_subkriteria',$id);
 			$this->db->update('subkriteria',$data);
 			$checkupdate = true;
 		}catch (Exception $ex) {

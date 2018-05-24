@@ -132,18 +132,14 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 	//fungsi simpan nilai eigenvector
 	public function simpanEigenvector()
 	{
-		//key subkriteria kompetensi
-		$SK_kompetensi1	 = $this->input->post('SK_kompetensi1');
-		$SK_kompetensi2  = $this->input->post('SK_kompetensi2');
-		$SK_kompetensi3  = $this->input->post('SK_kompetensi3');
-
-		//key subkriteria interview
-		$SK_interview1   = $this->input->post('SK_interview1');
-		$SK_interview2   = $this->input->post('SK_interview2');
-
-		//key subkriteria konsistensi
-		$SK_konsistensi1 = $this->input->post('SK_konsistensi1');
-		$SK_konsistensi2 = $this->input->post('SK_konsistensi2');		
+		//key subkriteria
+		$SK1 = $this->input->post('SK1');
+		$SK2 = $this->input->post('SK2');
+		$SK3 = $this->input->post('SK3');
+		$SK4 = $this->input->post('SK4');
+		$SK5 = $this->input->post('SK5');
+		$SK6 = $this->input->post('SK6');
+		$SK7 = $this->input->post('SK7');		
 
 		//eigenvector kompetensi
 		$SE_kompetensi1  = $this->input->post('SE_kompetensi1');
@@ -168,24 +164,23 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		$data6['eigenvector_sub'] = $SE_konsistensi1;
 		$data7['eigenvector_sub'] = $SE_konsistensi2;
 
-		$result1 = $this->M_Subkriteria->InsertEigenvector($SK_kompetensi1,$data1);
-		$result2 = $this->M_Subkriteria->InsertEigenvector($SK_kompetensi2,$data2);
-		$result3 = $this->M_Subkriteria->InsertEigenvector($SK_kompetensi3,$data3);
+		$result1 = $this->M_Subkriteria->InsertEigenvector($SK1,$data1);
+		$result2 = $this->M_Subkriteria->InsertEigenvector($SK2,$data2);
+		$result3 = $this->M_Subkriteria->InsertEigenvector($SK3,$data3);
 
-		$result4 = $this->M_Subkriteria->InsertEigenvector($SK_interview1,$data4);
-		$result5 = $this->M_Subkriteria->InsertEigenvector($SK_interview2,$data5);
+		$result4 = $this->M_Subkriteria->InsertEigenvector($SK4,$data4);
+		$result5 = $this->M_Subkriteria->InsertEigenvector($SK5,$data5);
 
-		$result6 = $this->M_Subkriteria->InsertEigenvector($SK_konsistensi1,$data6);
-		$result7 = $this->M_Subkriteria->InsertEigenvector($SK_konsistensi2,$data7);
+		$result6 = $this->M_Subkriteria->InsertEigenvector($SK6,$data6);
+		$result7 = $this->M_Subkriteria->InsertEigenvector($SK7,$data7);
 
 		if ($result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
-	   		redirect('C_PerbandinganKriteria');
+	   		redirect('C_PerbandinganSubkriteria');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
-    		redirect('C_PerbandinganKriteria');
+    		redirect('C_PerbandinganSubkriteria');
 		}
-
 	}
 
 	//fungsi menghitung perkalian matriks
