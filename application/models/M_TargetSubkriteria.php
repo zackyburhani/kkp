@@ -76,7 +76,7 @@ class M_TargetSubkriteria extends CI_Model {
 
     public function max()
     {
-        $result = $this->db->query("SELECT MAX(SK1) as maxSK1,MAX(SK2) as maxSK2,MAX(SK3) as maxSK3, MAX(SK4) as maxSK4,MAX(SK5) as maxSK5,MAX(SK6) as maxSK6,MAX(SK7) as maxSK7 FROM saw_sub;");
+        $result = $this->db->query("SELECT MAX(SK1) as maxSK1,MAX(SK2) as maxSK2,MAX(SK3) as maxSK3, MAX(SK4) as maxSK4,MAX(SK5) as maxSK5,MAX(SK6) as maxSK6,MAX(SK7) as maxSK7 FROM saw_sub");
         return $result->result();
     }
 
@@ -107,7 +107,7 @@ class M_TargetSubkriteria extends CI_Model {
         $this->dbforge->create_table('saw_sub');
     }
 
-    public function deleteTable(){
+    public function dropTable(){
         $this->dbforge->drop_table('saw_sub');
     }
 

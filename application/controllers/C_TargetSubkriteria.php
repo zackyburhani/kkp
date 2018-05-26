@@ -6,7 +6,7 @@ class C_TargetSubkriteria extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		$this->load->model(['M_TargetSubkriteria','M_Subkriteria','M_Kriteria']);
+		$this->load->model(['M_TargetSubkriteria','M_MatriksSubkriteria','M_Subkriteria','M_Kriteria']);
 	}
 
 	public function index()
@@ -54,7 +54,6 @@ class C_TargetSubkriteria extends CI_Controller {
 
 	public function simpanTarget() 
 	{
-
 		$kd_subkriteria1  = $this->input->post('kd_subkriteria1');
 		$kd_subkriteria2  = $this->input->post('kd_subkriteria2');
 		$kd_subkriteria3  = $this->input->post('kd_subkriteria3');
@@ -102,7 +101,7 @@ class C_TargetSubkriteria extends CI_Controller {
 		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[5],$nilai_target6,$id_calon);
 		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[6],$nilai_target7,$id_calon);
 		
-		$dataSAW = [
+		$dataSAW_sub = [
 			'id_calon'  	=> $id_calon,
 			'periode_masuk' => $periode_masuk,
 			'SK1' 			=> $nilai_target1,
@@ -115,12 +114,22 @@ class C_TargetSubkriteria extends CI_Controller {
 		];
 
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
-		// $this->M_TargetSubkriteria->deleteTable();
-		// $this->M_TargetSubkriteria->createTable($getAllSubkriteria);
+		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
+		// $this->M_TargetSubkriteria->dropTable();
 
-		$result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW);
+		if ($this->db->table_exists('saw_sub') == false )
+		{
+			//buat tabel saw_sub
+			$this->M_TargetSubkriteria->createTable($getAllSubkriteria);
+			//buat tabel saw
+			$this->M_MatriksSubkriteria->createTable($getAllKriteria);
+		}
+
 		
-		if ($result && $result2){
+
+		$result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
+
+		if ($result2){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
 	   		redirect('C_TargetSubkriteria/periode?periode_masuk='.$periode_masuk);
 		}else{
@@ -138,7 +147,21 @@ class C_TargetSubkriteria extends CI_Controller {
 			$array[] = $key->eigenvector_sub; 
 		} return $array;
 	}
-		
+
+	public function max()
+	{
+		$max = $this->M_TargetSubkriteria->max();
+		$array = array();
+		foreach($max as $key) {
+			$array[] = $key->maxSK1;
+			$array[] = $key->maxSK2;
+			$array[] = $key->maxSK3;
+			$array[] = $key->maxSK4;
+			$array[] = $key->maxSK5;
+			$array[] = $key->maxSK6;
+			$array[] = $key->maxSK7;
+		} return $array;
+	}
 
 
 	public function HitungTarget()

@@ -48,11 +48,11 @@
               <thead>
                 <tr>
                   <th width="50px"><center>No.</center></th>
-                  <th width="100px">ID Calon </th>
-                  <th width="250px">Nama </th>
+                  <th width="100px"><center>ID Calon</center></th>
+                  <th width="250px"><center>Nama</center></th>
                   <?php $getSubkriteria = $this->M_Subkriteria->getSubkriteria($kriteria->kd_kriteria); ?>
                   <?php foreach($getSubkriteria as $row){ ?>
-                  <th><?php echo $row->nm_subkriteria ?></th>
+                  <th><center><?php echo $row->nm_subkriteria ?></center></th>
                   <?php } ?>
                 </tr>
               </thead>
@@ -66,7 +66,7 @@
                   <td><?php echo $data->nm_calon ?></td>
                     <?php $matriksTargetNilai = $this->M_MatriksSubkriteria->matriksTargetNilai($data->id_calon,$kriteria->kd_kriteria);?>
                     <?php foreach ($matriksTargetNilai as $data2) { ?>
-                      <td><?php echo $data2->nilai_target2 ?></td>
+                      <td align="center"><?php echo $data2->nilai_target2 ?></td>
                     <?php } ?>
                 </tr>
                 <?php } ?>
@@ -89,10 +89,10 @@
               <thead>
                 <tr>
                   <th width="50px"><center>No.</center></th>
-                  <th width="100px">ID Calon </th>
-                  <th width="250px">Nama </th>
+                  <th width="100px"><center>ID Calon </center></th>
+                  <th width="250px"><center>Nama</center> </th>
                   <?php foreach($getSubkriteria as $row){ ?>
-                  <th><?php echo $row->nm_subkriteria ?></th>
+                  <th><center><?php echo $row->nm_subkriteria ?></center></th>
                   <?php } ?>
                 </tr>
               </thead>
@@ -107,21 +107,21 @@
                     <?php $matriksNormalisasi = $this->M_MatriksSubkriteria->matriksNormalisasi($tanggalPeriode,$data->id_calon);?>
                     <?php if($kriteria->kd_kriteria == 'K1') { ?>
                       <?php foreach ($matriksNormalisasi as $data4) { ?>
-                        <td><?php echo round($data4->SK1/$max[0],4) ?></td>
-                        <td><?php echo round($data4->SK2/$max[1],4) ?></td>
-                        <td><?php echo round($data4->SK3/$max[2],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK1/$max[0],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK2/$max[1],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK3/$max[2],4) ?></td>
                       <?php } ?>
                     <?php } ?>
                     <?php if($kriteria->kd_kriteria == 'K2') { ?>
                       <?php foreach ($matriksNormalisasi as $data4) { ?>
-                        <td><?php echo round($data4->SK4/$max[3],4) ?></td>
-                        <td><?php echo round($data4->SK5/$max[4],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK4/$max[3],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK5/$max[4],4) ?></td>
                       <?php } ?>
                     <?php } ?>
                     <?php if($kriteria->kd_kriteria == 'K3') { ?>
                       <?php foreach ($matriksNormalisasi as $data4) { ?>
-                        <td><?php echo round($data4->SK6/$max[5],4) ?></td>
-                        <td><?php echo round($data4->SK7/$max[6],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK6/$max[5],4) ?></td>
+                        <td align="center"><?php echo round($data4->SK7/$max[6],4) ?></td>
                       <?php } ?>
                     <?php } ?>
                 </tr>
@@ -144,33 +144,85 @@
             <table style="table-layout:fixed" class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>No.</th>
-                  <th>ID Calon </th>
-                  <th>Nama </th>
-                  <th>Nilai SAW</th>
+                  <th width="50px"><center>No.</center></th>
+                  <th width="100px"><center>ID Calon</center></th>
+                  <th width="250px"><center>Nama</center></th>
+                  <th width="250px"><center>Nilai SAW</center></th>
                 </tr>
               </thead>
               <tbody>
+                <?php $no=1; ?>
+                <?php foreach ($getPeriodeCalon as $data) { ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td align="center"><?php echo $no++."."; ?></td>
+                  <td><?php echo $data->id_calon ?></td>
+                  <td><?php echo $data->nm_calon ?></td>
+                <?php } ?>
+                
+                <!-- Tabel Tambahan -->
+                <?php if($kriteria->kd_kriteria == 'K1') { ?>
+                <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                  <tbody>
+                    <?php foreach($total1 as $row => $nilai ) { ?>
+                    <tr>
+                      <td align="center"><?php echo $total1[$row] ?></td>    
+                    </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+                <?php } ?>
+                <?php if($kriteria->kd_kriteria == 'K2') { ?>
+                <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                  <tbody>
+                    <?php foreach($total2 as $row => $nilai ) { ?>
+                    <tr>
+                      <td align="center"><?php echo $total2[$row] ?></td>    
+                    </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+                <?php } ?>
+                <?php if($kriteria->kd_kriteria == 'K3') { ?>
+                <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                  <tbody>
+                    <?php foreach($total3 as $row => $nilai ) { ?>
+                    <tr>
+                      <td align="center"><?php echo $total3[$row] ?></td>    
+                    </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+                <?php } ?>
+                
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <div class="footer">
-          <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Hasil</button>
-        </div>
-
       </div>
-     </d
+     </div>
     <?php } ?>
-    </div>
-  </div>
+    
+    
 <?php } ?>
 
+<?php if(isset($getPeriodeCalon)) { ?>
+<form action="<?php echo site_url('C_MatriksSubkriteria/simpanNilai/'.$tanggalPeriode) ?>" method="POST">
+<?php $no=1; ?>
+<?php foreach ($getPeriodeCalon as $periode) { ?>
+  <input type="hidden" value="<?php echo $periode->id_calon ?>" name="id_calon<?php echo $no++; ?>">
+<?php } ?>
+<div class="footer" style="margin-bottom: 10px;">
+  <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px;margin-bottom: 50px;"><i class="fa fa-save"></i> Simpan Hasil</button>
+</div>
+
+</form>
+<?php } ?>
+</div>
+</div>
+
+  
+
 </section>
+
