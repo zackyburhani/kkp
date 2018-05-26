@@ -7,25 +7,6 @@
   </section>
 
 <section class="content">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="col-sm-2 control-label" style="margin-top: 5px">Pilih Periode Masuk : </label>
-              <form action="<?php echo site_url('C_TargetKriteria/periode') ?>" method="GET">
-                <div class="col-sm-3">
-                  <input type="date" name="periode_masuk" class="form-control">
-                </div>
-                <div class="col-sm-2">
-                  <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Pilih</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>      
-      </div>
-    </div>
     
 <div class="row">
   <div class="col-lg-12">

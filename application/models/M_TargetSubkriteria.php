@@ -4,6 +4,7 @@ class M_TargetSubkriteria extends CI_Model {
 
     public function __construct(){
 		parent::__construct();
+        $this->load->dbforge();
 	}
 
 	public function simpanTarget($data){
@@ -17,11 +18,14 @@ class M_TargetSubkriteria extends CI_Model {
 		}catch (Exception $ex) {
 
 			$checkinsert = false;
-		}
+		} 
 
 		return $checkinsert;
 	}
 
+    public function simpanNilaiTarget($id,$data,$id_calon){
+        $this->db->query("UPDATE target2 SET nilai_target2='".$data."' WHERE id_calon = '".$id_calon."'  and kd_subkriteria='".$id."'");
+    }
 	
 	public function getAllCalon(){
 		$result = $this->db->get('calon');
@@ -52,4 +56,74 @@ class M_TargetSubkriteria extends CI_Model {
      	return $result->result();
     }
 
+    // public function eigenvector_sub($kd_kriteria)
+    // {
+    //     $result = $this->db->query("SELECT eigenvector_sub FROM subkriteria WHERE kd_kriteria = '".$kd_kriteria."'");
+    //     return $result->result();
+    // }
+ 
+    public function nilai_target2($kd_subkriteria)
+    {
+        $result = $this->db->query("SELECT nilai_target2,eigenvector_sub FROM target2,subkriteria,kriteria WHERE kriteria.kd_kriteria = subkriteria.kd_kriteria AND target2.kd_subkriteria = subkriteria.kd_subkriteria and subkriteria.kd_subkriteria = '".$kd_subkriteria."'");
+        return $result->result();
+    }
+
+    // public function max($kd_subkriteria)
+    // {
+    //     $result = $this->db->query("SELECT target2.nilai_target2 FROM subkriteria,target2 WHERE subkriteria.kd_subkriteria = target2.kd_subkriteria and nilai_target2 = (SELECT max(nilai_target2) FROM target2 WHERE kd_subkriteria = '".$kd_subkriteria."')");
+    //     return $result->result();
+    // }
+
+    public function max()
+    {
+        $result = $this->db->query("SELECT MAX(SK1) as maxSK1,MAX(SK2) as maxSK2,MAX(SK3) as maxSK3, MAX(SK4) as maxSK4,MAX(SK5) as maxSK5,MAX(SK6) as maxSK6,MAX(SK7) as maxSK7 FROM saw_sub;");
+        return $result->result();
+    }
+
+    public function getAllSAW_sub(){
+        $result = $this->db->get('saw_sub');
+        return $result->result();
+    }
+
+    public function eigenvector_sub()
+    {
+        $result = $this->db->query("SELECT eigenvector_sub FROM subkriteria");
+        return $result->result();
+    }
+
+    //PERCOBAAN
+    public function createTable($field)
+    {
+        $fields = array(
+            'id_calon VARCHAR(10) not null',
+            'periode_masuk date null'
+        );
+
+        foreach ($field as $item => $value) {
+            $fields[] = $value->kd_subkriteria.' INT(4)';
+        }
+
+        $this->dbforge->add_field($fields);
+        $this->dbforge->create_table('saw_sub');
+    }
+
+    public function deleteTable(){
+        $this->dbforge->drop_table('saw_sub');
+    }
+
+    public function simpanTargetSAW($data)
+    {
+        $status = $this->db->insert('saw_sub', $data);
+        return $status;
+    }
+
 }
+
+
+
+//backup
+// public function max($kd_subkriteria)
+//     {
+//         $result = $this->db->query("SELECT subkriteria.nm_subkriteria,target2.nilai_target2 FROM subkriteria,target2 WHERE subkriteria.kd_subkriteria = target2.kd_subkriteria and nilai_target2 = (SELECT max(nilai_target2) FROM target2 WHERE kd_subkriteria = '".$kd_subkriteria."')");
+//         return $result->result();
+//     }

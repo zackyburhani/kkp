@@ -62,13 +62,20 @@
                     <a href="#ModalTambahNilaTargetSubkriteria<?php echo $data->id_calon ?>" class="btn btn-success btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span></a>
                   </td>
                 </tr>
+                <!-- INPUT NILAI -->
+                <!-- ?php $no=1; ?>
+                <?php $nilai = $this->M_TargetSubkriteria->nilai($data->id_calon); ?>
+                  <?php foreach($nilai as $detil) { ?>
+                    <input type="text" name="target<?php $no++ ?>" value="<?php echo $detil->nilai_target2 ?>">
+                  <?php } ?> -->
+                <!-- END INPUT NILAI -->
                 <?php } } ?>
               </tbody>
             </table>
           </div>
           
           <div class="box-footer">
-            <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Nilai Target</button>
+            <a href="<?php echo site_url('C_TargetSubkriteria/HitungTarget') ?>" type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Nilai Target</a>
           </div>
         </div>  
       </div>

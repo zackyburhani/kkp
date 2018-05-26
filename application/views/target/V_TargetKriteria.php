@@ -44,7 +44,7 @@
                   <th width="59px" align="center;"> <center>Tambah Nilai</center> </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody> 
                 <?php $no=1; ?>
                 <?php if(isset($getPeriodeCalon)) { ?>
                 <?php foreach($getPeriodeCalon as $data){ ?>
@@ -66,7 +66,7 @@
               </tbody>
             </table>
           </div>
-          
+
           <div class="box-footer">
             <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Nilai Target</button>
           </div>
