@@ -50,29 +50,24 @@ class M_MatriksSubkriteria extends CI_Model {
         return $status;
     }
 
+    public function simpanTarget($data)
+    {
+        $status = $this->db->insert('target', $data);
+        return $status;
+    }
+
+    public function isiTarget($nilai_target,$id_calon,$kd_kriteria)
+    {
+        $this->db->query("UPDATE target SET nilai_target = '".$nilai_target."' WHERE id_calon = '".$id_calon."' and kd_kriteria = '".$kd_kriteria."'");
+    }
+
     public function barisSAW()
     {
         $query = $this->db->get("saw_sub");
         return $query->num_rows();
     }
 
-    public function simpanNilaiSAW($id_calon,$total1,$total2,$total3,$periode_masuk)
-    {   
-        if($total1){
-            foreach ($total1 as $key => $value) {
-                $this->db->query("UPDATE saw SET K1='".$value."' WHERE id_calon = '".$id_calon."'");
-            }
-        } if($total2){
-            foreach ($total2 as $key => $value) {
-                $this->db->query("UPDATE saw SET K2='".$value."' WHERE id_calon = '".$id_calon."'");
-            }
-        } if($total3){
-            foreach ($total3 as $key => $value) {
-                $this->db->query("UPDATE saw SET K3='".$value."' WHERE id_calon = '".$id_calon."'");
-            }
-        }
-        
-    }
+    
 
 
         

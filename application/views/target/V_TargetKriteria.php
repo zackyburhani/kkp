@@ -66,10 +66,6 @@
               </tbody>
             </table>
           </div>
-
-          <div class="box-footer">
-            <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Nilai Target</button>
-          </div>
         </div>  
       </div>
     </div>

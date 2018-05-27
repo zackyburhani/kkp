@@ -107,8 +107,8 @@ class M_TargetSubkriteria extends CI_Model {
         $this->dbforge->create_table('saw_sub');
     }
 
-    public function dropTable(){
-        $this->dbforge->drop_table('saw_sub');
+    public function dropTable($table){
+        $this->dbforge->drop_table($table);
     }
 
     public function simpanTargetSAW($data)

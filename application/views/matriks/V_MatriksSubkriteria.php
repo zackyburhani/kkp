@@ -7,6 +7,27 @@
   </section>
 
 <section class="content">
+
+<?php if($this->session->flashdata('pesan') == TRUE ) { ?>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success fade in" id="alert">
+        <p><center><b><?php echo $this->session->flashdata('pesan') ?></b></center></p>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+
+<?php if($this->session->flashdata('pesanGagal') == TRUE ) { ?>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-danger" id="alert">
+        <p><center><b><?php echo $this->session->flashdata('pesanGagal') ?></b></center></p>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -160,38 +181,40 @@
                 <?php } ?>
                 
                 <!-- Tabel Tambahan -->
-                <?php if($kriteria->kd_kriteria == 'K1') { ?>
-                <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
-                  <tbody>
-                    <?php foreach($total1 as $row => $nilai ) { ?>
-                    <tr>
-                      <td align="center"><?php echo $total1[$row] ?></td>    
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-                <?php } ?>
-                <?php if($kriteria->kd_kriteria == 'K2') { ?>
-                <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
-                  <tbody>
-                    <?php foreach($total2 as $row => $nilai ) { ?>
-                    <tr>
-                      <td align="center"><?php echo $total2[$row] ?></td>    
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-                <?php } ?>
-                <?php if($kriteria->kd_kriteria == 'K3') { ?>
-                <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
-                  <tbody>
-                    <?php foreach($total3 as $row => $nilai ) { ?>
-                    <tr>
-                      <td align="center"><?php echo $total3[$row] ?></td>    
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
+                <?php if($tanggalPeriode == $tanggal) { ?>
+                  <?php if($kriteria->kd_kriteria == 'K1') { ?>
+                  <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                    <tbody>
+                      <?php foreach($total1 as $row => $nilai ) { ?>
+                      <tr>
+                        <td align="center"><?php echo $total1[$row] ?></td>    
+                      </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                  <?php } ?>
+                  <?php if($kriteria->kd_kriteria == 'K2') { ?>
+                  <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                    <tbody>
+                      <?php foreach($total2 as $row => $nilai ) { ?>
+                      <tr>
+                        <td align="center"><?php echo $total2[$row] ?></td>    
+                      </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                  <?php } ?>
+                  <?php if($kriteria->kd_kriteria == 'K3') { ?>
+                  <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                    <tbody>
+                      <?php foreach($total3 as $row => $nilai ) { ?>
+                      <tr>
+                        <td align="center"><?php echo $total3[$row] ?></td>    
+                      </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                  <?php } ?>
                 <?php } ?>
                 
                 </tr>

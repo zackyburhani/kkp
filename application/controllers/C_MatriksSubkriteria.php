@@ -23,6 +23,16 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	public function tanggal($periode)
+	{
+		$getPeriodeCalon = $this->M_TargetSubkriteria->periode($periode);
+			if($getPeriodeCalon != null) {
+				foreach ($getPeriodeCalon as $periode) {
+				$tanggal = $periode->periode_masuk;
+			} return $tanggal;	
+		}
+	}
+
 	public function bobot()
 	{
 		$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
@@ -49,6 +59,12 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 	public function periode()
 	{
+		if ($this->db->table_exists('saw_sub') == false )
+		{
+			$this->session->set_flashdata('pesanGagal','Anda Belum Memasukan Nilai Target');
+			redirect('C_MatriksSubkriteria');
+		}
+
 		$periode 		   = $this->input->get('periode_masuk');
 		$getPeriodeCalon   = $this->M_TargetSubkriteria->periode($periode);
 		$getAllCalon 	   = $this->M_TargetSubkriteria->getAllCalon();
@@ -110,7 +126,10 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
+		$tanggal = $this->tanggal($periode);
+
 		$data = [
+			'tanggal'			=> $tanggal,
 			'total1'			=> $total1,
 			'total2'			=> $total2,
 			'total3'			=> $total3,
@@ -128,6 +147,37 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Sidebar');
 		$this->load->view('matriks/V_MatriksSubkriteria');
 		$this->load->view('template/V_Footer');
+	}
+
+	private function kriteria()
+	{
+		$kriteria = array();
+		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
+		foreach ($getAllKriteria as $row) {
+			$kriteria[] = $row->kd_kriteria;
+		}
+		return $kriteria;
+	} 
+
+	private function total1()
+	{
+		$max 			= $this->M_TargetSubkriteria->max();		
+		$getAllSAW_sub 	= $this->M_TargetSubkriteria->getAllSAW_sub();
+
+		$bobot = array();
+		foreach($this->bobot() as $key=>$value) {
+			array_push($bobot, $value);
+		}
+
+		$total1 = array();
+		foreach ($max as $key) {
+			foreach ($getAllSAW_sub as $data) {
+				$total1[] = round(
+					(($data->SK1/$key->maxSK1)*$bobot[0])+
+					(($data->SK2/$key->maxSK2)*$bobot[1])+
+					(($data->SK3/$key->maxSK3)*$bobot[2]),4);
+			}
+		} return $total1;
 	}
 
 	public function simpanNilai($tanggalPeriode)
@@ -161,15 +211,15 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
-		$total1 = array();
-		foreach ($max as $key) {
-			foreach ($getAllSAW_sub as $data) {
-				$total1[] = round(
-					(($data->SK1/$key->maxSK1)*$bobot[0])+
-					(($data->SK2/$key->maxSK2)*$bobot[1])+
-					(($data->SK3/$key->maxSK3)*$bobot[2]),4);
-			}
-		}
+		// $total1 = array();
+		// foreach ($max as $key) {
+		// 	foreach ($getAllSAW_sub as $data) {
+		// 		$total1[] = round(
+		// 			(($data->SK1/$key->maxSK1)*$bobot[0])+
+		// 			(($data->SK2/$key->maxSK2)*$bobot[1])+
+		// 			(($data->SK3/$key->maxSK3)*$bobot[2]),4);
+		// 	}
+		// }
 
 		$total2 = array();
 		foreach ($max as $key) {
@@ -189,6 +239,8 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
+		$total1 = $this->total1();
+
 		$baris = $this->M_MatriksSubkriteria->barisSAW();
 
 		$name = "id_calon";
@@ -198,6 +250,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 			$calon[] = $this->input->post($var);	
 		}
 
+		//simpan ke table saw
 		$i=0;
 		while($i<$baris){
 			$dataSAW = [
@@ -211,12 +264,54 @@ class C_MatriksSubkriteria extends CI_Controller {
 			$i++;
 		}
 
-		if ($result){
+
+		// $nilai_target = array();
+		// $nilai_target = [$total1,$total2,$total3];
+
+		//simpan ke table target
+		foreach ($getAllKriteria as $kriteria) {
+			$i=0;
+			while($i<$baris){
+				$dataTarget = [
+					'kd_kriteria' 	=> $kriteria->kd_kriteria,
+					'id_calon'		=> $calon[$i],
+				];
+				$result1 = $this->M_MatriksSubkriteria->simpanTarget($dataTarget);
+				$i++;
+			}	
+		}
+		
+		$kriteria = $this->kriteria();
+		$j=0;
+		for($i=0; $i<$baris; $i++){
+			while($j<$baris){
+				$result2 = $this->M_MatriksSubkriteria->isiTarget($total1[$j],$calon[$j],$kriteria[$i]);
+				$j++;
+			}
+		}
+
+		$j=0;
+		for($i=1; $i<$baris; $i++){
+			while($j<$baris){
+				$result2 = $this->M_MatriksSubkriteria->isiTarget($total2[$j],$calon[$j],$kriteria[$i]);
+				$j++;
+			}
+		}
+
+		$j=0;
+		for($i=2; $i<$baris; $i++){
+			while($j<$baris){
+				$result2 = $this->M_MatriksSubkriteria->isiTarget($total3[$j],$calon[$j],$kriteria[$i]);
+				$j++;
+			}
+		}
+
+		if (!$result2){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
-	   		redirect('C_MatriksSubkriteria/periode?periode_masuk='.$periode_masuk);
+	   		redirect('C_MatriksSubkriteria/periode?periode_masuk='.$tanggalPeriode);
 		}else{
 			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
-    		redirect('C_MatriksSubkriteria/periode?periode_masuk='.$periode_masuk);
+    		redirect('C_MatriksSubkriteria/periode?periode_masuk='.$tanggalPeriode);
 		}
 	}
 }

@@ -34,4 +34,10 @@ class M_MatriksKriteria extends CI_Model {
         $result = $this->db->get('saw');
         return $result->result();
     }
+
+    public function simpanHasilSAW($data)
+    {
+        $status = $this->db->insert('hasil', $data);
+        return $status;
+    }
 }

@@ -4,9 +4,30 @@
       Dashboard
       <small>Halaman Matriks Normalisasi Kriteria</small>
     </h1>
-  </section>
+  </section> 
 
 <section class="content">
+
+<?php if($this->session->flashdata('pesan') == TRUE ) { ?>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success fade in" id="alert">
+        <p><center><b><?php echo $this->session->flashdata('pesan') ?></b></center></p>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+
+<?php if($this->session->flashdata('pesanGagal') == TRUE ) { ?>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-danger" id="alert">
+        <p><center><b><?php echo $this->session->flashdata('pesanGagal') ?></b></center></p>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -143,7 +164,9 @@
                     <td><?php echo $periode->id_calon ?></td>
                     <td><?php echo $periode->nm_calon ?></td>
                   <?php } ?>
-
+                  
+                    <?php if($total != null) { ?>
+                    <?php if($tanggalPeriode == $tanggal) { ?>
                     <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
                       <tbody>
                         <?php foreach($total as $row => $nilai ) { ?>
@@ -153,21 +176,35 @@
                         <?php } ?>
                       </tbody>
                     </table>
+                    <?php } ?>
+                    <?php } ?>
+
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+        <?php } ?>          
+         
+        <?php if(isset($getPeriodeCalon)) { ?>
+        <form action="<?php echo site_url('C_MatriksKriteria/simpanHasil/'.$tanggalPeriode) ?>" method="POST">
+        <input type="hidden" name="periode_masuk" value="<?php echo $tanggalPeriode ?>">
+        <?php $no=1; ?>
+        <?php foreach ($getPeriodeCalon as $periode) { ?>
+          <input type="hidden" value="<?php echo $periode->id_calon ?>" name="id_calon<?php echo $no++; ?>">
+        <?php } ?>
+        <div class="footer" style="margin-bottom: 10px;">
+          <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px;margin-bottom: 50px;"><i class="fa fa-save"></i> Simpan Hasil</button>
+        </div>
 
-          <div class="footer">
-            <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Hasil</button>
-          </div>
+        </form>
+        <?php } ?>
 
         </div>
        </div>
       </div>
     </div>
   </section>
-<?php } ?>
+
 
                   

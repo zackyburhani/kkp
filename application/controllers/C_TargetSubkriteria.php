@@ -115,7 +115,6 @@ class C_TargetSubkriteria extends CI_Controller {
 
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
-		// $this->M_TargetSubkriteria->dropTable();
 
 		if ($this->db->table_exists('saw_sub') == false )
 		{
@@ -124,8 +123,6 @@ class C_TargetSubkriteria extends CI_Controller {
 			//buat tabel saw
 			$this->M_MatriksSubkriteria->createTable($getAllKriteria);
 		}
-
-		
 
 		$result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
 
@@ -201,7 +198,7 @@ class C_TargetSubkriteria extends CI_Controller {
 					(($data->SK2/$key->maxSK2)*$bobot[1])+
 					(($data->SK3/$key->maxSK3)*$bobot[2]),4);
 			}
-		}echo "<br><br>";
+		}
 
 		foreach ($max as $key) {
 			foreach ($getAllSAW_sub as $data) {
@@ -209,7 +206,7 @@ class C_TargetSubkriteria extends CI_Controller {
 					(($data->SK4/$key->maxSK4)*$bobot[3])+
 					(($data->SK5/$key->maxSK5)*$bobot[4]),4);
 			}
-		}echo "<br><br>";
+		}
 
 		foreach ($max as $key) {
 			foreach ($getAllSAW_sub as $data) {
@@ -217,114 +214,7 @@ class C_TargetSubkriteria extends CI_Controller {
 					(($data->SK6/$key->maxSK6)*$bobot[5])+
 					(($data->SK7/$key->maxSK7)*$bobot[6]),4);
 			}
-		}echo "<br><br>";
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		// echo json_encode($eigenvector_sub3[0]);
-
-		// echo json_encode($eigenvector_sub3[0]);
-
-		// $SK = "SK";
-		// for($i=1; $i<8; $i++){
-		// 	$max = $this->M_TargetSubkriteria->max($SK.$i);
-		// 	$nilai_target2 = $this->M_TargetSubkriteria->nilai_target2($SK.$i);
-
-		// 	foreach ($max as $maks) {
-			
-		// 		foreach ($nilai_target2 as $key) {
-		// 			echo round($key->nilai_target2/$maks->nilai_target2,4)."<br><br>";
-		// 		}
-
-		// 	}
-		// } 
-
-		//matriks normalisasi
-		
-		// $saw = $this->loop();	
-
-		// $SK = "SK";
-		// for($i=1; $i<8; $i++){
-			
-		// 	$max = $this->M_TargetSubkriteria->max($SK.$i);
-		// 	$nilai_target2 = $this->M_TargetSubkriteria->nilai_target2($SK.$i);
-
-		// 	foreach ($max as $maks) {
-		// 		foreach ($nilai_target2 as $key) {
-		// 		 echo $saw = round(($key->nilai_target2/$maks->nilai_target2)*$key->eigenvector_sub,4)."<br><br>";
-		// 		}
-		// 	}
-		// }
-
-		// $max1 = $this->M_TargetSubkriteria->max('SK1');
-		// $max2 = $this->M_TargetSubkriteria->max('SK2');
-		// $max3 = $this->M_TargetSubkriteria->max('SK3');
-		// $max4 = $this->M_TargetSubkriteria->max('SK4');
-		// $max5 = $this->M_TargetSubkriteria->max('SK5');
-		// $max6 = $this->M_TargetSubkriteria->max('SK6');
-		// $max7 = $this->M_TargetSubkriteria->max('SK7');
-
-		// $nilai_target1 = $this->M_TargetSubkriteria->nilai_target2('SK1');
-		// $nilai_target2 = $this->M_TargetSubkriteria->nilai_target2('SK2');
-		// $nilai_target3 = $this->M_TargetSubkriteria->nilai_target2('SK3');	
-		// $nilai_target4 = $this->M_TargetSubkriteria->nilai_target2('SK4');
-		// $nilai_target5 = $this->M_TargetSubkriteria->nilai_target2('SK5');
-		// $nilai_target6 = $this->M_TargetSubkriteria->nilai_target2('SK6');
-		// $nilai_target7 = $this->M_TargetSubkriteria->nilai_target2('SK7');
-
-		// $eigenvector_sub3 = $this->M_TargetSubkriteria->eigenvector_sub('K3');
-
-
-		// foreach ($max6 as $maks) {
-		// 	foreach ($nilai_target6 as $key) {
-		// 		echo $saw = round(($key->nilai_target2/$maks->nilai_target2),4);
-		// 		echo "<br>";
-		// 	}
-		// }echo "<br><br>";
-
-		// foreach ($max7 as $maks) {
-		// 	foreach ($nilai_target7 as $key) {
-		// 		echo $saw = round(($key->nilai_target2/$maks->nilai_target2),4);
-		// 		echo "<br>";
-		// 	}
-		// }echo "<br><br>";
-
-		// foreach ($max7 as $maks) 
-		// {
-		// 	foreach ($nilai_target7 as $key) 
-		// 	{
-		// 		echo $saw = round(($key->nilai_target2/$maks->nilai_target2)*$key->eigenvector_sub,4);
-		// 		echo "<br>";
-		// 	}
-		// }echo "<br><br>";
-
-		// foreach ($max6 as $maks) 
-		// {
-		// 	foreach ($nilai_target6 as $key) 
-		// 	{
-		// 		echo $saw = round(($key->nilai_target2/$maks->nilai_target2)*$key->eigenvector_sub,4);
-		// 	}
-		// }echo "<br><br>";
-
+		}
 	}
 
 
