@@ -38,6 +38,7 @@ class C_MatriksKriteria extends CI_Controller {
 		$periode 		 = $this->input->get('periode_masuk');
 		$getPeriodeCalon = $this->M_TargetSubkriteria->periode($periode);
 		$getAllKriteria  = $this->M_Kriteria->getAllKriteria();
+		$matriksISI 	 = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {
@@ -53,6 +54,7 @@ class C_MatriksKriteria extends CI_Controller {
 		$tanggal = $this->tanggal($periode);
 
 		$data = [
+			'matriksISI'      => $matriksISI,
 			'tanggal'		  => $tanggal,
 			'total'			  => $total,
 			'max'			  => $maxLoop,

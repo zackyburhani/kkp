@@ -311,6 +311,7 @@
                   <form action="<?php echo site_url('C_PerbandinganSubkriteria/simpanEigenvector') ?>" method="POST">
                   <?php if(isset($matriksA)) { ?>
                     <?php $kd = 1; ?>
+                    <?php $kd_banding2a = 1; ?>
                       <?php foreach ($getAllSubkriteria as $hitung) { ?>
                         <input type="hidden" name="<?php echo "SK".$kd++ ?>" value="<?php echo $hitung->kd_subkriteria; ?>">
                       <?php } ?>
@@ -329,6 +330,7 @@
                             <td></td>
                             <?php foreach($getSubkriteria as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
+                              <input type="hidden" name="kriteria1" value="<?php echo $data->kd_kriteria ?>">
                             <?php } ?>
                           </tr>
                           <?php foreach($matriksA as $i => $value) { ?>
@@ -336,6 +338,7 @@
                             <td></td>
                               <?php foreach($matriksA as $j => $value ) { ?>
                                 <td align="center"><?php echo round($matriksA[$i][$j],4) ?></td>
+                                <input type="hidden" name="nilaiBanding2a<?php echo $kd_banding2a++ ?>" value="<?php echo $matriksA[$i][$j] ?>">
                               <?php } ?>
                           </tr>
                         <?php } ?>
@@ -368,8 +371,10 @@
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
                             <td></td>
+                            <?php $kd_banding2b = 1; ?>
                             <?php foreach($getSubkriteria2 as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
+                              <input type="hidden" name="kriteria2" value="<?php echo $data->kd_kriteria ?>">
                             <?php } ?>
                           </tr>
                           <?php foreach($matriksA2 as $i => $value) { ?>
@@ -377,6 +382,7 @@
                               <td></td>
                                 <?php foreach($matriksA2 as $j => $value ) { ?>
                                   <td align="center"><?php echo round($matriksA2[$i][$j],4) ?></td>
+                                  <input type="hidden" name="nilaiBanding2b<?php echo $kd_banding2b++ ?>" value="<?php echo $matriksA2[$i][$j] ?>">
                                 <?php } ?>
                             </tr>
                           <?php } ?>
@@ -409,8 +415,10 @@
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
                             <td></td>
+                            <?php $kd_banding2c = 1; ?>
                             <?php foreach($getSubkriteria3 as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
+                              <input type="hidden" name="kriteria3" value="<?php echo $data->kd_kriteria ?>">
                             <?php } ?>
                           </tr>
                           <?php foreach($matriksA3 as $i => $value) { ?>
@@ -418,6 +426,7 @@
                               <td></td>
                                 <?php foreach($matriksA3 as $j => $value ) { ?>
                                   <td align="center"><?php echo round($matriksA3[$i][$j],4) ?></td>
+                                  <input type="hidden" name="nilaiBanding2c<?php echo $kd_banding2c++ ?>" value="<?php echo $matriksA3[$i][$j] ?>">
                                 <?php } ?>
                             </tr>
                           <?php } ?>

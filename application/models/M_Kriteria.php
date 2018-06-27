@@ -17,11 +17,27 @@ class M_Kriteria extends CI_Model {
 		return $checkinsert;
 	}
 
+	public function tambahBanding($data){
+		$checkinsert = false;
+		try{
+			$this->db->insert('banding',$data);
+			$checkinsert = true;
+		}catch (Exception $ex) {
+			$checkinsert = false;
+		}
+		return $checkinsert;
+	}
+
 	public function getAllKriteria(){
 		$result = $this->db->get('kriteria');
 		return $result->result();
 	}
 
+	//get nama kriteria
+	public function getNamaKriteria($kd){
+		$result = $this->db->query("SELECT nm_kriteria,kd_kriteria FROM kriteria where kriteria.kd_kriteria = '$kd'");
+		return $result->row();
+	}
 
 	public function getKriteria($id){
 		$result = $this->db->where('kd_kriteria',$id)->get('kriteria');

@@ -47,8 +47,9 @@
         </div>      
       </div>
     </div>
-    
+
 <?php if(isset($getPeriodeCalon)) { ?>
+<?php if($matriksISI != null) { ?>
   <div class="row">
   <div class="col-lg-12">
     <?php foreach($getAllKriteria as $kriteria) { ?>
@@ -226,10 +227,22 @@
       </div>
      </div>
     <?php } ?>
-    
+<?php } else { ?>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4><center>Data Tidak Ditemukan</center></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+  
     
 <?php } ?>
 
+<?php if($matriksISI != null) { ?>
 <?php if(isset($getPeriodeCalon)) { ?>
 <form action="<?php echo site_url('C_MatriksSubkriteria/simpanNilai/'.$tanggalPeriode) ?>" method="POST">
 <?php $no=1; ?>
@@ -244,8 +257,7 @@
 <?php } ?>
 </div>
 </div>
-
+<?php } ?>
   
 
 </section>
-

@@ -24,6 +24,12 @@ class M_MatriksSubkriteria extends CI_Model {
         return $result->result();
     }
 
+    public function matriksNormalisasiISI($tgl)
+    {
+        $result = $this->db->query("SELECT saw_sub.id_calon,calon.periode_masuk,SK1,SK2,SK3,SK4,SK5,SK6,SK7 FROM calon, saw_sub WHERE saw_sub.periode_masuk = '".$tgl."' GROUP by SK1");
+        return $result->result();
+    }
+
     //buat table saw
     public function createTable($field)
     {

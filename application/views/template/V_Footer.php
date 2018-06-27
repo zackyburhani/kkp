@@ -71,8 +71,8 @@ $(document).ready( function () {
 </script>
 
 <script type="text/javascript">
-        $('#myModal').modal('show');
-    </script>
+  $('#myModal').modal('show');
+</script>
 
 
 </body>

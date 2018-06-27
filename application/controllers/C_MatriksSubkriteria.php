@@ -74,7 +74,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 		$max 			   = $this->M_TargetSubkriteria->max();
 		$getAllSAW_sub 	   = $this->M_TargetSubkriteria->getAllSAW_sub();
-
+		$matriksISI 	   = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {
@@ -129,6 +129,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$tanggal = $this->tanggal($periode);
 
 		$data = [
+			'matriksISI'		=> $matriksISI,
 			'tanggal'			=> $tanggal,
 			'total1'			=> $total1,
 			'total2'			=> $total2,

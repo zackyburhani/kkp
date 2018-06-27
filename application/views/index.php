@@ -33,8 +33,8 @@
         <div class="row">
           <div class="form-group">
             <img class="col-md-1" src="<?php echo site_url('assets/img/logo2.png')?>" width="500px">
-            <div class="col-md-4">
-              <h4 style="margin-top: 20px;">Selamat Datang <i><?php echo "nama"; ?></i> !</h4>
+            <div class="col-md-11">
+              <h4 style="margin-top: 20px;"><strong> SISTEM PENUNJANG KEPUTUSAN PEREKRUTAN KARYAWAN BARU </strong></h4>
             </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
               <p>Data Kriteria</p>
             </div>
             <div class="icon">
-              <i class="fa fa-file-o"></i>
+              <i class="fa fa-tag"></i>
             </div>
             <a href="<?php echo site_url('C_Kriteria') ?>" class="small-box-footer">Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -81,7 +81,7 @@
               <p>Data Subkriteria</p>
             </div>
             <div class="icon">
-              <i class="fa fa-file-o"></i>
+              <i class="fa fa-tags"></i>
             </div>
             <a href="<?php echo site_url('C_Subkriteria') ?>" class="small-box-footer">Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
           </div>

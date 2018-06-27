@@ -5,7 +5,7 @@
         <li class="header"><i class="fa fa-asterisk"></i> DATA MASTER</li>
         <li>
           <a href="<?php echo site_url('C_Dashboard') ?>">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-home"></i> <span>Dashboard</span>
           </a>
         </li>
         <li>
@@ -69,11 +69,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li>
+            <!-- <li>
               <a href="<?php echo site_url('C_TargetKriteria') ?>">
                 <i class="fa fa-circle-o"></i> <span>Nilai Target Kriteria</span>
               </a>
-            </li>
+            </li> -->
             <li>
               <a href="<?php echo site_url('C_TargetSubkriteria') ?>">
                 <i class="fa fa-circle-o"></i> <span>Nilai Target Subkriteria</span>

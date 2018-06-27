@@ -5,15 +5,15 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_Subkriteria');
+		$this->load->model(['M_Subkriteria','M_Calon']);
 	} 
 
 	public function index()
 	{
-		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
-		$getSubkriteria = $this->M_Subkriteria->getSubkriteria('K1');
-		$getSubkriteria2 = $this->M_Subkriteria->getSubkriteria('K2');
-		$getSubkriteria3 = $this->M_Subkriteria->getSubkriteria('K3');
+		$getAllSubkriteria 	= $this->M_Subkriteria->getAllSubkriteria();
+		$getSubkriteria 	= $this->M_Subkriteria->getSubkriteria('K1');
+		$getSubkriteria2 	= $this->M_Subkriteria->getSubkriteria('K2');
+		$getSubkriteria3 	= $this->M_Subkriteria->getSubkriteria('K3');
 
 		$data = [
 			'getSubkriteria'	=> $getSubkriteria,
@@ -164,6 +164,100 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		$data6['eigenvector_sub'] = $SE_konsistensi1;
 		$data7['eigenvector_sub'] = $SE_konsistensi2;
 
+		//kriteria
+		$kriteria1 = $this->input->post('kriteria1');
+		$kriteria2 = $this->input->post('kriteria2');
+		$kriteria3 = $this->input->post('kriteria3');		
+
+		$baris1 = $this->M_Subkriteria->jumlah_subkriteria('subkriteria',$kriteria1);
+		$baris2 = $this->M_Subkriteria->jumlah_subkriteria('subkriteria',$kriteria2);
+		$baris3 = $this->M_Subkriteria->jumlah_subkriteria('subkriteria',$kriteria3);
+
+		$baris_total = $this->M_Calon->jumlah('subkriteria');
+
+		//tankap nilai banding berdasarkan kd_kriteria K1
+		$n = 1;
+		$array1 = array();
+		$banding2 = "nilaiBanding2a";
+		for($i=1; $i<=$baris1; $i++){
+			for($j=1; $j<=$baris1; $j++){
+				$nilaiBanding2a = $this->input->post($banding2.$n);
+				$n++;
+				$array1[] = $nilaiBanding2a;
+			}
+		}
+
+		//tankap nilai banding berdasarkan kd_kriteria K2
+		$m = 1;
+		$array2 = array();
+		$banding2 = "nilaiBanding2b";
+		for($i=1; $i<=$baris2; $i++){
+			for($j=1; $j<=$baris2; $j++){
+				$nilaiBanding2b = $this->input->post($banding2.$m);
+				$m++;
+				$array2[] = $nilaiBanding2b;
+			}
+		}
+
+		//tangkap nilai banding berdasarkan kd_kriteria K3
+		$b = 1;
+		$array3 = array();
+		$banding2 = "nilaiBanding2c";
+		for($i=1; $i<=$baris3; $i++){
+			for($j=1; $j<=$baris3; $j++){
+				$nilaiBanding2c = $this->input->post($banding2.$b);
+				$b++;
+				$array3[] = $nilaiBanding2c;
+			}
+		}
+		
+		// $tampungSemua = array();
+		// $tampungSemua = [$array1,$array2,$array3];
+
+		// $nilai_banding = array_reduce($tampungSemua, 'array_merge', array());
+
+		//simpan nilai banding berdasarkan kd_kriteria K1
+		$sktr = "SK";
+		$q = 0;
+		for($i=1; $i<=$baris1; $i++){
+			for($j=1; $j<=$baris1; $j++){
+				$data_banding1 = [
+					'kd_subkriteria' => $sktr.$i,
+					'kd_subkriteria2' => $sktr.$j,
+					'nilaiBanding2' => $array1[$q++]
+				];
+				$this->M_Subkriteria->tambahBanding($data_banding1);
+			}
+		}
+
+		//simpan nilai banding berdasarkan kd_kriteria K2
+		$sktr = "SK";
+		$q = 0;
+		for($i=1; $i<=$baris2; $i++){
+			for($j=1; $j<=$baris2; $j++){
+				$data_banding1 = [
+					'kd_subkriteria' => $sktr.$i,
+					'kd_subkriteria2' => $sktr.$j,
+					'nilaiBanding2' => $array2[$q++]
+				];
+				$this->M_Subkriteria->tambahBanding($data_banding1);
+			}
+		}
+
+		//simpan nilai banding berdasarkan kd_kriteria K3
+		$sktr = "SK";
+		$q = 0;
+		for($i=1; $i<=$baris3; $i++){
+			for($j=1; $j<=$baris3; $j++){
+				$data_banding1 = [
+					'kd_subkriteria' => $sktr.$i,
+					'kd_subkriteria2' => $sktr.$j,
+					'nilaiBanding2' => $array3[$q++]
+				];
+				$this->M_Subkriteria->tambahBanding($data_banding1);
+			}
+		}
+
 		$result1 = $this->M_Subkriteria->InsertEigenvector($SK1,$data1);
 		$result2 = $this->M_Subkriteria->InsertEigenvector($SK2,$data2);
 		$result3 = $this->M_Subkriteria->InsertEigenvector($SK3,$data3);
@@ -173,6 +267,7 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 
 		$result6 = $this->M_Subkriteria->InsertEigenvector($SK6,$data6);
 		$result7 = $this->M_Subkriteria->InsertEigenvector($SK7,$data7);
+
 
 		if ($result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
@@ -240,8 +335,4 @@ class C_PerbandinganSubkriteria extends CI_Controller {
         $total = array_sum($hasil2);
         return $total;
     }
-
-
-
-
 }

@@ -5,7 +5,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_Kriteria');
+		$this->load->model(['M_Kriteria','M_Calon']);
 	} 
 
 	public function index()
@@ -25,17 +25,11 @@ class C_PerbandinganKriteria extends CI_Controller {
 	public function perbandinganMatriks()
 	{
 		
-		$k1 = $this->input->post('K1');	
-		$k2 = $this->input->post('K2');	
-		$k3 = $this->input->post('K3');
+		$k1 = $this->input->post('k1');	
+		$k2 = $this->input->post('k2');	
+		$k3 = $this->input->post('k3');
 
-		$k_k1 = $this->input->post('K_K1');
-		$k_k2 = $this->input->post('K_K2');
-		$k_k3 = $this->input->post('K_K3');
-
-		$k2_k1 = $this->input->post('K2_K1');
-		$k2_k2 = $this->input->post('K2_K2');
-		$k2_k3 = $this->input->post('K2_K3');
+		// $baris = $this->M_Calon-> jumlah('kriteria');
 
 		$matriksA = [ 
 			[1     ,  $k1/1 , 1/$k2],
@@ -45,20 +39,20 @@ class C_PerbandinganKriteria extends CI_Controller {
 
 		$matriksB = $matriksA;
 
-		$perkalianMatriks = $this->perkalian_matriks($matriksB,$matriksA);
+		$perkalianMatriks 	= $this->perkalian_matriks($matriksB,$matriksA);
 		$penjumlahanMatriks = $this->penjumlahan_matriks($perkalianMatriks);
-		$eigenvector = $this->cari_eigenvector($penjumlahanMatriks);
-        $getAllKriteria = $this->M_Kriteria->getAllKriteria();
+		$eigenvector 		= $this->cari_eigenvector($penjumlahanMatriks);
+        $getAllKriteria 	= $this->M_Kriteria->getAllKriteria();
 
 		$data = [
-			'matriksA' => $matriksA,
-			'perkalianMatriks' => $perkalianMatriks,
+			'matriksA' 			 => $matriksA,
+			'perkalianMatriks' 	 => $perkalianMatriks,
 			'penjumlahanMatriks' => $penjumlahanMatriks,
-			'eigenvector' => $eigenvector,
-			'getAllKriteria' => $getAllKriteria
+			'eigenvector'  		 => $eigenvector,
+			'getAllKriteria' 	 => $getAllKriteria
 		];
 
-		$alert = $this->alert($data);
+		// $alert = $this->alert($data);
 
 		if ($data){
 			$this->load->view('template/V_Header');
@@ -83,10 +77,10 @@ class C_PerbandinganKriteria extends CI_Controller {
 	public function alert($nilai)
 	{	
 		if($nilai != null){
-			$alert = $this->session->set_flashdata('pesan','Data Berhasil Disimpan');
+			$alert = $this->session->set_flashdata('pesan','Data Berhasil Diproses');
 			return $alert;
 		} else {
-			$alert = $this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
+			$alert = $this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Diproses');
 			return $alert;
 		}
 	}
@@ -101,6 +95,33 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$k1 = $this->input->post('K1');	
 		$k2 = $this->input->post('K2');	
 		$k3 = $this->input->post('K3');
+
+		$baris = $this->M_Calon-> jumlah('kriteria');
+
+		$n = 1;
+		$array = array();
+		$banding = "nilaiBanding";
+		for($i=1; $i<=$baris; $i++){
+			for($j=1; $j<=$baris; $j++){
+				$nilaiBanding = $this->input->post($banding.$n);
+				$n++;
+				$array[] = $nilaiBanding;
+			}
+		}
+
+		$ktr = "K";
+		$q = 0;
+		for($i=1; $i<=$baris; $i++){
+			for($j=1; $j<=$baris; $j++){
+				$data_banding = [
+					'kd_kriteria' => $ktr.$i,
+					'kd_kriteria2' => $ktr.$j,
+					'nilaiBanding' => $array[$q++]
+				];
+				//simpan table banding
+				$this->M_Kriteria->tambahBanding($data_banding);
+			}
+		}
 
 		$data1['eigenvector'] = $e1;
 		$data2['eigenvector'] = $e2;
@@ -152,7 +173,6 @@ class C_PerbandinganKriteria extends CI_Controller {
         return $hasil3;
     }
 
-
     //fungsi menjumlahkan matriks
     public function penjumlahan_matriks($matriks1) 
     {
@@ -166,20 +186,4 @@ class C_PerbandinganKriteria extends CI_Controller {
         }
         return $hasil1;
    	}
-
-   	//ga tau dipake apa engga
-    function cari_total($cari_total) 
-    {
-    	$hasil2 = array();
-        for ($i=0; $i<sizeof($cari_total); $i++) {
-        	$temp2 = $cari_total[$i];
-            $hasil2[$i] = $temp2;
-        }
-        $total = array_sum($hasil2);
-        return $total;
-    }
-
-
-
-
 }

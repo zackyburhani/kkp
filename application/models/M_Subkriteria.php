@@ -87,4 +87,23 @@ class M_Subkriteria extends CI_Model {
 		}
 		return $checkupdate;
 	}
+
+	//jumlah subkrteria berdasarkan kriteria
+	public function jumlah_subkriteria($table,$id)
+  	{
+    	$query = $this->db->query("SELECT * FROM $table where kd_kriteria = '$id'");
+    	return $query->num_rows();
+  	}
+
+  	//simpan ke table banding2
+  	public function tambahBanding($data){
+		$checkinsert = false;
+		try{
+			$this->db->insert('banding2',$data);
+			$checkinsert = true;
+		}catch (Exception $ex) {
+			$checkinsert = false;
+		}
+		return $checkinsert;
+	}
 }
