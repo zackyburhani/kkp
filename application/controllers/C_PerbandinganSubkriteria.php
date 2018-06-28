@@ -210,11 +210,6 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 				$array3[] = $nilaiBanding2c;
 			}
 		}
-		
-		// $tampungSemua = array();
-		// $tampungSemua = [$array1,$array2,$array3];
-
-		// $nilai_banding = array_reduce($tampungSemua, 'array_merge', array());
 
 		//simpan nilai banding berdasarkan kd_kriteria K1
 		$sktr = "SK";
@@ -323,16 +318,5 @@ class C_PerbandinganSubkriteria extends CI_Controller {
         }
         return $hasil1;
    	}
-
-   	//ga tau dipake apa engga
-    function cari_total($cari_total) 
-    {
-    	$hasil2 = array();
-        for ($i=0; $i<sizeof($cari_total); $i++) {
-        	$temp2 = $cari_total[$i];
-            $hasil2[$i] = $temp2;
-        }
-        $total = array_sum($hasil2);
-        return $total;
-    }
+   	
 }

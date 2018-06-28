@@ -68,12 +68,6 @@ class M_TargetSubkriteria extends CI_Model {
         return $result->result();
     }
 
-    // public function max($kd_subkriteria)
-    // {
-    //     $result = $this->db->query("SELECT target2.nilai_target2 FROM subkriteria,target2 WHERE subkriteria.kd_subkriteria = target2.kd_subkriteria and nilai_target2 = (SELECT max(nilai_target2) FROM target2 WHERE kd_subkriteria = '".$kd_subkriteria."')");
-    //     return $result->result();
-    // }
-
     public function max()
     {
         $result = $this->db->query("SELECT MAX(SK1) as maxSK1,MAX(SK2) as maxSK2,MAX(SK3) as maxSK3, MAX(SK4) as maxSK4,MAX(SK5) as maxSK5,MAX(SK6) as maxSK6,MAX(SK7) as maxSK7 FROM saw_sub");
@@ -116,6 +110,52 @@ class M_TargetSubkriteria extends CI_Model {
         $status = $this->db->insert('saw_sub', $data);
         return $status;
     }
+
+    public function hilangkanTombol($id_calon)
+    {
+        $result = $this->db->query("SELECT * FROM target2 where id_calon = '$id_calon' and nilai_target2 != 0");
+        return $result->result();
+    }
+
+    //coba coba
+
+    // public function max($kd_subkriteria)
+    // {
+    //     $result = $this->db->query("SELECT target2.nilai_target2 FROM subkriteria,target2 WHERE subkriteria.kd_subkriteria = target2.kd_subkriteria and nilai_target2 = (SELECT max(nilai_target2) FROM target2 WHERE kd_subkriteria = '".$kd_subkriteria."')");
+    //     return $result->result();
+    // }
+
+
+    // public function table_bayangan($id_calon,$kd_subkriteria)
+    // {
+    //     $result = $this->db->query("
+
+    //         SELECT 
+
+    //             (SELECT id_calon FROM target2 where id_calon = '$id_calon' GROUP BY id_calon) as id_calon
+
+    //             ,periode_masuk,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK1,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK2,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK3,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK4,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK5,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK6,
+
+    //             (SELECT nilai_target2 FROM target2 where kd_subkriteria = '$kd_subkriteria' and id_calon = '$id_calon' GROUP BY nilai_target2) as SK7
+
+    //         from calon,target2 where calon.id_calon = target2.id_calon GROUP by id_calon
+
+    //     ");
+    //     return $result->result();
+    // }
+
 
 }
 

@@ -48,6 +48,7 @@
                 <?php $no=1; ?>
                 <?php if(isset($getPeriodeCalon)) { ?>
                 <?php foreach($getPeriodeCalon as $data){ ?>
+                <?php $validasi = $this->M_TargetSubkriteria->hilangkanTombol($data->id_calon) ?>
                 <tr>
                   <td align="center"><?php echo $no++; ?>.</td>
                   <td><?php echo $data->periode_masuk; ?></td>
@@ -56,10 +57,18 @@
                     <a href="#ModalLihatKaryawan<?php echo $data->id_calon ?>" data-toggle="modal"><?php echo $data->nm_calon; ?></a>
                   </td>
                   <td align="center">
+                    <?php if($validasi != null) { ?>
                     <a href="#ModalLihatNilai<?php echo $data->id_calon ?>" class="btn btn-info btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <?php } else { ?>
+                      <span><center><b>-</b></center></span>
+                    <?php } ?>
                   </td>
                   <td align="center">
+                    <?php if($validasi == null) { ?>
                     <a href="#ModalTambahNilaTargetSubkriteria<?php echo $data->id_calon ?>" class="btn btn-success btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span></a>
+                    <?php } else { ?>
+                      <span><center><b>-</b></center></span>
+                    <?php } ?>
                   </td>
                 </tr>
                 <?php } } ?>

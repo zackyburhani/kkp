@@ -6,7 +6,7 @@ class C_TargetSubkriteria extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		$this->load->model(['M_TargetSubkriteria','M_MatriksSubkriteria','M_Subkriteria','M_Kriteria']);
+		$this->load->model(['M_TargetSubkriteria','M_MatriksSubkriteria','M_Subkriteria','M_Kriteria','M_Calon']);
 	}
 
 	public function index()
@@ -54,77 +54,77 @@ class C_TargetSubkriteria extends CI_Controller {
 
 	public function simpanTarget() 
 	{
-		$kd_subkriteria1  = $this->input->post('kd_subkriteria1');
-		$kd_subkriteria2  = $this->input->post('kd_subkriteria2');
-		$kd_subkriteria3  = $this->input->post('kd_subkriteria3');
-		$kd_subkriteria4  = $this->input->post('kd_subkriteria4');
-		$kd_subkriteria5  = $this->input->post('kd_subkriteria5');
-		$kd_subkriteria6  = $this->input->post('kd_subkriteria6');
-		$kd_subkriteria7  = $this->input->post('kd_subkriteria7');
 
 		$id_calon      = $this->input->post('id_calon');
 		$periode_masuk = $this->input->post('periode_masuk');
+		$baris 		   = $this->M_Calon->jumlah('subkriteria');
 
-		$nilai_target1 = $this->input->post('nilai_target1');
-		$nilai_target2 = $this->input->post('nilai_target2');
-		$nilai_target3 = $this->input->post('nilai_target3');
-		$nilai_target4 = $this->input->post('nilai_target4');
-		$nilai_target5 = $this->input->post('nilai_target5');
-		$nilai_target6 = $this->input->post('nilai_target6');
-		$nilai_target7 = $this->input->post('nilai_target7');
+		$id = 1;
+		$kd_sub = "kd_subkriteria";
+		$kd_subkriteria = array();
+		for($i=1; $i<=$baris; $i++){
+			$sub_kriteria = $this->input->post($kd_sub.$id);	
+			$kd_subkriteria[] = $sub_kriteria;
+			$id++;
+		}
 
-		$tampungSubkriteria = [
-			'1' => $kd_subkriteria1,
-			'2' => $kd_subkriteria2,
-			'3' => $kd_subkriteria3,
-			'4' => $kd_subkriteria4,
-			'5' => $kd_subkriteria5,
-			'6' => $kd_subkriteria6,
-			'7' => $kd_subkriteria7,
-		];
+		$kd = 1;
+		$nilai_t = "nilai_target2";
+		$nilai_target2 = array();
+		for($i=1; $i<=$baris; $i++){
+			$n_target = $this->input->post($nilai_t.$kd);	
+			$nilai_target2[] = $n_target;
+			$kd++;
+		}
 
-		$index = array();
-		foreach($tampungSubkriteria as $key=>$value) {
-			array_push($index, $value);
+		$q = 0;
+		$w = 0;
+		for($i=1; $i<=$baris; $i++){
 			$data = [
+				'kd_subkriteria'  => $kd_subkriteria[$q++],
 				'id_calon'     	  => $id_calon,
-				'kd_subkriteria'  => $value
+				'nilai_target2'	  => $nilai_target2[$w++]
 			];
-			$result = $this->M_TargetSubkriteria->simpanTarget($data);
+			// $result = $this->M_TargetSubkriteria->simpanTarget($data);
 		}
 
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[0],$nilai_target1,$id_calon);
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[1],$nilai_target2,$id_calon);
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[2],$nilai_target3,$id_calon);
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[3],$nilai_target4,$id_calon);
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[4],$nilai_target5,$id_calon);
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[5],$nilai_target6,$id_calon);
-		$result = $this->M_TargetSubkriteria->simpanNilaiTarget($index[6],$nilai_target7,$id_calon);
-		
-		$dataSAW_sub = [
-			'id_calon'  	=> $id_calon,
-			'periode_masuk' => $periode_masuk,
-			'SK1' 			=> $nilai_target1,
-			'SK2'			=> $nilai_target2,
-			'SK3'			=> $nilai_target3,
-			'SK4'			=> $nilai_target4,
-			'SK5'			=> $nilai_target5,
-			'SK6'			=> $nilai_target6,
-			'SK7'			=> $nilai_target7,
-		];
+		/////////////////////////////table bayangan//////////////////////////
 
-		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
-		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
+		// $dataSAW_sub = [
+		// 	'id_calon'  	=> $id_calon,
+		// 	'periode_masuk' => $periode_masuk,
+		// 	'SK1' 			=> $nilai_target1,
+		// 	'SK2'			=> $nilai_target2,
+		// 	'SK3'			=> $nilai_target3,
+		// 	'SK4'			=> $nilai_target4,
+		// 	'SK5'			=> $nilai_target5,
+		// 	'SK6'			=> $nilai_target6,
+		// 	'SK7'			=> $nilai_target7,
+		// ];
 
-		if ($this->db->table_exists('saw_sub') == false )
-		{
-			//buat tabel saw_sub
-			$this->M_TargetSubkriteria->createTable($getAllSubkriteria);
-			//buat tabel saw
-			$this->M_MatriksSubkriteria->createTable($getAllKriteria);
+		// $getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
+		// $getAllKriteria    = $this->M_Kriteria->getAllKriteria();
+
+		// if ($this->db->table_exists('saw_sub') == false )
+		// {
+		// 	//buat tabel saw_sub
+		// 	$this->M_TargetSubkriteria->createTable($getAllSubkriteria);
+		// 	//buat tabel saw
+		// 	$this->M_MatriksSubkriteria->createTable($getAllKriteria);
+		// }
+
+		$n=0;
+		$m=0;
+		for ($i=1; $i<=$baris; $i++) { 
+			$dataSAW_sub = [
+				'id_calon'  	      	=> $id_calon,
+				'periode_masuk'    	  	=> $periode_masuk,
+				$kd_subkriteria[$n++] => $nilai_target2[$m++]
+			];			
+			// $result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
 		}
 
-		$result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
+		/////////////////////////////table bayangan//////////////////////////
 
 		if ($result2){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
