@@ -73,8 +73,9 @@ class M_MatriksSubkriteria extends CI_Model {
         return $query->num_rows();
     }
 
-    
-
-
-        
+    public function hilangkanTombol($tgl)
+    {
+        $result = $this->db->query("SELECT * FROM target JOIN calon on target.id_calon = calon.id_calon WHERE calon.periode_masuk = '$tgl'");
+        return $result->result();
+    }   
 }

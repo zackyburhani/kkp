@@ -197,8 +197,10 @@
             </div>
           <?php } ?>
         <?php } ?>          
-         
-        <?php if($matriksISI != null) { ?>
+
+        </div>
+       </div>
+       <?php if($matriksISI != null) { ?>
           <?php if(isset($getPeriodeCalon)) { ?>
           <form action="<?php echo site_url('C_MatriksKriteria/simpanHasil/'.$tanggalPeriode) ?>" method="POST">
           <input type="hidden" name="periode_masuk" value="<?php echo $tanggalPeriode ?>">
@@ -207,15 +209,15 @@
             <input type="hidden" value="<?php echo $periode->id_calon ?>" name="id_calon<?php echo $no++; ?>">
           <?php } ?>
           <div class="footer" style="margin-bottom: 10px;">
+            <?php $hilangkanTombol = $this->M_MatriksKriteria->hilangkanTombol($tanggalPeriode); ?>
+            <?php if($hilangkanTombol == null) { ?>
             <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px;margin-bottom: 50px;"><i class="fa fa-save"></i> Simpan Hasil</button>
+            <?php } ?>
           </div>
 
           </form>
           <?php } ?>
         <?php } ?>
-
-        </div>
-       </div>
       </div>
     </div>
   </section>

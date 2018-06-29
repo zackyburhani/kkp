@@ -85,7 +85,7 @@ class C_TargetSubkriteria extends CI_Controller {
 				'id_calon'     	  => $id_calon,
 				'nilai_target2'	  => $nilai_target2[$w++]
 			];
-			// $result = $this->M_TargetSubkriteria->simpanTarget($data);
+			$result = $this->M_TargetSubkriteria->simpanTarget($data);
 		}
 
 		/////////////////////////////table bayangan//////////////////////////
@@ -113,16 +113,18 @@ class C_TargetSubkriteria extends CI_Controller {
 		// 	$this->M_MatriksSubkriteria->createTable($getAllKriteria);
 		// }
 
-		$n=0;
-		$m=0;
-		for ($i=1; $i<=$baris; $i++) { 
-			$dataSAW_sub = [
-				'id_calon'  	      	=> $id_calon,
-				'periode_masuk'    	  	=> $periode_masuk,
-				$kd_subkriteria[$n++] => $nilai_target2[$m++]
-			];			
-			// $result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
-		}
+		$dataSAW_sub = [
+			'id_calon'  	=> $id_calon,
+			'periode_masuk' => $periode_masuk,
+			'SK1' 			=> $nilai_target2[0],
+			'SK2' 			=> $nilai_target2[1],
+			'SK3' 			=> $nilai_target2[2],
+			'SK4' 			=> $nilai_target2[3],
+			'SK5' 			=> $nilai_target2[4],
+			'SK6' 			=> $nilai_target2[5],
+			'SK7' 			=> $nilai_target2[6]
+		];			
+		$result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
 
 		/////////////////////////////table bayangan//////////////////////////
 

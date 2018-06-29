@@ -206,7 +206,7 @@
                   </table>
                   <?php } ?>
                   <?php if($kriteria->kd_kriteria == 'K3') { ?>
-                  <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
+                  <table style="width: 379px;margin-left: 608px;margin-top:-187px" class="table table-striped table-bordered table-hover">
                     <tbody>
                       <?php foreach($total3 as $row => $nilai ) { ?>
                       <tr>
@@ -244,13 +244,16 @@
 
 <?php if($matriksISI != null) { ?>
 <?php if(isset($getPeriodeCalon)) { ?>
+<?php $hilangkanTombol = $this->M_MatriksSubkriteria->hilangkanTombol($tanggalPeriode); ?>
 <form action="<?php echo site_url('C_MatriksSubkriteria/simpanNilai/'.$tanggalPeriode) ?>" method="POST">
 <?php $no=1; ?>
 <?php foreach ($getPeriodeCalon as $periode) { ?>
   <input type="hidden" value="<?php echo $periode->id_calon ?>" name="id_calon<?php echo $no++; ?>">
-<?php } ?>
+  <?php } ?>
 <div class="footer" style="margin-bottom: 10px;">
+  <?php if($hilangkanTombol == null) { ?>
   <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px;margin-bottom: 50px;"><i class="fa fa-save"></i> Simpan Hasil</button>
+  <?php } ?>
 </div>
 
 </form>

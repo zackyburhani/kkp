@@ -40,4 +40,10 @@ class M_MatriksKriteria extends CI_Model {
         $status = $this->db->insert('hasil', $data);
         return $status;
     }
+
+    public function hilangkanTombol($tgl)
+    {
+        $result = $this->db->query("SELECT * FROM hasil JOIN calon on hasil.id_calon = calon.id_calon WHERE calon.periode_masuk = '$tgl'");
+        return $result->result();
+    }
 }

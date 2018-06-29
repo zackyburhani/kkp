@@ -10,8 +10,13 @@ class C_MatriksKriteria extends CI_Controller {
 	}
 
 	public function index()
-	{
-		$this->load->view('template/V_Header');
+	{	
+		$a = "";
+		$matriksISI = $this->M_MatriksSubkriteria->matriksNormalisasiISI($a);
+
+		$data = ['matriksISI'=>$matriksISI];
+
+		$this->load->view('template/V_Header',$data);
 		$this->load->view('template/V_Sidebar');
 		$this->load->view('matriks/V_MatriksKriteria');
 		$this->load->view('template/V_Footer');
