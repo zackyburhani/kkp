@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+    <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class M_MatriksSubkriteria extends CI_Model {
 
@@ -70,6 +70,12 @@ class M_MatriksSubkriteria extends CI_Model {
     public function barisSAW()
     {
         $query = $this->db->get("saw_sub");
+        return $query->num_rows();
+    }
+
+    public function barisCalon($tgl)
+    {
+        $query = $this->db->query("SELECT * FROM calon WHERE calon.periode_masuk = '$tgl'");
         return $query->num_rows();
     }
 

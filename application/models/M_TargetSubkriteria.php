@@ -74,8 +74,8 @@ class M_TargetSubkriteria extends CI_Model {
         return $result->result();
     }
 
-    public function getAllSAW_sub(){
-        $result = $this->db->get('saw_sub');
+    public function getAllSAW_sub($tgl){
+        $result = $this->db->query("SELECT * FROM saw_sub JOIN calon on calon.id_calon = saw_sub.id_calon WHERE calon.periode_masuk = '$tgl'");
         return $result->result();
     }
 

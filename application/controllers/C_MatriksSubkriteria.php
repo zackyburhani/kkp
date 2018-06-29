@@ -6,7 +6,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		$this->load->model(['M_TargetSubkriteria','M_Kriteria','M_Subkriteria','M_MatriksSubkriteria']);
+		$this->load->model(['M_TargetSubkriteria','M_Kriteria','M_Subkriteria','M_MatriksSubkriteria','M_Calon']);
 	}
 
 	public function index()
@@ -76,7 +76,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$nilaiDetail       = $this->M_TargetSubkriteria->nilaiDetail();
 
 		$max 			   = $this->M_TargetSubkriteria->max();
-		$getAllSAW_sub 	   = $this->M_TargetSubkriteria->getAllSAW_sub();
+		$getAllSAW_sub 	   = $this->M_TargetSubkriteria->getAllSAW_sub($periode);
 		$matriksISI 	   = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
 
 		$maxLoop = array();
@@ -139,7 +139,6 @@ class C_MatriksSubkriteria extends CI_Controller {
 			'total3'			=> $total3,
 			'bobot'				=> $bobot,
 			'max'				=> $maxLoop,
-			'getAllSAW_sub'		=> $getAllSAW_sub,
 			'getAllKriteria' 	=> $getAllKriteria,
 		 	'nilaiDetail'	  	=> $nilaiDetail,
 			'getPeriodeCalon' 	=> $getPeriodeCalon,
@@ -163,34 +162,13 @@ class C_MatriksSubkriteria extends CI_Controller {
 		return $kriteria;
 	} 
 
-	private function total1()
-	{
-		$max 			= $this->M_TargetSubkriteria->max();		
-		$getAllSAW_sub 	= $this->M_TargetSubkriteria->getAllSAW_sub();
-
-		$bobot = array();
-		foreach($this->bobot() as $key=>$value) {
-			array_push($bobot, $value);
-		}
-
-		$total1 = array();
-		foreach ($max as $key) {
-			foreach ($getAllSAW_sub as $data) {
-				$total1[] = round(
-					(($data->SK1/$key->maxSK1)*$bobot[0])+
-					(($data->SK2/$key->maxSK2)*$bobot[1])+
-					(($data->SK3/$key->maxSK3)*$bobot[2]),4);
-			}
-		} return $total1;
-	}
-
 	public function simpanNilai($tanggalPeriode)
 	{
 
 		$getPeriodeCalon   = $this->M_TargetSubkriteria->periode($tanggalPeriode);
 
 		$max 			= $this->M_TargetSubkriteria->max();		
-		$getAllSAW_sub 	= $this->M_TargetSubkriteria->getAllSAW_sub();
+		$getAllSAW_sub 	= $this->M_TargetSubkriteria->getAllSAW_sub($tanggalPeriode);
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
 
 		$maxLoop = array();
@@ -215,15 +193,15 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
-		// $total1 = array();
-		// foreach ($max as $key) {
-		// 	foreach ($getAllSAW_sub as $data) {
-		// 		$total1[] = round(
-		// 			(($data->SK1/$key->maxSK1)*$bobot[0])+
-		// 			(($data->SK2/$key->maxSK2)*$bobot[1])+
-		// 			(($data->SK3/$key->maxSK3)*$bobot[2]),4);
-		// 	}
-		// }
+		$total1 = array();
+		foreach ($max as $key) {
+			foreach ($getAllSAW_sub as $data) {
+				$total1[] = round(
+					(($data->SK1/$key->maxSK1)*$bobot[0])+
+					(($data->SK2/$key->maxSK2)*$bobot[1])+
+					(($data->SK3/$key->maxSK3)*$bobot[2]),4);
+			}
+		}
 
 		$total2 = array();
 		foreach ($max as $key) {
@@ -243,20 +221,20 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
-		$total1 = $this->total1();
-
-		$baris = $this->M_MatriksSubkriteria->barisSAW();
+		// $baris = $this->M_MatriksSubkriteria->barisSAW();
+		$baris 		   = $this->M_Calon->jumlah('kriteria');
+		$barisCalon = $this->M_MatriksSubkriteria->barisCalon($tanggalPeriode);
 
 		$name = "id_calon";
 		$calon = array();
-		for($i=1; $i<=$baris; $i++) {
+		for($i=1; $i<=$barisCalon; $i++) {
 			$var = $name.$i;
 			$calon[] = $this->input->post($var);	
 		}
 
 		//simpan ke table saw
 		$i=0;
-		while($i<$baris){
+		while($i<$barisCalon){
 			$dataSAW = [
 				'id_calon'		=> $calon[$i],
 				'periode_masuk' => $tanggalPeriode,
@@ -268,14 +246,10 @@ class C_MatriksSubkriteria extends CI_Controller {
 			$i++;
 		}
 
-
-		// $nilai_target = array();
-		// $nilai_target = [$total1,$total2,$total3];
-
 		//simpan ke table target
 		foreach ($getAllKriteria as $kriteria) {
 			$i=0;
-			while($i<$baris){
+			while($i<$barisCalon){
 				$dataTarget = [
 					'kd_kriteria' 	=> $kriteria->kd_kriteria,
 					'id_calon'		=> $calon[$i],
@@ -284,11 +258,11 @@ class C_MatriksSubkriteria extends CI_Controller {
 				$i++;
 			}	
 		}
-		
+	
 		$kriteria = $this->kriteria();
 		$j=0;
 		for($i=0; $i<$baris; $i++){
-			while($j<$baris){
+			while($j<$barisCalon){
 				$result2 = $this->M_MatriksSubkriteria->isiTarget($total1[$j],$calon[$j],$kriteria[$i]);
 				$j++;
 			}
@@ -296,7 +270,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 		$j=0;
 		for($i=1; $i<$baris; $i++){
-			while($j<$baris){
+			while($j<$barisCalon){
 				$result2 = $this->M_MatriksSubkriteria->isiTarget($total2[$j],$calon[$j],$kriteria[$i]);
 				$j++;
 			}
@@ -304,7 +278,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 		$j=0;
 		for($i=2; $i<$baris; $i++){
-			while($j<$baris){
+			while($j<$barisCalon){
 				$result2 = $this->M_MatriksSubkriteria->isiTarget($total3[$j],$calon[$j],$kriteria[$i]);
 				$j++;
 			}
