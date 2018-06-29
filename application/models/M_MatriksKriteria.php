@@ -30,8 +30,8 @@ class M_MatriksKriteria extends CI_Model {
         return $result->result();
     }
 
-    public function getAllSAW(){
-        $result = $this->db->get('saw');
+    public function getAllSAW($tgl){
+        $result = $this->db->query("SELECT * FROM saw JOIN calon on calon.id_calon = saw.id_calon WHERE calon.periode_masuk = '$tgl'");
         return $result->result();
     }
 

@@ -55,7 +55,7 @@ class C_MatriksKriteria extends CI_Controller {
 			array_push($bobot, $value);
 		}
 
-		$total = $this->total();
+		$total = $this->total($periode);
 		$tanggal = $this->tanggal($periode);
 
 		$data = [
@@ -94,9 +94,9 @@ class C_MatriksKriteria extends CI_Controller {
 		} return $array;
 	}
 
-	public function total()
+	public function total($periode)
 	{
-		$getAllSAW 		 = $this->M_MatriksKriteria->getAllSAW();
+		$getAllSAW 		 = $this->M_MatriksKriteria->getAllSAW($periode);
 		$max 			 = $this->M_MatriksKriteria->max();
 
 		$maxLoop = array();
@@ -133,19 +133,19 @@ class C_MatriksKriteria extends CI_Controller {
 	public function simpanHasil($tanggalPeriode)
 	{
 		$periode_masuk = $this->input->post('periode_masuk');
-		$baris = $this->M_MatriksSubkriteria->barisSAW();
+		$barisCalon = $this->M_MatriksSubkriteria->barisCalon($tanggalPeriode);
 
 		$name = "id_calon";
 		$calon = array();
-		for($i=1; $i<=$baris; $i++) {
+		for($i=1; $i<=$barisCalon; $i++) {
 			$var = $name.$i;
 			$calon[] = $this->input->post($var);	
 		}
 
-		$total = $this->total();
+		$total = $this->total($periode_masuk);
 
 		$i=0;
-		while($i<$baris){
+		while($i<$barisCalon){
 			$dataSAW = [
 				'id_calon'		=> $calon[$i],
 				'hasil_akhir'	=> $total[$i]
@@ -156,10 +156,10 @@ class C_MatriksKriteria extends CI_Controller {
 	
 		if ($result){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
-	   		redirect('C_MatriksSubkriteria/periode?periode_masuk='.$periode_masuk);
+	   		redirect('C_MatriksKriteria/periode?periode_masuk='.$periode_masuk);
 		}else{
 			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
-    		redirect('C_MatriksSubkriteria/periode?periode_masuk='.$periode_masuk);
+    		redirect('C_MatriksKriteria/periode?periode_masuk='.$periode_masuk);
 		}
 	}
 }

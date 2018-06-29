@@ -221,7 +221,6 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
-		// $baris = $this->M_MatriksSubkriteria->barisSAW();
 		$baris 		   = $this->M_Calon->jumlah('kriteria');
 		$barisCalon = $this->M_MatriksSubkriteria->barisCalon($tanggalPeriode);
 
