@@ -20,7 +20,16 @@ class M_MatriksKriteria extends CI_Model {
 
     public function max()
     {
-        $result = $this->db->query("SELECT MAX(K1) as maxK1,MAX(K2) as maxK2,MAX(K3) as maxK3 FROM saw");
+        $result = $this->db->query("SELECT 
+
+            (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K1') as maxK1,
+
+            (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K2') as maxK2,
+
+            (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K3') as maxK3
+
+            FROM target2 GROUP by maxK1"
+        );
         return $result->result();
     }
 

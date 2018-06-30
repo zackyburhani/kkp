@@ -113,18 +113,18 @@ class C_TargetSubkriteria extends CI_Controller {
 		// 	$this->M_MatriksSubkriteria->createTable($getAllKriteria);
 		// }
 
-		$dataSAW_sub = [
-			'id_calon'  	=> $id_calon,
-			'periode_masuk' => $periode_masuk,
-			'SK1' 			=> $nilai_target2[0],
-			'SK2' 			=> $nilai_target2[1],
-			'SK3' 			=> $nilai_target2[2],
-			'SK4' 			=> $nilai_target2[3],
-			'SK5' 			=> $nilai_target2[4],
-			'SK6' 			=> $nilai_target2[5],
-			'SK7' 			=> $nilai_target2[6]
-		];			
-		$result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
+		// $dataSAW_sub = [
+		// 	'id_calon'  	=> $id_calon,
+		// 	'periode_masuk' => $periode_masuk,
+		// 	'SK1' 			=> $nilai_target2[0],
+		// 	'SK2' 			=> $nilai_target2[1],
+		// 	'SK3' 			=> $nilai_target2[2],
+		// 	'SK4' 			=> $nilai_target2[3],
+		// 	'SK5' 			=> $nilai_target2[4],
+		// 	'SK6' 			=> $nilai_target2[5],
+		// 	'SK7' 			=> $nilai_target2[6]
+		// ];			
+		// $result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
 
 		/////////////////////////////table bayangan//////////////////////////
 
@@ -168,11 +168,11 @@ class C_TargetSubkriteria extends CI_Controller {
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
 
 		$nilai 			  = $this->M_TargetSubkriteria->nilaiDetail();
-		// $eigenvector_sub3 = $this->M_TargetSubkriteria->eigenvector_sub('K3');
 		$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
 
 		$max = $this->M_TargetSubkriteria->max();
 		$getAllSAW_sub = $this->M_TargetSubkriteria->getAllSAW_sub();
+		
 
 
 		$bobot = array();

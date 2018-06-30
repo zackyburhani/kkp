@@ -68,9 +68,33 @@ class M_TargetSubkriteria extends CI_Model {
         return $result->result();
     }
 
+    //apus aja
+    // public function max()
+    // {
+    //     $result = $this->db->query("SELECT MAX(SK1) as maxSK1,MAX(SK2) as maxSK2,MAX(SK3) as maxSK3, MAX(SK4) as maxSK4,MAX(SK5) as maxSK5,MAX(SK6) as maxSK6,MAX(SK7) as maxSK7 FROM saw_sub");
+    //     return $result->result();
+    // }
+
     public function max()
     {
-        $result = $this->db->query("SELECT MAX(SK1) as maxSK1,MAX(SK2) as maxSK2,MAX(SK3) as maxSK3, MAX(SK4) as maxSK4,MAX(SK5) as maxSK5,MAX(SK6) as maxSK6,MAX(SK7) as maxSK7 FROM saw_sub");
+        $result = $this->db->query("SELECT 
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK1') as maxSK1,
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK2') as maxSK2,
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK3') as maxSK3,
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK4') as maxSK4,
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK5') as maxSK5,
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK6') as maxSK6,
+
+            (SELECT MAX(nilai_target2) FROM target2 WHERE target2.kd_subkriteria = 'SK7') as maxSK7
+
+            FROM target2 GROUP by maxSK1");
+        
         return $result->result();
     }
 

@@ -88,6 +88,8 @@
                         <td>
                           <?php if($row->keterangan == null) { ?>
                           <center><input type="checkbox" name="calon<?php echo $calon++; ?>" value="<?php echo $row->id_calon ?>"></center>
+                          <?php } else { ?>
+                            <center><i class="fa fa-check"></i></center>
                           <?php } ?>
                         </td>
                       </tr>
