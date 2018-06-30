@@ -2,28 +2,25 @@
 
 class M_TargetKriteria extends CI_Model {
 
-    public function __construct(){
+    public function __construct()
+    {
 		parent::__construct();
 	}
 
-	public function simpanTarget($data){
-
+	public function simpanTarget($data)
+    {
 		$checkinsert = false;
-
 		try{
-
 			$this->db->insert('target',$data);
 			$checkinsert = true;
 		}catch (Exception $ex) {
-
 			$checkinsert = false;
 		}
-
 		return $checkinsert;
 	}
-
 	
-	public function getAllCalon(){
+	public function getAllCalon()
+    {
 		$result = $this->db->get('calon');
 		return $result->result();
 	}

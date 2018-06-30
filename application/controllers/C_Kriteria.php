@@ -5,7 +5,7 @@ class C_Kriteria extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_Kriteria');
+		$this->load->model(['M_Kriteria','M_Calon']);
 	}
 	
 	public function index()
@@ -25,7 +25,8 @@ class C_Kriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 	
-	public function tambahKriteria() {
+	public function tambahKriteria() 
+	{
 		$kd_kriteria = $this->input->post('kd_kriteria');
 		$nm_kriteria = $this->input->post('nm_kriteria');
 		
@@ -45,7 +46,8 @@ class C_Kriteria extends CI_Controller {
 		}
 	}
 	
-	public function updateKriteria(){
+	public function updateKriteria()
+	{
 		$kd_kriteria = $this->input->post('kd_kriteria');
 		$nm_kriteria = $this->input->post('nm_kriteria');
 
@@ -64,19 +66,24 @@ class C_Kriteria extends CI_Controller {
 		}
 	}
 	
-	public function deleteKriteria(){
-		$kd_kriteria= $this->input->post('kd_kriteria');
-		
-		$result = $this->M_Kriteria->DeleteKriteria($kd_kriteria);
-		
-		if ($result){
-			$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
+	public function deleteKriteria()
+	{
+		$kd_kriteria = $this->input->post('kd_kriteria');
+		$validasi 	 = $this->M_Calon->validasiHapus('kd_kriteria','subkriteria',$kd_kriteria);
+
+		if($validasi->kd_kriteria == $kd_kriteria){
+			$this->session->set_flashdata('pesanGagal','Data Kriteria Terhubung Dengan Data Lain');
 	   		redirect('C_Kriteria');
-		}else{
-			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
-    		redirect('C_Kriteria');
+		} else {
+			$result = $this->M_Kriteria->DeleteKriteria($kd_kriteria);
+			if ($result){
+				$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
+		   		redirect('C_Kriteria');
+			}else{
+				$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
+	    		redirect('C_Kriteria');
+			}
 		}
 	}
 	
 }
-

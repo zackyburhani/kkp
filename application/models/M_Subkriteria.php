@@ -2,7 +2,8 @@
 
 class M_Subkriteria extends CI_Model {
 
-    public function __construct(){
+    public function __construct()
+    {
 		parent::__construct();
 	}
 
@@ -59,16 +60,14 @@ class M_Subkriteria extends CI_Model {
 
 	public function getKdSubkriteria()
     {
-       $q = $this->db->query("select MAX(RIGHT(kd_subkriteria,1)) as kd_max from subkriteria");
-       $kd = "";
-       if($q->num_rows() > 0)
-       {
-         foreach ($q->result() as $k) {
-           $tmp = ((int)$k->kd_max)+1;
-           $kd = sprintf("%01s",$tmp);
-         }
-       } else
-       {
+    	$q = $this->db->query("select MAX(RIGHT(kd_subkriteria,1)) as kd_max from subkriteria");
+    	$kd = "";
+     	if($q->num_rows() > 0) {
+	        foreach ($q->result() as $k) {
+           		$tmp = ((int)$k->kd_max)+1;
+           		$kd = sprintf("%01s",$tmp);
+         	}
+       } else {
          $kd = "1";
        }
        return "SK".$kd;
@@ -88,15 +87,14 @@ class M_Subkriteria extends CI_Model {
 		return $checkupdate;
 	}
 
-	//jumlah subkrteria berdasarkan kriteria
 	public function jumlah_subkriteria($table,$id)
   	{
     	$query = $this->db->query("SELECT * FROM $table where kd_kriteria = '$id'");
     	return $query->num_rows();
   	}
 
-  	//simpan ke table banding2
-  	public function tambahBanding($data){
+  	public function tambahBanding($data)
+  	{
 		$checkinsert = false;
 		try{
 			$this->db->insert('banding2',$data);
@@ -106,4 +104,5 @@ class M_Subkriteria extends CI_Model {
 		}
 		return $checkinsert;
 	}
+
 }

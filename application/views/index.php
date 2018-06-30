@@ -49,7 +49,7 @@
             <div class="inner">
               <h3><?php echo $totalCalon ?></h3>
 
-              <p>Data Karyawan</p>
+              <p>Data Calon Karyawan</p>
             </div>
             <div class="icon">
               <i class="fa fa-users fa-fw"></i>

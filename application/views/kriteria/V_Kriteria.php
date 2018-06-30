@@ -50,7 +50,7 @@
             <tr>
               <td align="center"><?php echo $no++; ?>.</td>
               <td align="center"><?php echo $data->kd_kriteria ?></td>
-              <td align="center"><?php echo $data->nm_kriteria ?></td>
+              <td align="center"><?php echo ucwords($data->nm_kriteria) ?></td>
               <td align="center"><a href="#ModalUpdateKriteria<?php echo $data->kd_kriteria ?>" class="btn btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a></td>
               <td align="center"><a href="#ModalHapusKriteria<?php echo $data->kd_kriteria ?>" class="btn btn-danger btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> </a></td>
             </tr>

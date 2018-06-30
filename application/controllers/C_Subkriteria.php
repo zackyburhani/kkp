@@ -6,7 +6,7 @@ class C_Subkriteria extends CI_Controller {
 	public function __construct() 
 	{
 		parent::__construct();
-		$this->load->model(['M_Subkriteria','M_Kriteria']);
+		$this->load->model(['M_Subkriteria','M_Kriteria','M_Calon']);
 	}
 
 	public function index()
@@ -54,17 +54,23 @@ class C_Subkriteria extends CI_Controller {
 
 	public function deleteSubkriteria()
 	{
-		$kd_subkriteria= $this->input->post('kd_subkriteria');
-		
-		$result = $this->M_Subkriteria->DeleteSubkriteria($kd_subkriteria);
-		
-		if ($result){
-			$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
-	   		redirect('C_Subkriteria');
-		}else{
-			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
-    		redirect('C_Subkriteria');
+		$kd_subkriteria = $this->input->post('kd_subkriteria');
+		$validasi 	    = $this->M_Calon->validasiHapus('kd_subkriteria','target2',$kd_subkriteria);
+
+		if($validasi->kd_subkriteria == $kd_subkriteria){
+			$this->session->set_flashdata('pesanGagal','Data Kriteria Terhubung Dengan Data Lain');
+			redirect('C_Subkriteria');
+		} else {
+			$result = $this->M_Subkriteria->DeleteSubkriteria($kd_subkriteria);
+			if ($result){
+				$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
+		   		redirect('C_Subkriteria');
+			}else{
+				$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
+	    		redirect('C_Subkriteria');
+			}
 		}
 	}
 
 }
+

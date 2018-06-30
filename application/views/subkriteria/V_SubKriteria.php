@@ -52,7 +52,7 @@
               <td align="center"><?php echo $no++; ?>.</td>
               <td align="center"><?php echo $data->kd_kriteria ?></td>
               <td align="center"><?php echo $data->kd_subkriteria ?></td>
-              <td align="center"><?php echo $data->nm_subkriteria ?></td>
+              <td align="center"><?php echo ucwords($data->nm_subkriteria) ?></td>
               <td align="center"><a href="#ModalUpdateSubkriteria<?php echo $data->kd_subkriteria ?>" class="btn btn-warning btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> </a></td>
               <td align="center"><a href="#ModalHapusSubkriteria<?php echo $data->kd_subkriteria ?>" class="btn btn-danger btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> </a></td>
             </tr>

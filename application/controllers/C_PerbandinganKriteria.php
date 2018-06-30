@@ -29,8 +29,6 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$k2 = $this->input->post('k2');	
 		$k3 = $this->input->post('k3');
 
-		// $baris = $this->M_Calon-> jumlah('kriteria');
-
 		$matriksA = [ 
 			[1     ,  $k1/1 , 1/$k2],
 			[1/$k1 ,   1    , 1/$k3],

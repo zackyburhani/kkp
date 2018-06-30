@@ -51,7 +51,7 @@
                 <?php $validasi = $this->M_TargetSubkriteria->hilangkanTombol($data->id_calon) ?>
                 <tr>
                   <td align="center"><?php echo $no++; ?>.</td>
-                  <td><?php echo $data->periode_masuk; ?></td>
+                  <td><?php echo tanggal($data->periode_masuk); ?></td>
                   <td><?php echo $data->id_calon; ?></td>
                   <td>
                     <a href="#ModalLihatKaryawan<?php echo $data->id_calon ?>" data-toggle="modal"><?php echo ucwords($data->nm_calon); ?></a>

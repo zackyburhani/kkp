@@ -2,7 +2,8 @@
 
 class M_HasilKeputusan extends CI_Model {
 
-    public function __construct(){
+    public function __construct()
+    {
 		parent::__construct();
 	}
 	
@@ -18,8 +19,8 @@ class M_HasilKeputusan extends CI_Model {
 		return $result->result();
 	}
 
-	public function simpanHasil($id_calon,$keterangan){
-
+	public function simpanHasil($id_calon,$keterangan)
+	{
 		$this->db->query("UPDATE hasil SET keterangan = '".$keterangan."' WHERE id_calon = '".$id_calon."'");	        
     }
 
@@ -29,10 +30,5 @@ class M_HasilKeputusan extends CI_Model {
 
         return $query->num_rows();
     }
-
- 
-
-
-	
-
+    
 }

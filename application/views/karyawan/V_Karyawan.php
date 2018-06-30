@@ -76,7 +76,7 @@
             <?php foreach($getAllCalon as $data){ ?>
               <tr>
                 <td align="center"><?php echo $no++; ?>.</td>
-                <td><?php echo $data->periode_masuk ?></td>
+                <td><?php echo tanggal($data->periode_masuk) ?></td>
                 <td><?php echo ucwords($data->nm_calon) ?></td>
                 <td align="center"><?php echo $data->no_telp ?></td>
                 <td align="center"><?php echo $data->pendidikan_terakhir ?></td>
@@ -107,7 +107,7 @@
             <?php foreach($getPeriodeCalon as $data){ ?>
               <tr>
                 <td align="center"><?php echo $no++; ?>.</td>
-                <td><?php echo $data->periode_masuk ?></td>
+                <td><?php echo tanggal($data->periode_masuk) ?></td>
                 <td><?php echo ucwords($data->nm_calon) ?></td>
                 <td align="center"><?php echo $data->no_telp ?></td>
                 <td align="center"><?php echo $data->pendidikan_terakhir ?></td>

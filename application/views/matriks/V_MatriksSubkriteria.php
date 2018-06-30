@@ -1,8 +1,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Dashboard
-      <small>Halaman Matriks Normalisasi Subriteria</small>
+      <small><b>Halaman Matriks Normalisasi Subkriteria</b></small>
     </h1>
   </section>
 
@@ -85,7 +84,7 @@
                 <tr>
                   <td align="center"><?php echo $no++."."; ?></td>
                   <td><?php echo $data->id_calon; ?></td>
-                  <td><?php echo $data->nm_calon ?></td>
+                  <td><?php echo ucwords($data->nm_calon) ?></td>
                     <?php $matriksTargetNilai = $this->M_MatriksSubkriteria->matriksTargetNilai($data->id_calon,$kriteria->kd_kriteria);?>
                     <?php foreach ($matriksTargetNilai as $data2) { ?>
                       <td align="center"><?php echo $data2->nilai_target2 ?></td>
@@ -125,7 +124,7 @@
                 <tr>
                   <td align="center"><?php echo $no++."."; ?></td>
                   <td><?php echo $data->id_calon ?></td>
-                  <td><?php echo $data->nm_calon ?></td>
+                  <td><?php echo ucwords($data->nm_calon) ?></td>
                     <?php $matriksNormalisasi = $this->M_MatriksSubkriteria->matriksNormalisasi($tanggalPeriode,$data->id_calon);?>
                     <?php if($kriteria->kd_kriteria == 'K1') { ?>
                       <?php foreach ($matriksNormalisasi as $data4) { ?>
@@ -178,7 +177,7 @@
                 <tr>
                   <td align="center"><?php echo $no++."."; ?></td>
                   <td><?php echo $data->id_calon ?></td>
-                  <td><?php echo $data->nm_calon ?></td>
+                  <td><?php echo ucwords($data->nm_calon) ?></td>
                 <?php } ?>
                 
                 <!-- Tabel Tambahan -->

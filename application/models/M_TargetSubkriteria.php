@@ -2,31 +2,30 @@
 
 class M_TargetSubkriteria extends CI_Model {
 
-    public function __construct(){
+    public function __construct()
+    {
 		parent::__construct();
 	}
 
-	public function simpanTarget($data){
-
+	public function simpanTarget($data)
+    {
 		$checkinsert = false;
-
 		try{
-
 			$this->db->insert('target2',$data);
 			$checkinsert = true;
 		}catch (Exception $ex) {
-
 			$checkinsert = false;
 		} 
-
 		return $checkinsert;
 	}
 
-    public function simpanNilaiTarget($id,$data,$id_calon){
+    public function simpanNilaiTarget($id,$data,$id_calon)
+    {
         $this->db->query("UPDATE target2 SET nilai_target2='".$data."' WHERE id_calon = '".$id_calon."'  and kd_subkriteria='".$id."'");
     }
 	
-	public function getAllCalon(){
+	public function getAllCalon()
+    {
 		$result = $this->db->get('calon');
 		return $result->result();
 	}
@@ -77,7 +76,8 @@ class M_TargetSubkriteria extends CI_Model {
         return $result->result();
     }
 
-    public function getAllSAW_sub($tgl){
+    public function getAllSAW_sub($tgl)
+    {
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,periode_masuk,
                 (SELECT target2.nilai_target2 FROM target2 WHERE target2.kd_subkriteria = 'SK1' AND id_calon = calon_id) as SK1,
@@ -103,4 +103,5 @@ class M_TargetSubkriteria extends CI_Model {
         $result = $this->db->query("SELECT * FROM target2 where id_calon = '$id_calon' and nilai_target2 != 0");
         return $result->result();
     }
+
 }

@@ -103,18 +103,20 @@ class C_Karyawan extends CI_Controller {
 	public function deleteKaryawan()
 	{
 		$id_calon = $this->input->post('id_calon');
+		$validasi = $this->M_Calon->validasiHapus('id_calon','target2',$id_calon);
 
-		$validasi = $this->M_Calon->validasiHapus('id_calon','calon',$id_calon);
-
-		echo json_encode($validasi);die();
-
-		$result = $this->M_Calon->DeleteCalon($id_calon);
-		if ($result){
-			$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
+		if($validasi->id_calon == $id_calon){
+			$this->session->set_flashdata('pesanGagal','Data karyawan Terhubung Dengan Data Lain');
 	   		redirect('C_Karyawan');
-		}else{
-			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
-    		redirect('C_Karyawan');
+		} else {
+			$result = $this->M_Calon->DeleteCalon($id_calon);
+			if ($result){
+				$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
+		   		redirect('C_Karyawan');
+			}else{
+				$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Dihapus');
+	    		redirect('C_Karyawan');
+			}
 		}
 	}
 
@@ -157,7 +159,17 @@ class C_Karyawan extends CI_Controller {
         // mencetak string
         $pdf->Cell(186,10,'PT. BIYA MAESTRO HARDSCAPE',0,1,'C');
         $pdf->Cell(9,1,'',0,1);
-        $pdf->SetFont('Arial','B',12);
+        $pdf->SetFont('Arial','',9);
+        $pdf->Cell(186,1,'Jl. BPKP No. 37 Sudimara Pinang, Kota Tangerang',0,1,'C');
+        $pdf->Cell(186,7,'Telp / Fax : 021-22927310',0,1,'C');
+        $pdf->Cell(186,1,'e-mail : maestro_hardscape@yahoo.com',0,1,'C');
+
+        $pdf->Line(10, 35, 210-11, 35); 
+        $pdf->SetLineWidth(0.5); 
+		$pdf->Line(10, 35, 210-11, 35);
+        $pdf->SetLineWidth(0);     
+			
+		$pdf->ln(10);
         
         //penilaian Kriteria
         // $pdf->Cell(190,10,'Penilaian Kriteria ',0,1,'C');
@@ -182,7 +194,9 @@ class C_Karyawan extends CI_Controller {
 
         // //spasi
         // $pdf->Cell(10,5,'',0,1);
-
+		
+		//periode masuk
+		$pdf->Cell(1,1,"Periode Masuk : ".tanggal($periode),0,1,'L');
         //penilaian subkriteria kompetensi
         $pdf->SetFont('Arial','B',12);
         $pdf->Cell(190,15,'Penilaian Subkriteria Kompetensi ',0,1,'C');
@@ -200,7 +214,7 @@ class C_Karyawan extends CI_Controller {
         $no = 1;
         foreach ($getPeriodeCalon as $row){
         	$pdf->Cell(10,6,$no++.".",1,0,'C');
-            $pdf->Cell(50,6,$row->nm_calon,1,0);
+            $pdf->Cell(50,6, ucwords($row->nm_calon),1,0);
             $pdf->Cell(43,6,"",1,0,'C');
             $pdf->Cell(43,6,"",1,0);
             $pdf->Cell(43,6,"",1,1,'C');
@@ -225,7 +239,7 @@ class C_Karyawan extends CI_Controller {
         $no = 1;
         foreach ($getPeriodeCalon as $row){
         	$pdf->Cell(10,6,$no++.".",1,0,'C');
-            $pdf->Cell(50,6,$row->nm_calon,1,0);
+            $pdf->Cell(50,6,ucwords($row->nm_calon),1,0);
             $pdf->Cell(65,6,"",1,0,'C');
             $pdf->Cell(64,6,"",1,1,'C');
         }
@@ -249,7 +263,7 @@ class C_Karyawan extends CI_Controller {
         $no = 1;
         foreach ($getPeriodeCalon as $row){
         	$pdf->Cell(10,6,$no++.".",1,0,'C');
-            $pdf->Cell(50,6,$row->nm_calon,1,0);
+            $pdf->Cell(50,6,ucwords($row->nm_calon),1,0);
             $pdf->Cell(65,6,"",1,0,'C');
             $pdf->Cell(64,6,"",1,1,'C');
         }

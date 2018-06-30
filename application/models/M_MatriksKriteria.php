@@ -2,7 +2,8 @@
 
 class M_MatriksKriteria extends CI_Model {
 
-    public function __construct(){
+    public function __construct()
+    {
 		parent::__construct();
 	}
 
@@ -48,7 +49,8 @@ class M_MatriksKriteria extends CI_Model {
         return $result->result();
     }
 
-    public function getAllSAW($tgl){
+    public function getAllSAW($tgl)
+    {
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,periode_masuk,
                 (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K1' AND id_calon = calon_id) as K1,
@@ -70,4 +72,5 @@ class M_MatriksKriteria extends CI_Model {
         $result = $this->db->query("SELECT * FROM hasil JOIN calon on hasil.id_calon = calon.id_calon WHERE calon.periode_masuk = '$tgl'");
         return $result->result();
     }
+    
 }

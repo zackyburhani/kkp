@@ -122,7 +122,7 @@ class C_TargetSubkriteria extends CI_Controller {
 		} return $array;
 	}
 
-
+	//kayanya ga kepake
 	public function HitungTarget()
 	{
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();

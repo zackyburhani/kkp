@@ -1,8 +1,9 @@
-    <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class M_MatriksSubkriteria extends CI_Model {
 
-    public function __construct(){
+    public function __construct()
+    {
 		parent::__construct();
 	}
 
@@ -71,5 +72,6 @@ class M_MatriksSubkriteria extends CI_Model {
     {
         $result = $this->db->query("SELECT * FROM target JOIN calon on target.id_calon = calon.id_calon WHERE calon.periode_masuk = '$tgl'");
         return $result->result();
-    }   
+    }  
+     
 }

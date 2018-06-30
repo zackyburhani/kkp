@@ -23,7 +23,7 @@
                  <tr>
                   <td width="200px">Tanggal Lahir</td>
                   <td>:</td>
-                  <td><?php echo $data->tgl_lahir ?></td>
+                  <td><?php echo tanggal($data->tgl_lahir) ?></td>
                 </tr>
                  <tr>
                   <td width="200px">Alamat</td>

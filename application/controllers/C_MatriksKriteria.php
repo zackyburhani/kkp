@@ -11,11 +11,6 @@ class C_MatriksKriteria extends CI_Controller {
 
 	public function index()
 	{	
-		// $a = "";
-		// $matriksISI = $this->M_MatriksSubkriteria->matriksNormalisasiISI($a);
-
-		// $data = ['matriksISI'=>$matriksISI];
-
 		$this->load->view('template/V_Header');
 		$this->load->view('template/V_Sidebar');
 		$this->load->view('matriks/V_MatriksKriteria');
@@ -90,8 +85,8 @@ class C_MatriksKriteria extends CI_Controller {
 
 	public function total($periode)
 	{
-		$getAllSAW 		 = $this->M_MatriksKriteria->getAllSAW($periode);
-		$max 			 = $this->M_MatriksKriteria->max();
+		$getAllSAW = $this->M_MatriksKriteria->getAllSAW($periode);
+		$max 	   = $this->M_MatriksKriteria->max();
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {
@@ -120,14 +115,13 @@ class C_MatriksKriteria extends CI_Controller {
 					(($data->K3/$key->maxK3)*$bobot[2]),4);
 			}
 		}
-
 		return $total;
 	}
 
 	public function simpanHasil($tanggalPeriode)
 	{
 		$periode_masuk = $this->input->post('periode_masuk');
-		$barisCalon = $this->M_MatriksSubkriteria->barisCalon($tanggalPeriode);
+		$barisCalon    = $this->M_MatriksSubkriteria->barisCalon($tanggalPeriode);
 
 		$name = "id_calon";
 		$calon = array();
@@ -141,7 +135,7 @@ class C_MatriksKriteria extends CI_Controller {
 		$i=0;
 		while($i<$barisCalon){
 			$dataSAW = [
-				'id_calon'		=> $calon[$i],
+				'id_calon'	=> $calon[$i],
 				'hasil_akhir'	=> $total[$i]
 			];
 			$result = $this->M_MatriksKriteria->simpanHasilSAW($dataSAW);

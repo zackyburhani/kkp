@@ -11,12 +11,9 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 	public function index()
 	{
-		// $a = "";
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
-		// $matriksISI = $this->M_MatriksSubkriteria->matriksNormalisasiISI($a);
-
+		
 		$data = [
-			// 'matriksISI'=>$matriksISI,
 			'getAllKriteria' 	 => $getAllKriteria
 		];
 
