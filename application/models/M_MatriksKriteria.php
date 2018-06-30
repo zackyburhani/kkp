@@ -8,26 +8,35 @@ class M_MatriksKriteria extends CI_Model {
 
     public function nilaiTarget($id_calon)
     {
-        $result = $this->db->query("SELECT * FROM saw where id_calon='".$id_calon."'");
+        $result = $this->db->query("
+            SELECT calon.id_calon as calon_id,periode_masuk,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K1' AND id_calon = calon_id) as K1,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K2' AND id_calon = calon_id) as K2,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K3' AND id_calon = calon_id) as K3
+            FROM target2,calon WHERE calon.id_calon = target2.id_calon and calon.id_calon = '$id_calon' GROUP by calon.id_calon
+        ");
         return $result->result();
     }
         
     public function matriksNormalisasi($tgl,$id_calon)
     {
-        $result = $this->db->query("SELECT saw.id_calon,calon.periode_masuk,K1,K2,K3 FROM calon, saw WHERE saw.periode_masuk = '".$tgl."' and saw.id_calon = '".$id_calon."' GROUP by K1");
+        $result = $this->db->query("
+            SELECT calon.id_calon as calon_id,periode_masuk,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K1' AND id_calon = calon_id) as K1,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K2' AND id_calon = calon_id) as K2,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K3' AND id_calon = calon_id) as K3
+            FROM target2,calon WHERE calon.id_calon = target2.id_calon and periode_masuk = '$tgl' and calon.id_calon = '$id_calon' GROUP by calon.id_calon
+        ");
         return $result->result();
     }
 
     public function max()
     {
-        $result = $this->db->query("SELECT 
-
-            (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K1') as maxK1,
-
-            (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K2') as maxK2,
-
-            (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K3') as maxK3
-
+        $result = $this->db->query("
+            SELECT 
+                (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K1') as maxK1,
+                (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K2') as maxK2,
+                (SELECT MAX(nilai_target) FROM target WHERE target.kd_kriteria = 'K3') as maxK3
             FROM target2 GROUP by maxK1"
         );
         return $result->result();
@@ -40,7 +49,13 @@ class M_MatriksKriteria extends CI_Model {
     }
 
     public function getAllSAW($tgl){
-        $result = $this->db->query("SELECT * FROM saw JOIN calon on calon.id_calon = saw.id_calon WHERE calon.periode_masuk = '$tgl'");
+        $result = $this->db->query("
+            SELECT calon.id_calon as calon_id,periode_masuk,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K1' AND id_calon = calon_id) as K1,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K2' AND id_calon = calon_id) as K2,
+                (SELECT target.nilai_target FROM target WHERE target.kd_kriteria = 'K3' AND id_calon = calon_id) as K3
+            FROM target2,calon WHERE calon.id_calon = target2.id_calon and periode_masuk = '$tgl' GROUP by calon.id_calon
+        ");
         return $result->result();
     }
 

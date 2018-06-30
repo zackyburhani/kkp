@@ -77,7 +77,7 @@
               <tr>
                 <td align="center"><?php echo $no++; ?>.</td>
                 <td><?php echo $data->periode_masuk ?></td>
-                <td><?php echo $data->nm_calon ?></td>
+                <td><?php echo ucwords($data->nm_calon) ?></td>
                 <td align="center"><?php echo $data->no_telp ?></td>
                 <td align="center"><?php echo $data->pendidikan_terakhir ?></td>
                 <td align="center"><a href="#ModalLihatKaryawan<?php echo $data->id_calon ?>" class="btn btn-info btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-eye-open"></span> </a></td>
@@ -108,7 +108,7 @@
               <tr>
                 <td align="center"><?php echo $no++; ?>.</td>
                 <td><?php echo $data->periode_masuk ?></td>
-                <td><?php echo $data->nm_calon ?></td>
+                <td><?php echo ucwords($data->nm_calon) ?></td>
                 <td align="center"><?php echo $data->no_telp ?></td>
                 <td align="center"><?php echo $data->pendidikan_terakhir ?></td>
                 <td align="center"><a href="#ModalLihatKaryawan<?php echo $data->id_calon ?>" class="btn btn-info btn-circle" data-toggle="modal"><span class="glyphicon glyphicon-eye-open"></span> </a></td>

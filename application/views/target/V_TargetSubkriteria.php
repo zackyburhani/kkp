@@ -54,7 +54,7 @@
                   <td><?php echo $data->periode_masuk; ?></td>
                   <td><?php echo $data->id_calon; ?></td>
                   <td>
-                    <a href="#ModalLihatKaryawan<?php echo $data->id_calon ?>" data-toggle="modal"><?php echo $data->nm_calon; ?></a>
+                    <a href="#ModalLihatKaryawan<?php echo $data->id_calon ?>" data-toggle="modal"><?php echo ucwords($data->nm_calon); ?></a>
                   </td>
                   <td align="center">
                     <?php if($validasi != null) { ?>

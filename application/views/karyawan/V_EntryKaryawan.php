@@ -13,7 +13,7 @@
           </div>
 
           <div class="form-group"><label>Periode Masuk</label>
-            <input required class="form-control required text-capitalize" value="" data-placement="top" data-trigger="manual" type="date" name="periode_masuk">
+            <input required class="form-control required text-capitalize" value="<?php echo date('mdY') ?>" data-placement="top" data-trigger="manual" type="date" name="periode_masuk">
           </div>
                 
           <div class="form-group"><label>Nama Calon Karyawan</label>
@@ -42,7 +42,7 @@
 
           <div class="form-group">
             <label>Nomor Telepon</label>
-            <input required class="form-control required" placeholder="Input Nomor Telepon" data-placement="top" data-trigger="manual" type="text" name="no_telp" id="no_telp" maxlength="13">
+            <input required class="form-control required" placeholder="Input Nomor Telepon" data-placement="top" data-trigger="manual" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="no_telp" id="no_telp" maxlength="13">
           </div>
 
           <div class="form-group"><label>Pendidikan Terakhir</label>

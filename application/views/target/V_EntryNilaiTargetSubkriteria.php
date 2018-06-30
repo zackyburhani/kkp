@@ -13,7 +13,7 @@
               <?php $SK=1; ?>
               <?php foreach($getAllSubkriteria as $data2){ ?>
                 <div class="form-group"><label><?php echo $data2->nm_subkriteria ?></label>
-                  <input required class="form-control" placeholder="Masukkan Nilai Target <?php echo $data2->nm_subkriteria ?>" data-placement="top" data-trigger="manual" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" min="0" max="100" name="nilai_target2<?php echo $SK; ?>">
+                  <input required class="form-control" placeholder="Masukkan Nilai Target <?php echo $data2->nm_subkriteria ?>" data-placement="top" data-trigger="manual" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" min="10" max="100" name="nilai_target2<?php echo $SK; ?>">
                   <input type="hidden" name="id_calon" value="<?php echo $data->id_calon; ?>">
                   <input type="hidden" name="periode_masuk" value="<?php echo $data->periode_masuk?>">
                   <input type="hidden" name="kd_subkriteria<?php echo $SK ?>" value="SK<?php echo $SK ?>">

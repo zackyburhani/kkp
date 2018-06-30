@@ -242,8 +242,8 @@
     
 <?php } ?>
 
-<?php if($matriksISI != null) { ?>
 <?php if(isset($getPeriodeCalon)) { ?>
+<?php if($matriksISI != null) { ?>
 <?php $hilangkanTombol = $this->M_MatriksSubkriteria->hilangkanTombol($tanggalPeriode); ?>
 <form action="<?php echo site_url('C_MatriksSubkriteria/simpanNilai/'.$tanggalPeriode) ?>" method="POST">
 <?php $no=1; ?>

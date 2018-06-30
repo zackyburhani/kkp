@@ -34,12 +34,6 @@ class C_MatriksKriteria extends CI_Controller {
 
 	public function periode()
 	{
-		if ($this->db->table_exists('saw_sub') == false )
-		{
-			$this->session->set_flashdata('pesanGagal','Anda Belum Memasukan Nilai Target');
-			redirect('C_MatriksKriteria');
-		}
-
 		$periode 		 = $this->input->get('periode_masuk');
 		$getPeriodeCalon = $this->M_TargetSubkriteria->periode($periode);
 		$getAllKriteria  = $this->M_Kriteria->getAllKriteria();

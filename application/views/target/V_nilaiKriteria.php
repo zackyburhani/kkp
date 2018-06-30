@@ -18,7 +18,7 @@
                 <tr>
                   <td width="200px">Nama Calon Karyawan</td>
                   <td>:</td>
-                  <td><?php echo $data->nm_calon ?></td>
+                  <td><?php echo ucwords($data->nm_calon) ?></td>
                 </tr>
                 <?php $nilai = $this->M_TargetKriteria->nilai($data->id_calon); ?>
                 <?php foreach($nilai as $detil) { ?>

@@ -103,9 +103,12 @@ class C_Karyawan extends CI_Controller {
 	public function deleteKaryawan()
 	{
 		$id_calon = $this->input->post('id_calon');
-		
+
+		$validasi = $this->M_Calon->validasiHapus('id_calon','calon',$id_calon);
+
+		echo json_encode($validasi);die();
+
 		$result = $this->M_Calon->DeleteCalon($id_calon);
-		
 		if ($result){
 			$this->session->set_flashdata('pesan','Data Berhasil Dihapus');
 	   		redirect('C_Karyawan');

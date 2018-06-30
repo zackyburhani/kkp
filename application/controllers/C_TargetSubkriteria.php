@@ -88,47 +88,7 @@ class C_TargetSubkriteria extends CI_Controller {
 			$result = $this->M_TargetSubkriteria->simpanTarget($data);
 		}
 
-		/////////////////////////////table bayangan//////////////////////////
-
-		// $dataSAW_sub = [
-		// 	'id_calon'  	=> $id_calon,
-		// 	'periode_masuk' => $periode_masuk,
-		// 	'SK1' 			=> $nilai_target1,
-		// 	'SK2'			=> $nilai_target2,
-		// 	'SK3'			=> $nilai_target3,
-		// 	'SK4'			=> $nilai_target4,
-		// 	'SK5'			=> $nilai_target5,
-		// 	'SK6'			=> $nilai_target6,
-		// 	'SK7'			=> $nilai_target7,
-		// ];
-
-		// $getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
-		// $getAllKriteria    = $this->M_Kriteria->getAllKriteria();
-
-		// if ($this->db->table_exists('saw_sub') == false )
-		// {
-		// 	//buat tabel saw_sub
-		// 	$this->M_TargetSubkriteria->createTable($getAllSubkriteria);
-		// 	//buat tabel saw
-		// 	$this->M_MatriksSubkriteria->createTable($getAllKriteria);
-		// }
-
-		// $dataSAW_sub = [
-		// 	'id_calon'  	=> $id_calon,
-		// 	'periode_masuk' => $periode_masuk,
-		// 	'SK1' 			=> $nilai_target2[0],
-		// 	'SK2' 			=> $nilai_target2[1],
-		// 	'SK3' 			=> $nilai_target2[2],
-		// 	'SK4' 			=> $nilai_target2[3],
-		// 	'SK5' 			=> $nilai_target2[4],
-		// 	'SK6' 			=> $nilai_target2[5],
-		// 	'SK7' 			=> $nilai_target2[6]
-		// ];			
-		// $result2 = $this->M_TargetSubkriteria->simpanTargetSAW($dataSAW_sub);
-
-		/////////////////////////////table bayangan//////////////////////////
-
-		if ($result2){
+		if ($result){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
 	   		redirect('C_TargetSubkriteria/periode?periode_masuk='.$periode_masuk);
 		}else{
@@ -172,7 +132,7 @@ class C_TargetSubkriteria extends CI_Controller {
 
 		$max = $this->M_TargetSubkriteria->max();
 		$getAllSAW_sub = $this->M_TargetSubkriteria->getAllSAW_sub();
-		
+
 
 
 		$bobot = array();

@@ -18,7 +18,7 @@
                 <tr>
                   <td width="200px">Nama Calon Karyawan</td>
                   <td>:</td>
-                  <td><?php echo $data->nm_calon ?></td>
+                  <td><?php echo ucwords($data->nm_calon) ?></td>
                 </tr>
                  <tr>
                   <td width="200px">Tanggal Lahir</td>
@@ -28,7 +28,7 @@
                  <tr>
                   <td width="200px">Alamat</td>
                   <td>:</td>
-                  <td><?php echo $data->alamat ?></td>
+                  <td><?php echo ucwords($data->alamat) ?></td>
                 </tr>
                  <tr>
                   <td width="200px">Jenis Kelamin</td>

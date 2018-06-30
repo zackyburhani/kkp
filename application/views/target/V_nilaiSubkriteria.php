@@ -18,12 +18,12 @@
                 <tr>
                   <td width="200px">Nama Calon Karyawan</td>
                   <td>:</td>
-                  <td><?php echo $data->nm_calon ?></td>
+                  <td><?php echo ucwords($data->nm_calon) ?></td>
                 </tr>
                 <?php $nilai = $this->M_TargetSubkriteria->nilai($data->id_calon); ?>
                 <?php foreach($nilai as $detil) { ?>
                   <tr>
-                    <td width="200px"><?php echo $detil->nm_subkriteria ?></td>
+                    <td width="200px"><?php echo ucwords($detil->nm_subkriteria) ?></td>
                     <td>:</td>
                     <td><?php echo $detil->nilai_target2 ?></td>
                   </tr>

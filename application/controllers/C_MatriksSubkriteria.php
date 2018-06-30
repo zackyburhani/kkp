@@ -62,11 +62,6 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 	public function periode()
 	{
-		if ($this->db->table_exists('saw_sub') == false )
-		{
-			$this->session->set_flashdata('pesanGagal','Anda Belum Memasukan Nilai Target');
-			redirect('C_MatriksSubkriteria');
-		}
 
 		$periode 		   = $this->input->get('periode_masuk');
 		$getPeriodeCalon   = $this->M_TargetSubkriteria->periode($periode);
@@ -76,7 +71,9 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$nilaiDetail       = $this->M_TargetSubkriteria->nilaiDetail();
 
 		$max 			   = $this->M_TargetSubkriteria->max();
+
 		$getAllSAW_sub 	   = $this->M_TargetSubkriteria->getAllSAW_sub($periode);
+
 		$matriksISI 	   = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
 
 		$maxLoop = array();
@@ -229,20 +226,6 @@ class C_MatriksSubkriteria extends CI_Controller {
 		for($i=1; $i<=$barisCalon; $i++) {
 			$var = $name.$i;
 			$calon[] = $this->input->post($var);	
-		}
-
-		//simpan ke table saw
-		$i=0;
-		while($i<$barisCalon){
-			$dataSAW = [
-				'id_calon'		=> $calon[$i],
-				'periode_masuk' => $tanggalPeriode,
-				'K1'			=> $total1[$i],
-				'K2'			=> $total2[$i],
-				'K3'			=> $total3[$i]
-			];
-			$result = $this->M_MatriksSubkriteria->simpanTargetSAW($dataSAW);
-			$i++;
 		}
 
 		//simpan ke table target

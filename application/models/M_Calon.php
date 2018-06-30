@@ -103,4 +103,13 @@ class M_Calon extends CI_Model {
     	return $query->num_rows();
   	}
 
+  	public function validasiHapus($kolom,$table,$id)
+    {
+     	$result = $this->db->query("SELECT $kolom FROM $table WHERE $kolom = '$id'");
+     	if($result == null){
+     		return FALSE;
+     	} else {
+     		return TRUE;
+     	}
+    }
 }
