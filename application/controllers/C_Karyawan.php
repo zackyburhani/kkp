@@ -12,11 +12,11 @@ class C_Karyawan extends CI_Controller {
 	//halaman awal semua calon karyawan
 	public function index()
 	{
-		$getAllCalon = $this->M_Calon->getAllCalon();
-		$getKodeCalon = $this->M_Calon->getKodeCalon();
+		$getAllCalon 	= $this->M_Calon->getAllCalon();
+		$getKodeCalon 	= $this->M_Calon->getKodeCalon();
 		$data = [
 			'getKodeCalon' => $getKodeCalon,
-			'getAllCalon' => $getAllCalon
+			'getAllCalon'  => $getAllCalon
 		];
 		$this->load->view('template/V_Header');
 		$this->load->view('template/V_Sidebar');
@@ -31,26 +31,26 @@ class C_Karyawan extends CI_Controller {
 	//fungsi menambah data calon karyawan
 	public function tambahKaryawan()
 	{
-		$id_calon = $this->input->post('id_calon');
-		$nm_calon = $this->input->post('nm_calon');
-		$tgl_lahir = $this->input->post('tgl_lahir');
-		$alamat = $this->input->post('alamat');
-		$jk = $this->input->post('jk');
-		$email = $this->input->post('email');
-		$no_telp = $this->input->post('no_telp');
+		$id_calon 			= $this->input->post('id_calon');
+		$nm_calon 			= $this->input->post('nm_calon');
+		$tgl_lahir 			= $this->input->post('tgl_lahir');
+		$alamat 			= $this->input->post('alamat');
+		$jk 				= $this->input->post('jk');
+		$email 				= $this->input->post('email');
+		$no_telp 			= $this->input->post('no_telp');
 		$pendidikanTerakhir = $this->input->post('pendidikanTerakhir');
-		$periode_masuk = $this->input->post('periode_masuk');
+		$periode_masuk 		= $this->input->post('periode_masuk');
 
 		$data = [
-			'id_calon' => $id_calon,
-			'nm_calon' => $nm_calon,
-			'tgl_lahir' => $tgl_lahir,
-			'alamat' => $alamat,
-			'jk' => strtoupper($jk),
-			'email' => $email,
-			'no_telp' => $no_telp,
-			'pendidikan_terakhir' => $pendidikanTerakhir,
-			'periode_masuk' => $periode_masuk
+			'id_calon' 				=> $id_calon,
+			'nm_calon' 				=> $nm_calon,
+			'tgl_lahir' 			=> $tgl_lahir,
+			'alamat' 				=> $alamat,
+			'jk' 					=> strtoupper($jk),
+			'email' 				=> $email,
+			'no_telp' 				=> $no_telp,
+			'pendidikan_terakhir' 	=> $pendidikanTerakhir,
+			'periode_masuk' 		=> $periode_masuk
 		];
 
 		$result = $this->M_Calon->tambahCalon($data);
@@ -67,25 +67,25 @@ class C_Karyawan extends CI_Controller {
 	//fungsi mengupdate data calon karyawan
 	public function updateKaryawan()
 	{
-		$id_calon = $this->input->post('id_calon');
-		$nm_calon = $this->input->post('nm_calon');
-		$tgl_lahir = $this->input->post('tgl_lahir');
-		$alamat = $this->input->post('alamat');
-		$jk = $this->input->post('jk');
-		$email = $this->input->post('email');
-		$no_telp = $this->input->post('no_telp');
+		$id_calon 			= $this->input->post('id_calon');
+		$nm_calon 			= $this->input->post('nm_calon');
+		$tgl_lahir 			= $this->input->post('tgl_lahir');
+		$alamat 			= $this->input->post('alamat');
+		$jk	 				= $this->input->post('jk');
+		$email 				= $this->input->post('email');
+		$no_telp			= $this->input->post('no_telp');
 		$pendidikanTerakhir = $this->input->post('pendidikanTerakhir');
-		$periode_masuk = $this->input->post('periode_masuk');
+		$periode_masuk 		= $this->input->post('periode_masuk');
 
 		$data = [
-			'nm_calon' => $nm_calon,
-			'tgl_lahir' => $tgl_lahir,
-			'alamat' => $alamat,
-			'jk' => $jk,
-			'email' => $email,
-			'no_telp' => $no_telp,
-			'pendidikan_terakhir' => $pendidikanTerakhir,
-			'periode_masuk' => $periode_masuk
+			'nm_calon' 				=> $nm_calon,
+			'tgl_lahir' 			=> $tgl_lahir,
+			'alamat' 				=> $alamat,
+			'jk' 					=> $jk,
+			'email'			 		=> $email,
+			'no_telp' 				=> $no_telp,
+			'pendidikan_terakhir' 	=> $pendidikanTerakhir,
+			'periode_masuk'	 		=> $periode_masuk
 		];
 
 		$result = $this->M_Calon->UpdateCalon($id_calon, $data);
@@ -123,16 +123,16 @@ class C_Karyawan extends CI_Controller {
 	//fungsi menampilkan data calon berdasarkan periode masuk
 	public function periode()
 	{
-		$periode = $this->input->get('periode_masuk');
+		$periode 		 = $this->input->get('periode_masuk');
 		$getPeriodeCalon = $this->M_Calon->periode($periode);
-		$getKodeCalon = $this->M_Calon->getKodeCalon();
-		$getAllCalon = $this->M_Calon->getAllCalon();
+		$getKodeCalon 	 = $this->M_Calon->getKodeCalon();
+		$getAllCalon 	 = $this->M_Calon->getAllCalon();
 		
 		$data = [
 			'getPeriodeCalon' => $getPeriodeCalon,
-			'getKodeCalon' => $getKodeCalon,
-			'getAllCalon' => $getAllCalon,
-			'tanggalPeriode' => $periode
+			'getKodeCalon' 	  => $getKodeCalon,
+			'getAllCalon' 	  => $getAllCalon,
+			'tanggalPeriode'  => $periode
 		];
 
 		$this->load->view('template/V_Header');
