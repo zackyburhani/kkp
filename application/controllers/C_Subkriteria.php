@@ -11,10 +11,12 @@ class C_Subkriteria extends CI_Controller {
 
 	public function index()
 	{
-		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
+		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
-		$getKdSubkriteria = $this->M_Subkriteria->getKdSubkriteria();
+		$getKdSubkriteria  = $this->M_Subkriteria->getKdSubkriteria();
+		$getNmKSubkriteria = $this->M_Subkriteria->getNmKSubkriteria();
 		$data = [
+			'getNmKSubkriteria' => $getNmKSubkriteria,
 			'getKdSubkriteria' => $getKdSubkriteria,
 			'getAllSubkriteria' => $getAllSubkriteria,
 			'getAllKriteria' => $getAllKriteria
@@ -48,6 +50,28 @@ class C_Subkriteria extends CI_Controller {
 	   		redirect('C_Subkriteria');
 		}else{
 			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Disimpan');
+    		redirect('C_Subkriteria');
+		}
+	}
+
+	public function updateSubkriteria()
+	{
+		$kd_kriteria    = $this->input->post('kriteria');
+		$nm_subkriteria = $this->input->post('nm_subkriteria');
+		$kd_subkriteria = $this->input->post('kd_subkriteria');
+
+		$data = [
+			'kd_kriteria' 	 => $kd_kriteria,
+			'nm_subkriteria' => $nm_subkriteria
+		];
+		
+		$result = $this->M_Subkriteria->UpdateSubkriteria($kd_subkriteria,$data);
+		
+		if ($result){
+			$this->session->set_flashdata('pesan','Data Berhasil Diubah');
+	   		redirect('C_Subkriteria');
+		}else{
+			$this->session->set_flashdata('pesanGagal','Data Tidak Berhasil Diubah');
     		redirect('C_Subkriteria');
 		}
 	}

@@ -18,7 +18,6 @@ class M_Subkriteria extends CI_Model {
 		}
 		return $checkinsert;
 	}
-
 	
 	public function getAllSubkriteria()
 	{
@@ -29,6 +28,12 @@ class M_Subkriteria extends CI_Model {
 	public function getSubkriteria($id)
 	{
 		$result = $this->db->query("SELECT * FROM subkriteria WHERE kd_kriteria = '".$id."'");
+		return $result->result();
+	}
+
+	public function getNmKSubkriteria()
+	{
+		$result = $this->db->query("SELECT nm_kriteria,subkriteria.kd_kriteria FROM subkriteria JOIN kriteria ON subkriteria.kd_kriteria = kriteria.kd_kriteria GROUP BY nm_kriteria ORDER BY 2");
 		return $result->result();
 	}
 
