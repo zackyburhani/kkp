@@ -11,9 +11,9 @@ class C_Kriteria extends CI_Controller {
 	public function index()
 	{
 		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
-		$getKdKriteria = $this->M_Kriteria->getKdKriteria();
+		$getKdKriteria  = $this->M_Kriteria->getKdKriteria();
 		$data = [
-			'getKdKriteria' => $getKdKriteria,
+			'getKdKriteria'  => $getKdKriteria,
 			'getAllKriteria' => $getAllKriteria
 		];
 		$this->load->view('template/V_Header');
