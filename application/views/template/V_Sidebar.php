@@ -118,7 +118,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('C_LapRekapitulasi'); ?>">
+          <a href="<?php echo site_url('C_LapRekapitulasiPenilaian'); ?>">
             <i class="fa fa-file-text"></i> <span>Rekapitulasi Penilaian</span>
           </a>
         </li>

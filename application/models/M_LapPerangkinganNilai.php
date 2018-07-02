@@ -10,5 +10,10 @@ class M_LapPerangkinganNilai extends CI_Model {
         $result = $this->db->query("SELECT calon.id_calon, calon.nm_calon, hasil.hasil_akhir, hasil.keterangan from calon join hasil on calon.id_calon=hasil.id_calon WHERE calon.periode_masuk='".$periode_masuk."' order by hasil_akhir DESC");
         return $result->result();
     }
+
+    public function ExportExcel($periode_masuk){
+        $result = $this->db->query("SELECT calon.id_calon, calon.nm_calon, hasil.hasil_akhir, hasil.keterangan from calon join hasil on calon.id_calon=hasil.id_calon WHERE calon.periode_masuk='".$periode_masuk."' order by hasil_akhir DESC");
+        return $result;
+    }
     
 }
