@@ -12,7 +12,7 @@
             <div class="form-group"><label>Nama Kriteria</label>
               <div class="custom-select my-1 mr-sm-2">
                 <select class="form-control" name="kriteria">
-                  <?php foreach($getNmKSubkriteria as $kr){ ?>
+                  <?php foreach($getNmKriteria as $kr){ ?>
                    <option <?php if($kr->kd_kriteria == $data->kd_kriteria): echo "selected"; endif; ?> value="<?php echo $kr->kd_kriteria ?>"><?php echo $kr->nm_kriteria ?></option>
                   <?php } ?>
                 </select>

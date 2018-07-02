@@ -31,7 +31,7 @@ class M_Subkriteria extends CI_Model {
 		return $result->result();
 	}
 
-	public function getNmKSubkriteria()
+	public function getNmKriteria()
 	{
 		$result = $this->db->query("SELECT nm_kriteria,subkriteria.kd_kriteria FROM subkriteria JOIN kriteria ON subkriteria.kd_kriteria = kriteria.kd_kriteria GROUP BY nm_kriteria ORDER BY 2");
 		return $result->result();

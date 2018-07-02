@@ -103,4 +103,10 @@ class M_Kriteria extends CI_Model {
 		}
 		return $checkupdate;
 	}
+
+	public function jumlah($table)
+  	{
+    	$query = $this->db->query("SELECT * FROM $table");
+    	return $query->num_rows();
+  	}
 }

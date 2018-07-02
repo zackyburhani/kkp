@@ -24,7 +24,6 @@ class C_PerbandinganKriteria extends CI_Controller {
  
 	public function perbandinganMatriks()
 	{
-		
 		$k1 = $this->input->post('k1');	
 		$k2 = $this->input->post('k2');	
 		$k3 = $this->input->post('k3');
@@ -94,7 +93,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$k2 = $this->input->post('K2');	
 		$k3 = $this->input->post('K3');
 
-		$baris = $this->M_Calon->jumlah('kriteria');
+		$baris = $this->M_Kriteria->jumlah('kriteria');
 
 		$n = 1;
 		$array = array();

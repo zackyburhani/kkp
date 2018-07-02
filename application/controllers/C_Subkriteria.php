@@ -14,12 +14,12 @@ class C_Subkriteria extends CI_Controller {
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
 		$getKdSubkriteria  = $this->M_Subkriteria->getKdSubkriteria();
-		$getNmKSubkriteria = $this->M_Subkriteria->getNmKSubkriteria();
+		$getNmKriteria 	   = $this->M_Subkriteria->getNmKriteria();
 		$data = [
-			'getNmKSubkriteria' => $getNmKSubkriteria,
-			'getKdSubkriteria' => $getKdSubkriteria,
+			'getNmKriteria'		=> $getNmKriteria,
+			'getKdSubkriteria'  => $getKdSubkriteria,
 			'getAllSubkriteria' => $getAllSubkriteria,
-			'getAllKriteria' => $getAllKriteria
+			'getAllKriteria'    => $getAllKriteria
 		];
 
 		$this->load->view('template/V_Header');
