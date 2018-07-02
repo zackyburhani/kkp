@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_LapPerangkinganNilai extends CI_Controller {
+class C_LapRekapitulasiPenilaian extends CI_Controller {
 
 	function __construct() {
         parent::__construct();
         $this->load->library('pdf');
-        $this->load->model('M_LapPerangkinganNilai');
+        $this->load->model(['M_LapPerangkinganNilai','M_LapRekapitulasiPenilaian']);
     }
 
 	public function index()
@@ -19,16 +19,16 @@ class C_LapPerangkinganNilai extends CI_Controller {
 
     public function periode(){
         $periode = $this->input->get('periode_masuk');
-        $getLapPerangkinganNilai = $this->M_LapPerangkinganNilai->getLapPerangkinganNilai($periode);
+        $getLapRekapitulasiPenilaian = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($periode);
         
-        $data = ['getLapPerangkinganNilai' => $getLapPerangkinganNilai,
+        $data = ['getLapRekapitulasiPenilaian' => $getLapRekapitulasiPenilaian,
                 'periode' => $periode
     
     ];
        
         $this->load->view('template/V_Header',$data);
 		$this->load->view('template/V_Sidebar');
-		$this->load->view('laporan/V_LapPerangkinganNilai');
+		$this->load->view('laporan/V_LapRekapitulasi');
 		$this->load->view('template/V_Footer');
     }
 
@@ -46,28 +46,38 @@ class C_LapPerangkinganNilai extends CI_Controller {
         $pdf->Cell(9,1,'',0,1);
         $pdf->SetFont('Arial','B',12);
         $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(190,15,'LAPORAN HASIL PERANGKINGAN ',0,1,'C');
+        $pdf->Cell(190,15,'LAPORAN HASIL REKAPITULASI PENILAIAN ',0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,1,'',0,1);
-        $pdf->SetFont('Arial','B',10);
-        $pdf->Cell(50,6,'ID CALON',1,0);
-        $pdf->Cell(43,6,'NAMA',1,0);
-        $pdf->Cell(43,6,'HASIL',1,0);
-        $pdf->Cell(55,6,'KETERANGAN',1,0);
+        $pdf->SetFont('Arial','B',6);
+        $pdf->Cell(15,6,'ID CALON',1,0);
+        $pdf->Cell(30,6,'NAMA',1,0);
+        $pdf->Cell(15,6,'JURUSAN',1,0);
+        $pdf->Cell(15,6,'SKILL',1,0);
+        $pdf->Cell(30,6,'TANGGUNG JAWAB',1,0);
+        $pdf->Cell(30,6,'KESIAPAN KERJA',1,0);
+        $pdf->Cell(15,6,'PERILAKU',1,0);
+        $pdf->Cell(15,6,'KETELITIAN',1,0);
+        $pdf->Cell(15,6,'KEJUJURAN',1,0);
+        $pdf->Cell(15,6,'HASIL',1,0);
         
         
-		$pdf->SetFont('Arial','',10);
+		$pdf->SetFont('Arial','',6);
         $periode = $this->input->get('periode');
-		$hasil = $this->M_LapPerangkinganNilai->getLapPerangkinganNilai($periode);
+		$hasil = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($periode);
 		
         foreach ($hasil as $row){
 			$pdf->Cell(10,7,'',0,1);
-            $pdf->Cell(50,6,$row->id_calon,1,0);
-            $pdf->Cell(43,6,$row->nm_calon,1,0);
-            $pdf->Cell(43,6,$row->hasil_akhir,1,0);
-            $pdf->Cell(55,6,$row->keterangan,1,0);
-            
-          
+            $pdf->Cell(15,6,$row->calon_id,1,0);
+            $pdf->Cell(30,6,$row->nm_calon,1,0);
+            $pdf->Cell(15,6,$row->jurusan,1,0);
+            $pdf->Cell(15,6,$row->skill,1,0);
+            $pdf->Cell(30,6,$row->tanggung_jawab,1,0);
+            $pdf->Cell(30,6,$row->kesiapan_kerja,1,0);
+            $pdf->Cell(15,6,$row->perilaku,1,0);
+            $pdf->Cell(15,6,$row->ketelitian,1,0);
+            $pdf->Cell(15,6,$row->kejujuran,1,0);
+            $pdf->Cell(15,6,$row->hasil,1,0);
         }
         $pdf->Output();
     }
