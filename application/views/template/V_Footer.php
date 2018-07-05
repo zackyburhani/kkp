@@ -40,6 +40,11 @@
 <script src="<?php echo base_url('assets/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
 
+<!-- CHART -->
+<script src="<?php echo base_url('/assets/Highcharts-6.1.0/code/highcharts.js')?>"></script>
+<script src="<?php echo base_url('/assets/Highcharts-6.1.0/code/modules/data.js')?>"></script>
+<script src="<?php echo base_url('/assets/Highcharts-6.1.0/code/modules/drilldown.js')?>"></script>
+
 <script type="text/javascript">
 $(document).ready( function () {
     $('#datatableKaryawan').DataTable();
@@ -59,6 +64,60 @@ $(document).ready( function () {
   $('#myModal').modal('show');
 </script>
 
+<!-- CHART -->
+<script type="text/javascript">
+
+// Create the chart
+Highcharts.chart('hasil_akhir_saw', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Hasil Perangkingan'
+    },
+    subtitle: {
+        text: 'Periode Masuk <?php echo tanggal($periode) ?>'
+    },
+    xAxis: {
+        type: 'category'
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.4f}'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.4f}<br/>'
+    },
+
+    "series": [
+        {
+            "name": "Persentase Perangkingan",
+            "colorByPoint": true,
+            "data": [
+                <?php 
+                // data yang diambil dari database
+                if(count($chart)>0)
+                {
+                    foreach ($chart as $data) {
+                        echo "['" .ucwords($data->nm_calon) . "'," . $data->hasil_akhir ."],\n";
+                    }
+                }
+            ?>
+            ]
+        }
+    ]
+});
+        </script>
 
 </body>
 </html>

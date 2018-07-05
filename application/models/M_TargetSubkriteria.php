@@ -36,6 +36,14 @@ class M_TargetSubkriteria extends CI_Model {
     	return $result->result();
     }
 
+    //coba
+    public function periode2($periode_masuk)
+    {
+        $result = $this->db->query("SELECT id_calon,nm_calon FROM calon WHERE periode_masuk = '".$periode_masuk."'");
+        return $result->result();
+    }
+
+
     public function nilaiDetail()
     {
     	$result = $this->db->query("SELECT * FROM calon JOIN target2 ON calon.id_calon = target2.id_calon");

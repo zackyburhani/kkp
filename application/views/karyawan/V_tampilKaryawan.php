@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel"><i class="fa fa-user fa-fw"></i> Detil Calon Karyawan</h3>
+            <h3 id="myModalLabel"><i class="fa fa-user fa-fw"></i> Detail Calon Karyawan</h3>
         </div>
         <div class="modal-body">
           <form method="POST" action="" enctype="multipart/form-data">

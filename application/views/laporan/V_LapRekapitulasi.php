@@ -10,32 +10,36 @@
     <div class="col-lg-12">
       <div class="box box-success color-palette-box">
         <div class="box-header with-border">
-          <h3 class="box-title"><i class="fa fa-file-text fa-fw"></i> Laporan Perangkingan Nilai</h3>
+          <h3 class="box-title"><i class="fa fa-file-text fa-fw"></i> Laporan Rekapitulasi Penilaian</h3>
         </div>
 
         <div class="box-body">
           <div class="form-group">
             <form action="<?php echo site_url('C_LapRekapitulasiPenilaian/periode') ?>" method="GET">
-              <label class="col-sm-2 control-label" style="margin-top: 5px">Tanggal Periode : </label>
-              <div class="col-sm-4">
-                <input type="date" name="periode_masuk" class="form-control">
+              <label class="col-sm-2 control-label" style="margin-top: 5px">Tanggal Awal : </label>
+              <div class="col-sm-3">
+                <input type="date" name="awal" class="form-control" required>
+              </div>
+              <label class="col-sm-2 control-label" style="margin-top: 5px">Tanggal Akhir : </label>
+              <div class="col-sm-3">
+                <input type="date" name="akhir" class="form-control" required>
               </div>
               <div class="col-sm-2">
                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Pilih</button>
               </div>
               </form>
-              <div class="col-sm-4">
-                <?php if(isset($periode)){?>
-                  <?php if($getLapRekapitulasiPenilaian != null) { ?>
-                  <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/cetaklaporanrank/'.$periode) ?>" class="btn btn-danger" style="margin-left: 10px"><i class="fa fa-print"></i> Pdf</a>
-                  <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/Excel/'.$periode) ?>" class="btn btn-success" style="margin-left: 10px"><i class="fa fa-file-excel-o"></i> Excel</a>
-                   <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/Word/'.$periode) ?>" class="btn btn-primary" style="margin-left: 10px"><i class="fa fa-file-word-o"></i> Word</a>
-                  <?php } ?>
-                <?php } ?>
-              </div>
           </div>
         </div>
         <div class="box-footer">
+          <center>
+            <?php if(isset($awal)){?>
+              <?php if($getLapRekapitulasiPenilaian != null) { ?>
+                <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/cetaklaporanrank/'.$awal.'/'.$akhir) ?>" class="btn btn-danger" style="margin-left: 10px"><i class="fa fa-print"></i> Pdf</a>
+                <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/Excel/'.$awal.'/'.$akhir) ?>" class="btn btn-success" style="margin-left: 10px"><i class="fa fa-file-excel-o"></i> Excel</a>
+                <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/Word/'.$awal.'/'.$akhir) ?>" class="btn btn-primary" style="margin-left: 10px"><i class="fa fa-file-word-o"></i> Word</a>
+              <?php } ?>
+            <?php } ?>
+          </center>    
         </div>
       </div>
     </div>

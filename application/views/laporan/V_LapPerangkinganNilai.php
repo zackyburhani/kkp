@@ -64,7 +64,10 @@
                   <th width="30px" align="center">No. </th>
                   <th width="60px"><center>ID Calon</center></th>
                   <th width="150px"><center>Nama</center></th>
-                  <th width="50px"><center>Hasil</center></th>
+                  <th width="100px"><center>Kompetensi</center></th>
+                  <th width="100px"><center>Interview</center></th>
+                  <th width="100px"><center>Konsistensi</center></th>
+                  <th width="100px"><center>Hasil Akhir</center></th>
                   <th width="150px"><center>keterangan</center></th>    
                 </tr>
               </thead>
@@ -73,8 +76,11 @@
                 <?php foreach($getLapPerangkinganNilai as $data){ ?>
                 <tr>
                   <td class="text-center"><?php echo $no++."." ?></td>
-                  <td><center><?php echo $data->id_calon; ?></center></td>
+                  <td><center><?php echo $data->calon_id; ?></center></td>
                   <td><?php echo ucwords($data->nm_calon); ?></td>
+                  <td><center><?php echo $data->kompetensi; ?></center></td>
+                  <td><center><?php echo $data->interview; ?></center></td>
+                  <td><center><?php echo $data->konsistensi; ?></center></td>
                   <td><center><?php echo $data->hasil_akhir; ?></center></td>
                   <?php if($data->keterangan != null) { ?>
                   <td><center><?php echo $data->keterangan; ?></center></td>

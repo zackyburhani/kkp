@@ -22,8 +22,10 @@ class C_HasilKeputusan extends CI_Controller {
 		$periode 	   = $this->input->get('periode_masuk');
 		$getAllHasil   = $this->M_HasilKeputusan->getAllHasil($periode);
 		$getKesimpulan = $this->M_HasilKeputusan->getKesimpulan($periode);
+		$chart   	   = $this->M_HasilKeputusan->chart($periode);
 
 		$data = [
+			'chart'			=> $chart,
 			'periode'		=> $periode,
 			'getKesimpulan' => $getKesimpulan,
 			'getAllHasil'   => $getAllHasil
@@ -73,6 +75,4 @@ class C_HasilKeputusan extends CI_Controller {
     		redirect('C_HasilKeputusan/periode?periode_masuk='.$periode_masuk);
 		}
 	}
-
-
 }

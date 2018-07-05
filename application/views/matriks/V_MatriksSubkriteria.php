@@ -173,50 +173,35 @@
               </thead>
               <tbody>
                 <?php $no=1; ?>
-                <?php foreach ($getPeriodeCalon as $data) { ?>
+                <?php if($kriteria->kd_kriteria == 'K1') { ?>
+                <?php foreach ($total1_view as $data => $nilai) { ?>
                 <tr>
                   <td align="center"><?php echo $no++."."; ?></td>
-                  <td><?php echo $data->id_calon ?></td>
-                  <td><?php echo ucwords($data->nm_calon) ?></td>
+                  <td><?php echo ($total1_view[$data][0]) ?></td>
+                  <td><?php echo ucwords(($total1_view[$data][1])) ?></td>
+                  <td align="center"><?php echo ($total1_view[$data][2]) ?></td>
                 <?php } ?>
-                
-                <!-- Tabel Tambahan -->
-                <?php if($tanggalPeriode == $tanggal) { ?>
-                  <?php if($kriteria->kd_kriteria == 'K1') { ?>
-                  <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
-                    <tbody>
-                      <?php foreach($total1 as $row => $nilai ) { ?>
-                      <tr>
-                        <td align="center"><?php echo $total1[$row] ?></td>    
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                  <?php } ?>
-                  <?php if($kriteria->kd_kriteria == 'K2') { ?>
-                  <table style="width: 379px;margin-left: 604px;margin-top:-187px" class="table table-striped table-bordered table-hover">
-                    <tbody>
-                      <?php foreach($total2 as $row => $nilai ) { ?>
-                      <tr>
-                        <td align="center"><?php echo $total2[$row] ?></td>    
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                  <?php } ?>
-                  <?php if($kriteria->kd_kriteria == 'K3') { ?>
-                  <table style="width: 379px;margin-left: 608px;margin-top:-187px" class="table table-striped table-bordered table-hover">
-                    <tbody>
-                      <?php foreach($total3 as $row => $nilai ) { ?>
-                      <tr>
-                        <td align="center"><?php echo $total3[$row] ?></td>    
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                  <?php } ?>
                 <?php } ?>
-                
+
+                <?php if($kriteria->kd_kriteria == 'K2') { ?>
+                <?php foreach ($total2_view as $data => $nilai) { ?>
+                <tr>
+                  <td align="center"><?php echo $no++."."; ?></td>
+                  <td><?php echo ($total2_view[$data][0]) ?></td>
+                  <td><?php echo ucwords(($total2_view[$data][1])) ?></td>
+                  <td align="center"><?php echo ($total2_view[$data][2]) ?></td>
+                <?php } ?>
+                <?php } ?>
+
+                <?php if($kriteria->kd_kriteria == 'K3') { ?>
+                <?php foreach ($total3_view as $data => $nilai) { ?>
+                <tr>
+                  <td align="center"><?php echo $no++."."; ?></td>
+                  <td><?php echo ($total3_view[$data][0]) ?></td>
+                  <td><?php echo ucwords(($total3_view[$data][1])) ?></td>
+                  <td align="center"><?php echo ($total3_view[$data][2]) ?></td>
+                <?php } ?>
+                <?php } ?>                
                 </tr>
               </tbody>
             </table>

@@ -18,14 +18,16 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
-    public function periode(){
-        $periode = $this->input->get('periode_masuk');
-        $getLapRekapitulasiPenilaian = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($periode);
+    public function periode()
+    {
+        $awal = $this->input->get('awal');
+        $akhir = $this->input->get('akhir');
+        $getLapRekapitulasiPenilaian = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($awal,$akhir);
         
         $data = [
             'getLapRekapitulasiPenilaian' => $getLapRekapitulasiPenilaian,
-            'periode' => $periode
-    
+            'awal' => $awal,
+            'akhir' => $akhir
         ];
        
         $this->load->view('template/V_Header',$data);
@@ -34,7 +36,7 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
 		$this->load->view('template/V_Footer');
     }
 
-    public function cetaklaporanrank($periode)
+    public function cetaklaporanrank($awal,$akhir)
     {
         $pdf = new FPDF('P','mm','A4');
         // membuat halaman baru
@@ -57,19 +59,21 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
         $pdf->Line(10, 35, 210-11, 35);
         $pdf->SetLineWidth(0);     
             
-        $pdf->ln(10);
-        
+        $pdf->ln(6);        
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(190,10,'Laporan Rekapitulasi Penilaian ',0,1,'C');
         //periode masuk
-        $pdf->Cell(1,1,"Periode Masuk : ".tanggal($periode),0,1,'L');
-        //penilaian subkriteria kompetensi
-        $pdf->SetFont('Arial','B',12);
+        $pdf->SetFont('Arial','',9);
+        $pdf->Cell(1,2,"Tanggal Awal : ".tanggal($awal),0,1,'L');
+        $pdf->Cell(10,5,'',0,1);
+        $pdf->Cell(1,2,"Tanggal Akhir : ".tanggal($akhir),0,1,'L');
         $pdf->Cell(190,5,' ',0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,1,'',0,1);
         $pdf->SetFont('Arial','B',7);
         $pdf->Cell(9,6,'No.',1,0,'C');
         $pdf->Cell(15,6,'ID Calon',1,0,'C');
-        $pdf->Cell(30,6,'Nama Calon',1,0,'C');
+        $pdf->Cell(35,6,'Nama Calon',1,0,'C');
         $pdf->Cell(15,6,'Jurusan',1,0,'C');
         $pdf->Cell(10,6,'Skill',1,0,'C');
         $pdf->Cell(25,6,'Tanggung Jawab',1,0,'C');
@@ -77,10 +81,10 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
         $pdf->Cell(15,6,'Perilaku',1,0,'C');
         $pdf->Cell(15,6,'Ketelitian',1,0,'C');
         $pdf->Cell(15,6,'Kejujuran',1,0,'C');
-        $pdf->Cell(20,6,'Hasil',1,0,'C');
+        $pdf->Cell(15,6,'Hasil',1,0,'C');
         $pdf->SetFont('Arial','',7);
 
-        $hasil = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($periode);
+        $hasil = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($awal,$akhir);
 
         $no = 1;
         foreach ($hasil as $row)
@@ -88,7 +92,7 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
             $pdf->Cell(10,6,'',0,1);
             $pdf->Cell(9,6,$no++.".",1,0,'C');
             $pdf->Cell(15,6,$row->calon_id,1,0,'C');
-            $pdf->Cell(30,6,ucwords($row->nm_calon),1,0);
+            $pdf->Cell(35,6,ucwords($row->nm_calon),1,0);
             $pdf->Cell(15,6,$row->jurusan,1,0,'C');
             $pdf->Cell(10,6,$row->skill,1,0,'C');
             $pdf->Cell(25,6,$row->tanggung_jawab,1,0,'C');
@@ -96,25 +100,27 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
             $pdf->Cell(15,6,$row->perilaku,1,0,'C');
             $pdf->Cell(15,6,$row->ketelitian,1,0,'C');
             $pdf->Cell(15,6,$row->kejujuran,1,0,'C');
-            $pdf->Cell(20,6,$row->hasil,1,0,'C');   
+            $pdf->Cell(15,6,$row->hasil,1,0,'C');   
         }
         $pdf->Output();
     }
 
-    public function Excel($periode)
+    public function Excel($awal,$akhir)
     {
-        $query = $this->M_LapRekapitulasiPenilaian->ExportExcel($periode);
+        $query = $this->M_LapRekapitulasiPenilaian->ExportExcel($awal,$akhir);
         $this->excel_generator->set_query($query);
         $this->excel_generator->set_header(array('ID CALON', 'NAMA CALON','JURUSAN','SKILL','TANGGUNG JAWAB','KESIAPAN KERJA','PERILAKU','KETELITIAN','KEJUJURAN','HASIL'));
         $this->excel_generator->set_column(array('calon_id', 'nm_calon', 'jurusan','skill','tanggung_jawab','kesiapan_kerja','perilaku','ketelitian','kejujuran','hasil'));
         $this->excel_generator->set_width(array(10, 20, 10, 15,15,15,15,15,15,15,));
-        $this->excel_generator->exportTo2007('Rekapitulasi Nilai Periode '.$periode);
+        $this->excel_generator->exportTo2007('Rekapitulasi Nilai Periode '.tanggal($awal).' Sampai '.tanggal($akhir));
     }
 
-    public function Word($periode)
+    public function Word($awal,$akhir)
     {
-        $hasil = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($periode);
+        $hasil = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($awal,$akhir);
         $data = [
+            'awal' => $awal,
+            'akhir' => $akhir,
             'word' => $hasil
         ];
         $this->load->view('laporan/word_LapRekapitulasi',$data);

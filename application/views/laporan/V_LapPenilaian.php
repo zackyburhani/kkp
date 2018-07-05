@@ -10,15 +10,19 @@
     <div class="col-lg-12">
       <div class="box box-success color-palette-box">
         <div class="box-header with-border">
-          <h3 class="box-title"><i class="fa fa-file-text fa-fw"></i> Laporan Perangkingan Nilai</h3>
+          <h3 class="box-title"><i class="fa fa-file-text fa-fw"></i> Laporan Penilaian Calon Karyawan</h3>
         </div>
 
         <div class="box-body">
           <div class="form-group">
             <form action="<?php echo site_url('C_LapPenilaian/periode') ?>" method="GET">
-              <label class="col-sm-2 control-label" style="margin-top: 5px">Tanggal Periode : </label>
-              <div class="col-sm-4">
-                <input type="date" name="periode_masuk" class="form-control">
+              <label class="col-sm-2 control-label" style="margin-top: 5px">Tanggal Awal : </label>
+              <div class="col-sm-3">
+                <input type="date" name="awal" class="form-control" required>
+              </div>
+              <label class="col-sm-2 control-label" style="margin-top: 5px">Tanggal Akhir : </label>
+              <div class="col-sm-3">
+                <input type="date" name="akhir" class="form-control" required>
               </div>
               <div class="col-sm-2">
                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Pilih</button>
@@ -84,13 +88,13 @@
                   <td class="text-center"><?php echo $data->kejujuran; ?></td>
                   <td class="text-center"><?php echo $data->hasil; ?></td>
                   <td class="text-center">
-                    <a href="<?php echo site_url('C_LapPenilaian/cetaklaporanrank/'.$periode.'/'.$data->calon_id) ?>" class="btn btn-danger"><i class="fa fa-print"></i></a>
+                    <a href="<?php echo site_url('C_LapPenilaian/cetaklaporanPenilaian/'.$awal.'/'.$akhir.'/'.$data->calon_id) ?>" class="btn btn-danger"><i class="fa fa-print"></i></a>
                   </td>
                   <td class="text-center">
-                    <a href="<?php echo site_url('C_LapPenilaian/Excel/'.$periode.'/'.$data->calon_id) ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+                    <a href="<?php echo site_url('C_LapPenilaian/Excel/'.$awal.'/'.$akhir.'/'.$data->calon_id) ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
                   </td>
                   <td class="text-center">
-                    <a href="<?php echo site_url('C_LapPenilaian/Word/'.$periode.'/'.$data->calon_id) ?>" class="btn btn-primary"><i class="fa fa-file-word-o"></i></a>
+                    <a href="<?php echo site_url('C_LapPenilaian/Word/'.$awal.'/'.$akhir.'/'.$data->calon_id) ?>" class="btn btn-primary"><i class="fa fa-file-word-o"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

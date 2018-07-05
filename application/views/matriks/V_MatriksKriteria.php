@@ -158,26 +158,13 @@
                   </thead>
                   <tbody>
                     <?php $no=1; ?>
-                    <?php foreach($getPeriodeCalon as $periode) { ?>
+                    <?php foreach($total_view as $data => $nilai) { ?>
                     <tr>
                       <td><center><?php echo $no++."." ?></center></td>
-                      <td><?php echo $periode->id_calon ?></td>
-                      <td><?php echo ucwords($periode->nm_calon) ?></td>
+                      <td><?php echo ($total_view[$data][0]) ?></td>
+                      <td><?php echo ucwords(($total_view[$data][1])) ?></td>
+                      <td align="center"><?php echo ($total_view[$data][2]) ?></td>
                     <?php } ?>
-                    
-                      <?php if($total != null) { ?>
-                      <?php if($tanggalPeriode == $tanggal) { ?>
-                      <table style="width: 379px;margin-left: 604px;margin-top:-187px;position: absolute;" class="table table-striped table-bordered table-hover">
-                        <tbody>
-                          <?php foreach($total as $row => $nilai ) { ?>
-                          <tr>
-                            <td align="center"><?php echo $total[$row] ?></td>    
-                          </tr>
-                          <?php } ?>
-                        </tbody>
-                      </table>
-                      <?php } ?>
-                      <?php } ?>
 
                     </tr>
                   </tbody>

@@ -61,7 +61,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 	{
 
 		$periode 		   = $this->input->get('periode_masuk');
-		$getPeriodeCalon   = $this->M_TargetSubkriteria->periode($periode);
+		$getPeriodeCalon   = $this->M_TargetSubkriteria->periode2($periode);
 		$getAllCalon 	   = $this->M_TargetSubkriteria->getAllCalon();
 		
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
@@ -72,6 +72,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$getAllSAW_sub 	   = $this->M_TargetSubkriteria->getAllSAW_sub($periode);
 
 		$matriksISI 	   = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
+		$barisCalon 	   = $this->M_MatriksSubkriteria->barisCalon($periode);
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {
@@ -123,14 +124,43 @@ class C_MatriksSubkriteria extends CI_Controller {
 			}
 		}
 
+		//perangkingan untuk view
+		$id_calon_a = array();
+		foreach ($getPeriodeCalon as $a) {
+			$id_calon_a[] = $a->id_calon;
+		}
+
+		$nm_calon_A = array();
+		foreach ($getPeriodeCalon as $a) {
+			$nm_calon_a[] = $a->nm_calon;
+		}
+
+		//total1
+		$total1_view = array();
+		for($i=0; $i<$barisCalon; $i++){
+			$total1_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total1[$i]];
+		}
+
+		//total2
+		$total2_view = array();
+		for($i=0; $i<$barisCalon; $i++){
+			$total2_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total2[$i]];
+		}
+
+		//total3
+		$total3_view = array();
+		for($i=0; $i<$barisCalon; $i++){
+			$total3_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total3[$i]];
+		}
+
 		$tanggal = $this->tanggal($periode);
 
 		$data = [
 			'matriksISI'		=> $matriksISI,
 			'tanggal'			=> $tanggal,
-			'total1'			=> $total1,
-			'total2'			=> $total2,
-			'total3'			=> $total3,
+			'total1_view'	    => $total1_view,
+			'total2_view'		=> $total2_view,
+			'total3_view'		=> $total3_view,
 			'bobot'				=> $bobot,
 			'max'				=> $maxLoop,
 			'getAllKriteria' 	=> $getAllKriteria,
@@ -154,16 +184,16 @@ class C_MatriksSubkriteria extends CI_Controller {
 			$kriteria[] = $row->kd_kriteria;
 		}
 		return $kriteria;
-	} 
+	}
 
 	public function simpanNilai($tanggalPeriode)
 	{
 
-		$getPeriodeCalon   = $this->M_TargetSubkriteria->periode($tanggalPeriode);
+		$getPeriodeCalon = $this->M_TargetSubkriteria->periode($tanggalPeriode);
 
-		$max 			= $this->M_TargetSubkriteria->max();		
-		$getAllSAW_sub 	= $this->M_TargetSubkriteria->getAllSAW_sub($tanggalPeriode);
-		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
+		$max 			 = $this->M_TargetSubkriteria->max();		
+		$getAllSAW_sub 	 = $this->M_TargetSubkriteria->getAllSAW_sub($tanggalPeriode);
+		$getAllKriteria  = $this->M_Kriteria->getAllKriteria();
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {

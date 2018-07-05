@@ -1,12 +1,13 @@
 <?php
+$tanggal = tanggal($awal)."_Sampai_".tanggal($akhir);
 header("Content-type: application/vnd.ms-word");
-header("Content-Disposition: attachment;Filename=document_name.doc");
+header("Content-Disposition: attachment;Filename=Laporan_Rekapitulasi_Nilai_Periode_$tanggal.doc");
 ?>
 <html>
     <head>
         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=Windows-1252\">
         <style>
-            h2{
+            h2,h5{
                 text-align: center
             }
             .mytable{
@@ -25,6 +26,10 @@ header("Content-Disposition: attachment;Filename=document_name.doc");
     </head>
     <body>
         <h2>PT. Biya Maestro Hardscape</h2>
+            <h5>Jl. BPKP No. 37 Sudimara Pinang, Kota Tangerang 
+                <br> Telp / Fax : 021-22927310
+                <br> E-mail : maestro_hardscape@yahoo.com
+            </h5>
         <table class="mytable">
             <tr>
                 <th id="th">No. </th>

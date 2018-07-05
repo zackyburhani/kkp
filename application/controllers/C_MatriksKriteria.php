@@ -33,6 +33,7 @@ class C_MatriksKriteria extends CI_Controller {
 		$getPeriodeCalon = $this->M_TargetSubkriteria->periode($periode);
 		$getAllKriteria  = $this->M_Kriteria->getAllKriteria();
 		$matriksISI 	 = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
+		$barisCalon 	 = $this->M_MatriksSubkriteria->barisCalon($periode);
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {
@@ -47,10 +48,27 @@ class C_MatriksKriteria extends CI_Controller {
 		$total = $this->total($periode);
 		$tanggal = $this->tanggal($periode);
 
+		//perangkingan untuk view
+		$id_calon_a = array();
+		foreach ($getPeriodeCalon as $a) {
+			$id_calon_a[] = $a->id_calon;
+		}
+
+		$nm_calon_A = array();
+		foreach ($getPeriodeCalon as $a) {
+			$nm_calon_a[] = $a->nm_calon;
+		}
+
+		//total
+		$total_view = array();
+		for($i=0; $i<$barisCalon; $i++){
+			$total_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total[$i]];
+		}
+
 		$data = [
 			'matriksISI'      => $matriksISI,
 			'tanggal'		  => $tanggal,
-			'total'			  => $total,
+			'total_view'	  => $total_view,
 			'max'			  => $maxLoop,
 			'tanggalPeriode'  => $periode,
 			'getAllKriteria'  => $getAllKriteria,

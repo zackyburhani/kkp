@@ -37,7 +37,7 @@
       </ul>
 
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header"><i class="fa fa-asterisk"></i> PERHITUNGAN AHP</li>
+        <li class="header"><i class="fa fa-asterisk"></i> DATA PERHITUNGAN</li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-calculator"></i>

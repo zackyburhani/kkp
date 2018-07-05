@@ -46,9 +46,19 @@
         </div>      
       </div>
     </div>
-  
+
   <?php if(isset($getAllHasil)) { ?>
     <?php if($getAllHasil != null) { ?>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="hasil_akhir_saw" style="min-width: 310px; height: 400px; margin: 0 auto"></div>         
+          </div>
+        </div>      
+      </div>
+    </div>
+  
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
@@ -82,7 +92,7 @@
                       <?php foreach ($getAllHasil as $row) { ?>
                       <tr>
                         <td align="center"><?php echo $row->id_calon ?></td>
-                        <td><?php echo $row->nm_calon ?></td>
+                        <td><?php echo ucwords($row->nm_calon) ?></td>
                         <td><center><?php echo $row->hasil_akhir ?></center></td>
                         <td><center><b><?php echo $peringkat++; ?></b></center></td>
                         <td>
@@ -110,7 +120,7 @@
               <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-info"></i> Kesimpulan : </h4>
-                  Dari hasil perhitungan yang dilakukan menggunakan metode <i>Analytical Hierarchy Process</i> dan <i>Simple Additive Weighting</i> calon karyawan yang memiliki nilai tertinggi adalah <b><?php echo $kesimpulan->nm_calon ?></b> dengan nilai <b><?php echo $kesimpulan->hasil_akhir ?></b> 
+                  Dari hasil perhitungan yang dilakukan menggunakan metode <i>Analytical Hierarchy Process</i> dan <i>Simple Additive Weighting</i> calon karyawan yang memiliki nilai tertinggi adalah <b><?php echo ucwords($kesimpulan->nm_calon) ?></b> dengan nilai <b><?php echo $kesimpulan->hasil_akhir ?></b> 
               </div>
             <?php } ?>
           </div>
