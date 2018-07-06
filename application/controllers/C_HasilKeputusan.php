@@ -57,16 +57,6 @@ class C_HasilKeputusan extends CI_Controller {
 			$i++;
 		}
 
-		if ($this->db->table_exists('saw_sub') == true )
-		{ 
-			//hapus tabel saw_sub
-			$this->M_TargetSubkriteria->dropTable('saw_sub');
-			//hapus tabel saw
-			$this->M_TargetSubkriteria->dropTable('saw');
-		} else {
-			redirect('C_HasilKeputusan/periode?periode_masuk='.$periode_masuk);
-		}
-
 		if (!$result){
 			$this->session->set_flashdata('pesan','Data Berhasil Disimpan');
 	   		redirect('C_HasilKeputusan/periode?periode_masuk='.$periode_masuk);

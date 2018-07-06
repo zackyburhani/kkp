@@ -6,6 +6,12 @@ class M_LapPenilaianCalonKaryawan extends CI_Model {
 		parent::__construct();
 	}
 
+    public function periode_masuk($id)
+    {
+        $result = $this->db->query("SELECT calon.periode_masuk from calon where id_calon = '$id'");
+        return $result->row();
+    }
+
     public function getLapPenilaianCalonKaryawan($awal,$akhir){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,calon.nm_calon,
