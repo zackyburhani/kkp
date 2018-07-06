@@ -327,15 +327,15 @@
                       <div class="box-body">
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
-                            <td></td>
+                            <td>Subkriteria</td>
                             <?php foreach($getSubkriteria as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
                               <input type="hidden" name="kriteria1" value="<?php echo $data->kd_kriteria ?>">
                             <?php } ?>
                           </tr>
-                          <?php foreach($matriksA as $i => $value) { ?>
+                          <?php foreach($view_subkriteria1 as $i => $value) { ?>
                           <tr>
-                            <td></td>
+                            <td><b><?php echo $view_subkriteria1[$i][0] ?></b></td>
                               <?php foreach($matriksA as $j => $value ) { ?>
                                 <td align="center"><?php echo round($matriksA[$i][$j],4) ?></td>
                                 <input type="hidden" name="nilaiBanding2a<?php echo $kd_banding2a++ ?>" value="<?php echo $matriksA[$i][$j] ?>">
@@ -343,18 +343,7 @@
                           </tr>
                         <?php } ?>
                         </table>
-
-                        <!-- Table Tambahan -->
-                        <table style="width: 242px;margin-top: -149px" class="table table-striped table-bordered">
-                          <tr>
-                            <td>Subkriteria</td>
-                          </tr>
-                          <?php foreach($getSubkriteria as $data) { ?>
-                          <tr>
-                            <td><b><?php echo $data->nm_subkriteria ?></b></td>
-                          </tr>
-                          <?php } ?>
-                        </table>                    
+                        
                       </div>
                     </div>
 
@@ -370,32 +359,20 @@
                       <div class="box-body">
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
-                            <td></td>
+                            <td>Subkriteria</td>
                             <?php $kd_banding2b = 1; ?>
                             <?php foreach($getSubkriteria2 as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
                               <input type="hidden" name="kriteria2" value="<?php echo $data->kd_kriteria ?>">
                             <?php } ?>
                           </tr>
-                          <?php foreach($matriksA2 as $i => $value) { ?>
+                          <?php foreach($view_subkriteria2 as $i => $value) { ?>
                             <tr>
-                              <td></td>
+                              <td><b><?php echo $view_subkriteria2[$i][0] ?></b></td>
                                 <?php foreach($matriksA2 as $j => $value ) { ?>
                                   <td align="center"><?php echo round($matriksA2[$i][$j],4) ?></td>
                                   <input type="hidden" name="nilaiBanding2b<?php echo $kd_banding2b++ ?>" value="<?php echo $matriksA2[$i][$j] ?>">
                                 <?php } ?>
-                            </tr>
-                          <?php } ?>
-                        </table>
-
-                        <!-- Table Tambahan -->
-                        <table style="width: 322px;margin-top: -112px" class="table table-striped table-bordered">
-                          <tr>
-                            <td>Subkriteria</td>
-                          </tr>
-                          <?php foreach($getSubkriteria2 as $data) { ?>
-                            <tr>
-                              <td><b><?php echo $data->nm_subkriteria ?></b></td>
                             </tr>
                           <?php } ?>
                         </table>
@@ -414,7 +391,7 @@
                       <div class="box-body">
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
-                            <td></td>
+                            <td>Subkriteria</td>
                             <?php $kd_banding2c = 1; ?>
                             <?php foreach($getSubkriteria3 as $data) { ?>
                               <th><center><?php echo $data->nm_subkriteria ?></center></th>
@@ -423,24 +400,12 @@
                           </tr>
                           <?php foreach($matriksA3 as $i => $value) { ?>
                             <tr>
-                              <td></td>
+                              <td><b><?php echo $view_subkriteria3[$i][0] ?></b></td>
                                 <?php foreach($matriksA3 as $j => $value ) { ?>
                                   <td align="center"><?php echo round($matriksA3[$i][$j],4) ?></td>
                                   <input type="hidden" name="nilaiBanding2c<?php echo $kd_banding2c++ ?>" value="<?php echo $matriksA3[$i][$j] ?>">
                                 <?php } ?>
                             </tr>
-                          <?php } ?>
-                        </table>
-
-                        <!-- Table Tambahan -->
-                        <table style="width: 322px;margin-top: -112px" class="table table-striped table-bordered">
-                          <tr>
-                            <td>Subkriteria</td>
-                          </tr>
-                          <?php foreach($getSubkriteria3 as $data) { ?>
-                          <tr>
-                            <td><b><?php echo $data->nm_subkriteria ?></b></td>
-                          </tr>
                           <?php } ?>
                         </table>
                       </div>
@@ -464,41 +429,16 @@
                       <div class="box-body">
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
-                            <td width="328px"></td>
+                            <td>Subkriteria</td>
                             <th style="padding-left: 10px"><center>Nilai Banding</center></th>
-                            <th></th>
-                          </tr>
-                            <?php foreach($penjumlahanMatriks as $i => $value) { ?>
-                            <tr>
-                              <td><b></b></td>
-                              <td><center><?php echo round($penjumlahanMatriks[$i],4) ?></center></td>
-                            </tr>
-                          <?php } ?>
-                        </table>
-
-                        <table style="width: 320px; margin-left: 644px; margin-top: -149px" class="table table-striped table-bordered">
-                          <tr>
                             <th><center>Eigenvector</center></th>
                           </tr>
-                            <?php $kd = 1; ?>
-                            <?php foreach($eigenvector as $j => $value) { ?>
+                            <?php foreach($view_eigenvector1 as $i => $value) { ?>
                             <tr>
-                              <td>
-                                <center><?php echo round($eigenvector[$j],4) ?></center></td>
-                                <input type="hidden" name="<?php echo "SE_kompetensi".$kd++ ?>" value="<?php echo round($eigenvector[$j],4) ?>">
+                              <td><b><?php echo $view_eigenvector1[$i][0] ?></b></td>
+                              <td><center><?php echo round($view_eigenvector1[$i][1],4) ?></center></td>
+                              <td><center><?php echo round($view_eigenvector1[$i][2],4) ?></center></td>
                             </tr>
-                          <?php } ?>               
-                        </table>
-
-                        <!-- Table Tambahan -->
-                        <table style="width: 330px; margin-top: -149px" class="table table-striped table-bordered">
-                          <tr>
-                            <td>Subkriteria</td>
-                          </tr>
-                          <?php foreach($getSubkriteria as $data) { ?>
-                          <tr>
-                            <td><b><?php echo $data->nm_subkriteria ?></b></td>
-                          </tr>
                           <?php } ?>
                         </table>
                       </div>
@@ -516,43 +456,18 @@
                       <div class="box-body">
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
-                            <td width="328px"></td>
+                            <td>Subkriteria</td>
                             <th style="padding-left: 10px"><center>Nilai Banding</center></th>
-                            <th></th>
+                            <th><center>Eigenvector</center></th>
                           </tr>
-                            <?php foreach($penjumlahanMatriks2 as $i => $value) { ?>
+                            <?php foreach($view_eigenvector2 as $i => $value) { ?>
                               <tr>
-                                <td><b></b></td>
-                                <td><center><?php echo round($penjumlahanMatriks2[$i],4) ?></center></td>
+                                <td><b><?php echo $view_eigenvector2[$i][0] ?></b></td>
+                                <td><center><?php echo round($view_eigenvector2[$i][1],4) ?></center></td>
+                                <td><center><?php echo round($view_eigenvector2[$i][2],4) ?></center></td>
                               </tr>
                             <?php } ?>
                         </table>
-
-                        <table style="width: 320px; margin-left: 644px; margin-top: -112px" class="table table-striped table-bordered">
-                          <tr>
-                            <th><center>Eigenvector</center></th>
-                          </tr>
-                            <?php $kd = 1; ?>
-                              <?php foreach($eigenvector2 as $j => $value) { ?>
-                              <tr>
-                                <td><center><?php echo round($eigenvector2[$j],4) ?></center></td>
-                                  <input type="hidden" name="<?php echo "SE_interview".$kd++ ?>" value="<?php echo round($eigenvector2[$j],4) ?>">
-                              </tr>
-                            <?php } ?>                
-                          </table>
-
-                        <!-- Table Tambahan -->
-                          <table style="width: 330px; margin-top: -112px" class="table table-striped table-bordered">
-                            <tr>
-                              <td>Subkriteria</td>
-                            </tr>
-                            <?php foreach($getSubkriteria2 as $data) { ?>
-                            <tr>
-                              <td><b><?php echo $data->nm_subkriteria ?></b></td>
-                            </tr>
-                            <?php } ?>
-                          </table>
-
                       </div>
                     </div>
 
@@ -568,43 +483,18 @@
                       <div class="box-body">
                         <table style="table-layout:fixed" class="table table-striped table-bordered">
                           <tr>
-                            <td width="328px"></td>
+                          <td>Subkriteria</td>
                             <th style="padding-left: 10px"><center>Nilai Banding</center></th>
-                            <th></th>
+                            <th><center>Eigenvector</center></th>
                           </tr>
-                            <?php foreach($penjumlahanMatriks3 as $i => $value) { ?>
+                            <?php foreach($view_eigenvector3 as $i => $value) { ?>
                               <tr>
-                                <td><b></b></td>
-                                <td><center><?php echo round($penjumlahanMatriks3[$i],4) ?></center></td>
+                                <td><b><?php echo $view_eigenvector3[$i][0] ?></b></td>
+                                <td><center><?php echo round($view_eigenvector3[$i][1],4) ?></center></td>
+                                <td><center><?php echo round($view_eigenvector3[$i][2],4) ?></center></td>
                               </tr>
                             <?php } ?>
                         </table>
-
-                        <table style="width: 320px; margin-left: 644px; margin-top: -112px" class="table table-striped table-bordered">
-                          <tr>
-                            <th><center>Eigenvector</center></th>
-                          </tr>
-                            <?php $kd = 1; ?>
-                              <?php foreach($eigenvector3 as $j => $value) { ?>
-                              <tr>
-                                <td><center><?php echo round($eigenvector3[$j],4) ?></center></td>
-                                  <input type="hidden" name="<?php echo "SE_konsistensi".$kd++ ?>" value="<?php echo round($eigenvector3[$j],4) ?>">
-                              </tr>
-                            <?php } ?>                
-                          </table>
-
-                        <!-- Table Tambahan -->
-                          <table style="width: 330px; margin-top: -112px" class="table table-striped table-bordered">
-                            <tr>
-                              <td>Subkriteria</td>
-                            </tr>
-                            <?php foreach($getSubkriteria3 as $data) { ?>
-                            <tr>
-                              <td><b><?php echo $data->nm_subkriteria ?></b></td>
-                            </tr>
-                            <?php } ?>
-                          </table>
-
                       </div>
                     </div>
 

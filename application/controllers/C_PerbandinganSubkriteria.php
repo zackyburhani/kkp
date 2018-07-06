@@ -74,6 +74,63 @@ class C_PerbandinganSubkriteria extends CI_Controller {
         $getSubkriteria      = $this->M_Subkriteria->getSubkriteria('K1');
         $getSubkriteria2     = $this->M_Subkriteria->getSubkriteria('K2');
 		$getSubkriteria3     = $this->M_Subkriteria->getSubkriteria('K3');
+		
+		$subkriteria1 = array();
+		foreach($getSubkriteria as $data){
+			$subkriteria1[] = $data->nm_subkriteria;
+		}
+
+		$subkriteria2 = array();
+		foreach($getSubkriteria2 as $data){
+			$subkriteria2[] = $data->nm_subkriteria;
+		}
+
+		$subkriteria3 = array();
+		foreach($getSubkriteria3 as $data){
+			$subkriteria3[] = $data->nm_subkriteria;
+		}
+
+		//view perbandingan subkriteria1
+		$baris_sub1 = count($subkriteria1);
+		$view_subkriteria1 = array();
+		for($i=0; $i<$baris_sub1; $i++){
+			$view_subkriteria1[] = [$subkriteria1[$i],$matriksA[$i]];
+		}
+
+		//view perbandingan subkriteria2
+		$baris_sub2 = count($subkriteria2);
+		$view_subkriteria2 = array();
+		for($i=0; $i<$baris_sub2; $i++){
+			$view_subkriteria2[] = [$subkriteria2[$i],$matriksA2[$i]];
+		}
+
+		//view perbandingan subkriteria2
+		$baris_sub3 = count($subkriteria3);
+		$view_subkriteria3 = array();
+		for($i=0; $i<$baris_sub3; $i++){
+			$view_subkriteria3[] = [$subkriteria3[$i],$matriksA3[$i]];
+		}
+
+		//view eigenvector subkriteria1
+		$baris_sub1 = count($subkriteria1);
+		$view_eigenvector1 = array();
+		for($i=0; $i<$baris_sub1; $i++){
+			$view_eigenvector1[] = [$subkriteria1[$i],$penjumlahanMatriks[$i],$eigenvector[$i]];
+		}
+
+		//view eigenvector subkriteria2
+		$baris_sub2 = count($subkriteria2);
+		$view_eigenvector2 = array();
+		for($i=0; $i<$baris_sub2; $i++){
+			$view_eigenvector2[] = [$subkriteria2[$i],$penjumlahanMatriks2[$i],$eigenvector2[$i]];
+		}
+
+		//view eigenvector subkriteria1
+		$baris_sub3 = count($subkriteria3);
+		$view_eigenvector3 = array();
+		for($i=0; $i<$baris_sub3; $i++){
+			$view_eigenvector3[] = [$subkriteria3[$i],$penjumlahanMatriks3[$i],$eigenvector3[$i]];
+		}
 
 		$data = [
 			'getSubkriteria'	  => $getSubkriteria,
@@ -83,6 +140,10 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 			'matriksA' 			  => $matriksA,
 			'matriksA2'			  => $matriksA2,
 			'matriksA3'			  => $matriksA3,
+
+			'view_subkriteria1'	  => $view_subkriteria1,
+			'view_subkriteria2'	  => $view_subkriteria2,
+			'view_subkriteria3'	  => $view_subkriteria3,
 			
 			'penjumlahanMatriks'  => $penjumlahanMatriks,
 			'penjumlahanMatriks2' => $penjumlahanMatriks2,
@@ -91,6 +152,10 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 			'eigenvector' 		  => $eigenvector,
 			'eigenvector2' 		  => $eigenvector2,
 			'eigenvector3' 		  => $eigenvector3,
+
+			'view_eigenvector1'	  => $view_eigenvector1,
+			'view_eigenvector2'	  => $view_eigenvector2,
+			'view_eigenvector3'	  => $view_eigenvector3,
 			
 			'perkalianMatriks' 	  => $perkalianMatriks,
 			'getAllSubkriteria'   => $getAllSubkriteria
