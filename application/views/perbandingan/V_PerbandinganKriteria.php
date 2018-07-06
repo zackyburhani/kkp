@@ -196,7 +196,7 @@
                   <?php if(isset($matriksA)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
-                        <td></td>
+                        <th>Kriteria</th>
                         <?php $kd_banding = 1; ?>
                         <?php $kd = 1; ?>
                         <?php $array = array(); ?>
@@ -205,27 +205,15 @@
                           <input type="hidden" name="<?php echo "K".$kd++ ?>" value="<?php echo $data->kd_kriteria; ?>">
                         <?php } ?>
                       </tr>
-                      <?php foreach($matriksA as $i => $value) { ?>
+                      <?php foreach($view_perbandingan as $i => $value) { ?>
                         <tr>
-                          <td></td>
-                            <?php foreach($matriksA as $j => $value ) { ?>
+                          <td><b><?php echo $view_perbandingan[$i][0] ?></b></td>
+                            <?php foreach($view_perbandingan as $j => $value ) { ?>
                               <td align="center"><?php echo round($matriksA[$i][$j],4) ?></td>
                               <?php $array[] = $matriksA[$i][$j] ?>
                               <input type="hidden" name="nilaiBanding<?php echo $kd_banding++ ?>" value="<?php echo $matriksA[$i][$j] ?>">
                             <?php } ?>
                         </tr>
-                      <?php } ?>
-                    </table>
-
-                    <!-- Table Tambahan -->
-                    <table style="width: 250px;margin-top: -169px" class="table table-striped table-bordered">
-                      <tr>
-                        <td>Kriteria</td>
-                      </tr>
-                      <?php foreach($getAllKriteria as $data) { ?>
-                      <tr>
-                        <td><b><?php echo $data->nm_kriteria ?></b></td>
-                      </tr>
                       <?php } ?>
                     </table>
 
@@ -242,46 +230,21 @@
 
                   <hr>
                   
-                  <?php if(isset($eigenvector)) { ?>
+                  <?php if(isset($view_eigenvector)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
-                        <td width="328px"></td>
-                        <th style="padding-left: -100px"><center>Nilai Banding</center></th>
-                        <th></th>
+                        <th><center>Kriteria</center></th>
+                        <th><center>Nilai Banding</center></th>
+                        <th><center>Eigenvector</center></th>
                       </tr>
-                      <?php foreach($penjumlahanMatriks as $i => $value) { ?>
+                      <?php foreach($view_eigenvector as $i => $value) { ?>
                         <tr>
-                          <td><b></b></td>
-                          <td><center><?php echo round($penjumlahanMatriks[$i],4) ?></center></td>
+                          <td><center><?php echo $view_eigenvector[$i][0] ?></center></td>
+                          <td><center><?php echo round($view_eigenvector[$i][1],4) ?></center></td>
+                          <td><center><?php echo round($view_eigenvector[$i][2],4) ?></center></td>
                         </tr>
                       <?php } ?>
                     </table>
-
-                    <div class="col-sm-offset-8">
-                      <table style="width: 334px; margin-left: -4px; margin-top: -169px" class="table table-striped table-bordered">
-                        <tr>
-                          <th><center>Eigenvector</center></th>
-                        </tr>
-                          <?php $kd = 1; ?>
-                            <?php foreach($eigenvector as $j => $value) { ?>
-                            <tr>
-                              <td><center><?php echo round($eigenvector[$j],4) ?></center></td>
-                                <input type="hidden" name="<?php echo "E".$kd++ ?>" value="<?php echo round($eigenvector[$j],4) ?>">
-                            </tr>
-                          <?php } ?>                    
-                        </table>
-
-                        <!-- Table Tambahan -->
-                        <table style="width: 328px;margin-left: -665px; margin-top: -169px" class="table table-striped table-bordered">
-                          <tr>
-                            <td>Kriteria</td>
-                          </tr>
-                          <?php foreach($getAllKriteria as $data) { ?>
-                          <tr>
-                            <td><b><?php echo $data->nm_kriteria ?></b></td>
-                          </tr>
-                          <?php } ?>
-                        </table>
 
                         <div class="modal-footer" style="margin-top: 30px">
                           <a href="<?php echo site_url('C_PerbandinganKriteria/batal') ?>" type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</a>
