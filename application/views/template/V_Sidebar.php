@@ -92,14 +92,14 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <a href="<?php echo site_url('C_MatriksKriteria') ?>">
-                <i class="fa fa-circle-o"></i> <span>Matriks Kriteria</span>
-              </a>
-            </li>
-            <li>
               <a href="<?php echo site_url('C_MatriksSubkriteria') ?>">
                 <i class="fa fa-circle-o"></i> <span>Matriks Subkriteria</span>
               </a>
+            </li>
+            <li>
+              <a href="<?php echo site_url('C_MatriksKriteria') ?>">
+                <i class="fa fa-circle-o"></i> <span>Matriks Kriteria</span>
+              </a>  
             </li>
           </ul>
         </li>
