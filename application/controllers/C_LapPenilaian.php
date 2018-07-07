@@ -62,12 +62,12 @@ class C_LapPenilaian extends CI_Controller {
             
         $pdf->ln(6);        
         $pdf->SetFont('Arial','B',10);
-        $pdf->Cell(190,10,'Laporan Rekapitulasi Penilaian Calon Karyawan',0,1,'C');
+        $pdf->Cell(190,10,'Laporan Penilaian Calon Karyawan',0,1,'C');
         //periode masuk
         $pdf->SetFont('Arial','',9);
-        $pdf->Cell(1,2,"Tanggal Awal : ".tanggal($awal),0,1,'L');
-        $pdf->Cell(10,5,'',0,1);
-        $pdf->Cell(1,2,"Tanggal Akhir : ".tanggal($akhir),0,1,'L');
+        $periode_masuk = $this->M_LapPenilaianCalonKaryawan->periode_masuk($id_calon);
+        $masuk = $periode_masuk->periode_masuk;
+        $pdf->Cell(1,2,"Periode Masuk : ".tanggal($masuk),0,1,'L');
         $pdf->Cell(190,5,' ',0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,1,'',0,1);

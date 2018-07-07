@@ -41,15 +41,34 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$eigenvector 		= $this->cari_eigenvector($penjumlahanMatriks);
         $getAllKriteria 	= $this->M_Kriteria->getAllKriteria();
 
+		$baris 		   = $this->M_Calon->jumlah('kriteria');
+		
+		$kriteria = array();
+		foreach($getAllKriteria as $data){
+			$kriteria[] = $data->nm_kriteria;
+		}
+
+		//view eigenvector
+		$view_eigenvector = array();
+		for($i=0; $i<$baris; $i++){
+			$view_eigenvector[] = [$kriteria[$i],$penjumlahanMatriks[$i],$eigenvector[$i]];
+		}
+
+		//view perbandingan kriteria
+		$view_perbandingan = array();
+		for($i=0; $i<$baris; $i++){
+			$view_perbandingan[] = [$kriteria[$i],$matriksA[$i]];
+		}
+
 		$data = [
+			'view_perbandingan' => $view_perbandingan,
 			'matriksA' 			 => $matriksA,
 			'perkalianMatriks' 	 => $perkalianMatriks,
-			'penjumlahanMatriks' => $penjumlahanMatriks,
-			'eigenvector'  		 => $eigenvector,
-			'getAllKriteria' 	 => $getAllKriteria
+			'getAllKriteria' 	 => $getAllKriteria,
+			'view_eigenvector'	 => $view_eigenvector
 		];
 
-		// $alert = $this->alert($data);
+		$alert = $this->alert($data);
 
 		if ($data){
 			$this->load->view('template/V_Header');

@@ -33,8 +33,7 @@ class M_HasilKeputusan extends CI_Model {
     public function barisHasil($periode_masuk)
     {
         $query = $this->db->query("SELECT * FROM hasil,calon WHERE calon.id_calon = hasil.id_calon and calon.periode_masuk = '".$periode_masuk."'");
-
         return $query->num_rows();
-    }
+	}
     
 }
