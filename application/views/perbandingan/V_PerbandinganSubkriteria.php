@@ -44,18 +44,18 @@
 
                   <div class="box box-default">
                     <div class="box-header with-border">
-                      <h3 class="box-title"><b>Nilai Perbandingan Subkriteria <i>Kompetensi</i></b></h3>
+                      <h3 class="box-title"><b>Nilai Perbandingan Subkriteria <i><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K1'); echo $nama_kriteria->nm_kriteria ?></i></b></h3>
 
                       <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                      </div>
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
                     </div>
 
                     <form method="POST" action="<?php echo base_url('C_PerbandinganSubkriteria/perbandinganMatriks') ?>">
                       <div class="box-body">
                         <table>
                           <tr>
-                            <td><b>Skill</b></td>
+                            <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK2'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="sk1" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="sk1" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="sk1" value="7" required></td>
@@ -65,15 +65,15 @@
                             <td align="center" width="50"><input type="radio" name="sk1" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="sk1" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="sk1" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk1" value="9" required></td>
-                            <td><b>Jurusan</b></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk1" value="-9" required></td>
+                            <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK1'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -98,7 +98,7 @@
                           </tr>
 
                           <tr>
-                            <td width="110"><b>Tanggung Jawab</b></td>
+                            <td width="110"><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK3'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="sk2" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="sk2" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="sk2" value="7" required</td>
@@ -108,15 +108,15 @@
                             <td align="center" width="50"><input type="radio" name="sk2" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="sk2" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="sk2" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk2" value="9" required></td>
-                            <td><b>Jurusan</b></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk2" value="-9" required></td>
+                            <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK1'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -141,7 +141,7 @@
                           </tr>
 
                           <tr>
-                            <td><b>Tanggung Jawab</b></td>
+                            <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK3'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="sk3" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="sk3" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="sk3" value="7" required></td>
@@ -151,15 +151,15 @@
                             <td align="center" width="50"><input type="radio" name="sk3" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="sk3" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="sk3" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk3" value="9" required></td>
-                            <td><b>Skill</b></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk3" value="-9" required></td>
+                            <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK2'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -188,7 +188,7 @@
 
                     <div class="box box-default">
                       <div class="box-header with-border">
-                        <h3 class="box-title"><b>Nilai Perbandingan Subkriteria <i>Interview</i></b></h3>
+                        <h3 class="box-title"><b>Nilai Perbandingan Subkriteria <i><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K2'); echo $nama_kriteria->nm_kriteria ?></i></b></h3>
 
                         <div class="box-tools pull-right">
                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -198,7 +198,7 @@
                       <div class="box-body">
                         <table>
                         <tr>
-                          <td><b>Perilaku</b></td>
+                          <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK5'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                           <td align="center" width="50"><input type="radio" name="sk4" value="9" required></td>
                           <td align="center" width="50"><input type="radio" name="sk4" value="8" required></td>
                           <td align="center" width="50"><input type="radio" name="sk4" value="7" required></td>
@@ -208,15 +208,15 @@
                           <td align="center" width="50"><input type="radio" name="sk4" value="3" required></td>
                           <td align="center" width="50"><input type="radio" name="sk4" value="2" required></td>
                           <td align="center" width="50"><input type="radio" name="sk4" value="1" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="2" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="3" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="4" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="5" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="6" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="7" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="8" required></td>
-                          <td align="center" width="50"><input type="radio" name="sk4" value="9" required></td>
-                          <td width="100"><b>Kesiapan Kerja</b></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-2" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-3" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-4" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-5" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-6" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-7" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-8" required></td>
+                          <td align="center" width="50"><input type="radio" name="sk4" value="-9" required></td>
+                          <td width="100"><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK4'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                         </tr>
                         <tr>
                           <td></td>
@@ -255,7 +255,7 @@
                       <div class="box-body">
                         <table>
                           <tr>
-                            <td><b>Kejujuran</b></td>
+                            <td><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK7'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="sk5" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="sk5" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="sk5" value="7" required></td>
@@ -265,15 +265,15 @@
                             <td align="center" width="50"><input type="radio" name="sk5" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="sk5" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="sk5" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="sk5" value="9" required></td>
-                            <td width="100"><b>Ketelitian</b></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="sk5" value="-9" required></td>
+                            <td width="100"><b><?php $nama_subkriteria = $this->M_Subkriteria->getNamaSubkriteria('SK6'); echo $nama_subkriteria->nm_subkriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -317,7 +317,7 @@
                       <?php } ?>
                     <div class="box box-default">
                       <div class="box-header with-border">
-                        <h3 class="box-title"><b>Matriks Perbandingan Subkriteria <i>Kompetensi</i></b></h3>
+                        <h3 class="box-title"><b>Matriks Perbandingan Subkriteria <i><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K3'); echo $nama_kriteria->nm_kriteria ?></i></b></h3>
 
                         <div class="box-tools pull-right">
                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -433,11 +433,13 @@
                             <th style="padding-left: 10px"><center>Nilai Banding</center></th>
                             <th><center>Eigenvector</center></th>
                           </tr>
+                            <?php $Sub_E1 = 1; ?>
                             <?php foreach($view_eigenvector1 as $i => $value) { ?>
                             <tr>
                               <td><b><?php echo $view_eigenvector1[$i][0] ?></b></td>
                               <td><center><?php echo round($view_eigenvector1[$i][1],4) ?></center></td>
                               <td><center><?php echo round($view_eigenvector1[$i][2],4) ?></center></td>
+                              <input type="hidden" name="SE_kompetensi<?php echo $Sub_E1++ ?>" value="<?php echo $view_eigenvector1[$i][2] ?>">
                             </tr>
                           <?php } ?>
                         </table>
@@ -460,11 +462,13 @@
                             <th style="padding-left: 10px"><center>Nilai Banding</center></th>
                             <th><center>Eigenvector</center></th>
                           </tr>
+                            <?php $Sub_E2 = 1; ?>
                             <?php foreach($view_eigenvector2 as $i => $value) { ?>
                               <tr>
                                 <td><b><?php echo $view_eigenvector2[$i][0] ?></b></td>
                                 <td><center><?php echo round($view_eigenvector2[$i][1],4) ?></center></td>
                                 <td><center><?php echo round($view_eigenvector2[$i][2],4) ?></center></td>
+                                <input type="hidden" name="SE_interview<?php echo $Sub_E2++ ?>" value="<?php echo $view_eigenvector2[$i][2] ?>">
                               </tr>
                             <?php } ?>
                         </table>
@@ -487,11 +491,13 @@
                             <th style="padding-left: 10px"><center>Nilai Banding</center></th>
                             <th><center>Eigenvector</center></th>
                           </tr>
+                            <?php $Sub_E3 =1; ?>
                             <?php foreach($view_eigenvector3 as $i => $value) { ?>
                               <tr>
                                 <td><b><?php echo $view_eigenvector3[$i][0] ?></b></td>
                                 <td><center><?php echo round($view_eigenvector3[$i][1],4) ?></center></td>
                                 <td><center><?php echo round($view_eigenvector3[$i][2],4) ?></center></td>
+                                <input type="hidden" name="SE_konsistensi<?php echo $Sub_E3++ ?>" value="<?php echo $view_eigenvector3[$i][2] ?>">
                               </tr>
                             <?php } ?>
                         </table>
@@ -500,7 +506,7 @@
 
                     <div class="modal-footer">
                       <a href="<?php echo site_url('C_PerbandinganSubkriteria/batal') ?>" type="button" class="btn btn-default"><i class="fa fa-close"></i> Batal</a>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Eigenvector</button>
                     </div>
                   </form>
                     <?php } else { ?>

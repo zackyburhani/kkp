@@ -51,7 +51,7 @@
                     
                     <table>
                           <tr>
-                            <td><b>Kompetensi</b></td>
+                            <td><b><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K1'); echo $nama_kriteria->nm_kriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="k1" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="k1" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="k1" value="7" required></td>
@@ -61,15 +61,15 @@
                             <td align="center" width="50"><input type="radio" name="k1" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="k1" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="k1" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="k1" value="9" required></td>
-                            <td><b>Interview</b></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="k1" value="-9" required></td>
+                            <td><b><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K2'); echo $nama_kriteria->nm_kriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -94,7 +94,7 @@
                           </tr>
 
                           <tr>
-                            <td width="110"><b>Konsistensi</b></td>
+                            <td width="110"><b><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K3'); echo $nama_kriteria->nm_kriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="k2" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="k2" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="k2" value="7" required</td>
@@ -104,15 +104,15 @@
                             <td align="center" width="50"><input type="radio" name="k2" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="k2" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="k2" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="k2" value="9" required></td>
-                            <td><b>Kompetensi</b></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="k2" value="-9" required></td>
+                            <td><b><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K1'); echo $nama_kriteria->nm_kriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -137,7 +137,7 @@
                           </tr>
 
                           <tr>
-                            <td><b>Konsistensi</b></td>
+                            <td><b><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K3'); echo $nama_kriteria->nm_kriteria ?></b></td>
                             <td align="center" width="50"><input type="radio" name="k3" value="9" required></td>
                             <td align="center" width="50"><input type="radio" name="k3" value="8" required></td>
                             <td align="center" width="50"><input type="radio" name="k3" value="7" required></td>
@@ -147,15 +147,15 @@
                             <td align="center" width="50"><input type="radio" name="k3" value="3" required></td>
                             <td align="center" width="50"><input type="radio" name="k3" value="2" required></td>
                             <td align="center" width="50"><input type="radio" name="k3" value="1" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="2" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="3" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="4" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="5" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="6" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="7" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="8" required></td>
-                            <td align="center" width="50"><input type="radio" name="k3" value="9" required></td>
-                            <td><b>Interview</b></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-2" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-3" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-4" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-5" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-6" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-7" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-8" required></td>
+                            <td align="center" width="50"><input type="radio" name="k3" value="-9" required></td>
+                            <td><b><?php $nama_kriteria = $this->M_Kriteria->getNamaKriteria('K2'); echo $nama_kriteria->nm_kriteria ?></b></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -196,7 +196,7 @@
                   <?php if(isset($matriksA)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
-                        <th>Kriteria</th>
+                        <td>Kriteria</td>
                         <?php $kd_banding = 1; ?>
                         <?php $kd = 1; ?>
                         <?php $array = array(); ?>
@@ -233,15 +233,17 @@
                   <?php if(isset($view_eigenvector)) { ?>
                     <table style="table-layout:fixed" class="table table-striped table-bordered">
                       <tr>
-                        <th><center>Kriteria</center></th>
+                        <th>Kriteria</th>
                         <th><center>Nilai Banding</center></th>
                         <th><center>Eigenvector</center></th>
                       </tr>
+                      <?php $eig = 1; ?>
                       <?php foreach($view_eigenvector as $i => $value) { ?>
                         <tr>
-                          <td><center><?php echo $view_eigenvector[$i][0] ?></center></td>
+                          <td><?php echo $view_eigenvector[$i][0] ?></td>
                           <td><center><?php echo round($view_eigenvector[$i][1],4) ?></center></td>
                           <td><center><?php echo round($view_eigenvector[$i][2],4) ?></center></td>
+                          <input type="hidden" name="E<?php echo $eig++ ?>" value="<?php echo $view_eigenvector[$i][2] ?>">
                         </tr>
                       <?php } ?>
                     </table>

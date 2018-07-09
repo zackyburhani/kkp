@@ -7,6 +7,7 @@ class M_TargetSubkriteria extends CI_Model {
 		parent::__construct();
 	}
 
+    //simpan
 	public function simpanTarget($data)
     {
 		$checkinsert = false;
@@ -19,55 +20,55 @@ class M_TargetSubkriteria extends CI_Model {
 		return $checkinsert;
 	}
 
+    //simpan nilai target
     public function simpanNilaiTarget($id,$data,$id_calon)
     {
         $this->db->query("UPDATE target2 SET nilai_target2='".$data."' WHERE id_calon = '".$id_calon."'  and kd_subkriteria='".$id."'");
     }
 	
+    //ambil semua data calon
 	public function getAllCalon()
     {
 		$result = $this->db->get('calon');
 		return $result->result();
 	}
 
+    //ambil data per-periode
     public function periode($periode_masuk)
     {
     	$result = $this->db->query("SELECT * FROM calon WHERE periode_masuk = '".$periode_masuk."'");
     	return $result->result();
     }
 
-    //coba
+    //ambil data per-periode
     public function periode2($periode_masuk)
     {
         $result = $this->db->query("SELECT id_calon,nm_calon FROM calon WHERE periode_masuk = '".$periode_masuk."'");
         return $result->result();
     }
 
-
+    //ambil nilai
     public function nilaiDetail()
     {
     	$result = $this->db->query("SELECT * FROM calon JOIN target2 ON calon.id_calon = target2.id_calon");
     	return $result->result();
     }
 
+    //ambil nilai berdasarkan id
     public function nilai($id_calon)
     {
     	$result = $this->db->query("SELECT * FROM target2 JOIN subkriteria ON target2.kd_subkriteria = subkriteria.kd_subkriteria WHERE id_calon ='".$id_calon."'");
     	return $result->result();
     }
 
-    public function CetakPeriode($periode)
-    {
-     	$result = $this->db->query("SELECT * FROM calon WHERE periode_masuk = '".$periode."'");
-     	return $result->result();
-    }
- 
+    //ambil nilai 
     public function nilai_target2($kd_subkriteria)
     {
         $result = $this->db->query("SELECT nilai_target2,eigenvector_sub FROM target2,subkriteria,kriteria WHERE kriteria.kd_kriteria = subkriteria.kd_kriteria AND target2.kd_subkriteria = subkriteria.kd_subkriteria and subkriteria.kd_subkriteria = '".$kd_subkriteria."'");
         return $result->result();
     }
 
+    //cari max
     public function max()
     {
         $result = $this->db->query("
@@ -84,6 +85,7 @@ class M_TargetSubkriteria extends CI_Model {
         return $result->result();
     }
 
+    //ambil nilai untuk saw
     public function getAllSAW_sub($tgl)
     {
         $result = $this->db->query("
@@ -100,12 +102,14 @@ class M_TargetSubkriteria extends CI_Model {
         return $result->result();
     }
 
+    //ambil eigenvector
     public function eigenvector_sub()
     {
         $result = $this->db->query("SELECT eigenvector_sub FROM subkriteria");
         return $result->result();
     }
 
+    //validasi
     public function hilangkanTombol($id_calon)
     {
         $result = $this->db->query("SELECT * FROM target2 where id_calon = '$id_calon' and nilai_target2 != 0");

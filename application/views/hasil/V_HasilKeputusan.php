@@ -110,7 +110,9 @@
               </div>
 
               <div class="footer">
-                <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Hasil</button>
+                <?php if($barisNotNull != $baris) { ?>
+                  <button type="submit" class="btn btn-success pull-right" style="margin-left: 10px"><i class="fa fa-save"></i> Simpan Hasil</button>
+                <?php } ?>
               </div>
             </form>
 

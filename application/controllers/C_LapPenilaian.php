@@ -11,6 +11,7 @@ class C_LapPenilaian extends CI_Controller {
         $this->load->library('Excel_generator');
     }
 
+    //halaman awal
 	public function index()
 	{
 		$this->load->view('template/V_Header');
@@ -19,6 +20,7 @@ class C_LapPenilaian extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+    //tampil data per-periode
 	public function periode()
     {
 		$awal  = $this->input->get('awal');
@@ -37,6 +39,7 @@ class C_LapPenilaian extends CI_Controller {
 		$this->load->view('template/V_Footer');
     }
 
+    //cetak laporan penilaian dalam bentuk pdf
     public function cetaklaporanPenilaian($awal,$akhir,$id_calon)
     {
     	$pdf = new FPDF('P','mm','A4');
@@ -106,6 +109,7 @@ class C_LapPenilaian extends CI_Controller {
         $pdf->Output();
     }
 
+    //cetak laporan penilaian dalam bentuk .xlsx
     public function Excel($awal,$akhir,$id)
     {
         $query = $this->M_LapPenilaianCalonKaryawan->ExportExcel($awal,$akhir,$id);
@@ -116,6 +120,7 @@ class C_LapPenilaian extends CI_Controller {
         $this->excel_generator->exportTo2007('Rekapitulasi Nilai Periode '.tanggal($awal). ' Sampai '.tanggal($akhir));
     }
 
+    //cetak laporan penilaian dalam bentuk .doc
     public function Word($awal,$akhir,$id)
     {
         $hasil = $this->M_LapPenilaianCalonKaryawan->getLapPenilaianCalonKaryawanDetail($awal,$akhir,$id);

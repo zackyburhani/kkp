@@ -9,6 +9,7 @@ class C_Subkriteria extends CI_Controller {
 		$this->load->model(['M_Subkriteria','M_Kriteria','M_Calon']);
 	}
 
+	//halaman awal
 	public function index()
 	{
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
@@ -31,6 +32,7 @@ class C_Subkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//simpan data subkriteria
 	public function tambahSubkriteria() 
 	{
 		$kriteria = $this->input->post('kriteria');
@@ -54,6 +56,7 @@ class C_Subkriteria extends CI_Controller {
 		}
 	}
 
+	//update data subkriteria
 	public function updateSubkriteria()
 	{
 		$kd_kriteria    = $this->input->post('kriteria');
@@ -76,6 +79,7 @@ class C_Subkriteria extends CI_Controller {
 		}
 	}
 
+	//hapus data subkriteria
 	public function deleteSubkriteria()
 	{
 		$kd_subkriteria = $this->input->post('kd_subkriteria');

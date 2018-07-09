@@ -10,6 +10,7 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
         $this->load->library('Excel_generator');
     }
 
+    //halaman awal
 	public function index()
 	{
 		$this->load->view('template/V_Header');
@@ -18,6 +19,7 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+    //tampil data per-periode
     public function periode()
     {
         $awal = $this->input->get('awal');
@@ -36,7 +38,8 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
 		$this->load->view('template/V_Footer');
     }
 
-    public function cetaklaporanrank($awal,$akhir)
+    //cetak laporan perangkingan dalam bentuk pdf
+    public function cetaklaporanRekap($awal,$akhir)
     {
         $pdf = new FPDF('P','mm','A4');
         // membuat halaman baru
@@ -105,6 +108,7 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
         $pdf->Output();
     }
 
+    //cetak laporan perangkingan dalam bentuk .xlsx
     public function Excel($awal,$akhir)
     {
         $query = $this->M_LapRekapitulasiPenilaian->ExportExcel($awal,$akhir);
@@ -115,6 +119,7 @@ class C_LapRekapitulasiPenilaian extends CI_Controller {
         $this->excel_generator->exportTo2007('Rekapitulasi Nilai Periode '.tanggal($awal).' Sampai '.tanggal($akhir));
     }
 
+    //cetak laporan perangkingan dalam bentuk .doc
     public function Word($awal,$akhir)
     {
         $hasil = $this->M_LapRekapitulasiPenilaian->getLapRekapitulasiPenilaian($awal,$akhir);

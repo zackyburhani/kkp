@@ -34,7 +34,7 @@
           <center>
             <?php if(isset($awal)){?>
               <?php if($getLapRekapitulasiPenilaian != null) { ?>
-                <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/cetaklaporanrank/'.$awal.'/'.$akhir) ?>" class="btn btn-danger" style="margin-left: 10px"><i class="fa fa-print"></i> Pdf</a>
+                <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/cetaklaporanRekap/'.$awal.'/'.$akhir) ?>" class="btn btn-danger" style="margin-left: 10px"><i class="fa fa-print"></i> Pdf</a>
                 <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/Excel/'.$awal.'/'.$akhir) ?>" class="btn btn-success" style="margin-left: 10px"><i class="fa fa-file-excel-o"></i> Excel</a>
                 <a href="<?php echo site_url('C_LapRekapitulasiPenilaian/Word/'.$awal.'/'.$akhir) ?>" class="btn btn-primary" style="margin-left: 10px"><i class="fa fa-file-word-o"></i> Word</a>
               <?php } ?>

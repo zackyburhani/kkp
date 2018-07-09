@@ -9,6 +9,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$this->load->model(['M_TargetSubkriteria','M_Kriteria','M_Subkriteria','M_MatriksSubkriteria','M_Calon']);
 	}
 
+	//halaman awal
 	public function index()
 	{
 		$getAllKriteria    = $this->M_Kriteria->getAllKriteria();
@@ -23,6 +24,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//validasi untuk view
 	public function tanggal($periode)
 	{
 		$getPeriodeCalon = $this->M_TargetSubkriteria->periode($periode);
@@ -33,6 +35,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		}
 	}
 
+	//mengambil nilai bobot eigenvector
 	public function bobot()
 	{
 		$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
@@ -42,6 +45,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		} return $array;
 	}
 
+	//mencari niai max
 	public function max()
 	{
 		$max = $this->M_TargetSubkriteria->max();
@@ -57,6 +61,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		} return $array;
 	}
 
+	//tampil data per-periode
 	public function periode()
 	{
 
@@ -73,6 +78,14 @@ class C_MatriksSubkriteria extends CI_Controller {
 
 		$matriksISI 	   = $this->M_MatriksSubkriteria->matriksNormalisasiISI($periode);
 		$barisCalon 	   = $this->M_MatriksSubkriteria->barisCalon($periode);
+
+		$cekEigenvector    = $this->M_Kriteria->cekEigenvector();
+		$cekEigenvectorSub = $this->M_Subkriteria->cekEigenvector();
+
+		if($cekEigenvector->eigenvector == 0 || $cekEigenvectorSub->eigenvector_sub == 0){
+			$this->session->set_flashdata('pesanGagal','Data Eigenvector Kosong');
+    		redirect('C_MatriksSubkriteria');
+		}
 
 		$maxLoop = array();
 		foreach($this->max() as $key=>$value) {
@@ -135,22 +148,28 @@ class C_MatriksSubkriteria extends CI_Controller {
 			$nm_calon_a[] = $a->nm_calon;
 		}
 
-		//total1
-		$total1_view = array();
-		for($i=0; $i<$barisCalon; $i++){
-			$total1_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total1[$i]];
-		}
+		if($matriksISI == null){
+			$total1_view = [0];
+			$total2_view = [0];
+			$total3_view = [0];
+		} else{
+			//total1
+			$total1_view = array();
+			for($i=0; $i<$barisCalon; $i++){
+				$total1_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total1[$i]];
+			}
 
-		//total2
-		$total2_view = array();
-		for($i=0; $i<$barisCalon; $i++){
-			$total2_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total2[$i]];
-		}
+			//total2
+			$total2_view = array();
+			for($i=0; $i<$barisCalon; $i++){
+				$total2_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total2[$i]];
+			}
 
-		//total3
-		$total3_view = array();
-		for($i=0; $i<$barisCalon; $i++){
-			$total3_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total3[$i]];
+			//total3
+			$total3_view = array();
+			for($i=0; $i<$barisCalon; $i++){
+				$total3_view[] = [$id_calon_a[$i],$nm_calon_a[$i],$total3[$i]];
+			}
 		}
 
 		$tanggal = $this->tanggal($periode);
@@ -176,6 +195,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//mengambil data kode kriteria
 	private function kriteria()
 	{
 		$kriteria = array();
@@ -186,6 +206,7 @@ class C_MatriksSubkriteria extends CI_Controller {
 		return $kriteria;
 	}
 
+	//simpan hasil perhitungan
 	public function simpanNilai($tanggalPeriode)
 	{
 

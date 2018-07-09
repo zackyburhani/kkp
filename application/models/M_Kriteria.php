@@ -7,6 +7,7 @@ class M_Kriteria extends CI_Model {
 		parent::__construct();
 	}
 
+	//simpan
 	public function tambahKriteria($data)
 	{
 		$checkinsert = false;
@@ -19,6 +20,7 @@ class M_Kriteria extends CI_Model {
 		return $checkinsert;
 	}
 
+	//simpan
 	public function tambahBanding($data)
 	{
 		$checkinsert = false;
@@ -31,24 +33,28 @@ class M_Kriteria extends CI_Model {
 		return $checkinsert;
 	}
 
+	//ambil semua data kriteria
 	public function getAllKriteria()
 	{
 		$result = $this->db->get('kriteria');
 		return $result->result();
 	}
 
+	//ambil data kriteria sesuai id
 	public function getNamaKriteria($kd)
 	{
 		$result = $this->db->query("SELECT nm_kriteria,kd_kriteria FROM kriteria where kriteria.kd_kriteria = '$kd'");
 		return $result->row();
 	}
 
+	//ambil data kriteria sesuai id
 	public function getKriteria($id)
 	{
 		$result = $this->db->where('kd_kriteria',$id)->get('kriteria');
 		return $result->row();
 	}
 
+	//update
 	public function UpdateKriteria($id,$data)
 	{
 		$checkupdate = false;
@@ -63,6 +69,7 @@ class M_Kriteria extends CI_Model {
 		return $checkupdate;
 	}
 
+	//hapus
 	public function DeleteKriteria($id)
 	{
 		$checkupdate = false;
@@ -76,6 +83,7 @@ class M_Kriteria extends CI_Model {
 		return $checkupdate;
 	}
 	
+	//autonumber kriteria
 	public function getKdKriteria()
     {
     	$q  = $this->db->query("select MAX(RIGHT(kd_kriteria,1)) as kd_max from kriteria");
@@ -91,6 +99,7 @@ class M_Kriteria extends CI_Model {
        return "K".$kd;
      }
 
+     //simpan eigenvector
      public function InsertEigenvector($id,$data)
      {
 		$checkupdate = false;
@@ -104,9 +113,17 @@ class M_Kriteria extends CI_Model {
 		return $checkupdate;
 	}
 
+	//cari baris
 	public function jumlah($table)
   	{
     	$query = $this->db->query("SELECT * FROM $table");
     	return $query->num_rows();
+  	}
+
+  	//validasi eigenvector
+  	public function cekEigenvector()
+  	{
+    	$query = $this->db->query("SELECT kriteria.eigenvector FROM kriteria");
+    	return $query->row();
   	}
 }

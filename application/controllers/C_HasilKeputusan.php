@@ -9,6 +9,7 @@ class C_HasilKeputusan extends CI_Controller {
 		$this->load->model(['M_HasilKeputusan','M_MatriksSubkriteria','M_TargetSubkriteria']);
 	}
 
+	//halaman awal
 	public function index()
 	{
 		$this->load->view('template/V_Header');
@@ -17,14 +18,19 @@ class C_HasilKeputusan extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//tampil data per-periode
 	public function periode()
 	{ 
 		$periode 	   = $this->input->get('periode_masuk');
 		$getAllHasil   = $this->M_HasilKeputusan->getAllHasil($periode);
 		$getKesimpulan = $this->M_HasilKeputusan->getKesimpulan($periode);
 		$chart   	   = $this->M_HasilKeputusan->chart($periode);
+		$baris         = $this->M_HasilKeputusan->barisHasil($periode);
+		$barisNotNull  = $this->M_HasilKeputusan->hilangTombolSimpan($periode);
 
 		$data = [
+			'barisNotNull'	=> $barisNotNull,
+			'baris'			=> $baris,
 			'chart'			=> $chart,
 			'periode'		=> $periode,
 			'getKesimpulan' => $getKesimpulan,
@@ -37,11 +43,13 @@ class C_HasilKeputusan extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//simpan keterangan calon dengan status lolos
 	public function simpanHasil()
 	{
 
 		$periode_masuk = $this->input->post('periode_masuk');
-		$baris = $this->M_HasilKeputusan->barisHasil($periode_masuk);
+		$baris         = $this->M_HasilKeputusan->barisHasil($periode_masuk);
+		$barisNotNull  = $this->M_HasilKeputusan->hilangTombolSimpan($periode_masuk);
 
 		$name = "calon";
 		$id_calon = array();

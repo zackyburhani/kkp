@@ -8,6 +8,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$this->load->model(['M_Kriteria','M_Calon']);
 	} 
 
+	//halaman awal
 	public function index()
 	{
 		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
@@ -22,16 +23,48 @@ class C_PerbandinganKriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
  
+ 	//perbandingan matriks
 	public function perbandinganMatriks()
 	{
 		$k1 = $this->input->post('k1');	
 		$k2 = $this->input->post('k2');	
 		$k3 = $this->input->post('k3');
 
+		if($k1 >= 1){
+			$tampung1_p = $k1/1;
+			$tampung1_n = 1/$k1;
+		} else {
+			$tampung1_p = (1/$k1)*-1;
+			$tampung1_n = ($k1/1)*-1;
+		}
+
+		if($k2 >= 1){
+			$tampung2_p = $k2/1;
+			$tampung2_n = 1/$k2;
+		} else {
+			$tampung2_p = (1/$k2)*-1;
+			$tampung2_n = ($k2/1)*-1;
+		}
+
+		if($k3 >= 1){
+			$tampung3_p = $k3/1;
+			$tampung3_n = 1/$k3;
+		} else {
+			$tampung3_p = (1/$k3)*-1;
+			$tampung3_n = ($k3/1)*-1;
+		}
+
+
+		// $matriksA = [ 
+		// 	[1     ,  $k1/1 , 1/$k2],
+		// 	[1/$k1 ,   1    , 1/$k3],
+		// 	[$k2/1 ,  $k3/1 ,   1  ]
+		// ];
+
 		$matriksA = [ 
-			[1     ,  $k1/1 , 1/$k2],
-			[1/$k1 ,   1    , 1/$k3],
-			[$k2/1 ,  $k3/1 ,   1  ]
+			[1           ,  $tampung1_p , $tampung2_n],
+			[$tampung1_n ,   1          , $tampung3_n],
+			[$tampung2_p ,  $tampung3_p ,   1        ]
 		];
 
 		$matriksB = $matriksA;
@@ -83,7 +116,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 		}
 	}
 
-	//fungsi untuk menghapus data session matriks
+	//hapus data matriks
 	public function batal()
 	{
 		redirect('C_PerbandinganKriteria');
@@ -101,7 +134,7 @@ class C_PerbandinganKriteria extends CI_Controller {
 		}
 	}
 
-	//fungsi simpan nilai eigenvector
+	//simpan nilai eigenvector
 	public function simpanEigenvector()
 	{
 		$e1 = $this->input->post('E1');	

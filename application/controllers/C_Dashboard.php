@@ -9,16 +9,17 @@ class C_Dashboard extends CI_Controller {
 		$this->load->model('M_Calon');
 	}
 
+	//halaman awal
 	public function index()
 	{
-		$totalCalon = $this->M_Calon->jumlah('calon');
-		$totalKriteria = $this->M_Calon->jumlah('kriteria');
+		$totalCalon 	  = $this->M_Calon->jumlah('calon');
+		$totalKriteria 	  = $this->M_Calon->jumlah('kriteria');
 		$totalSubkriteria = $this->M_Calon->jumlah('subkriteria');
 
 		$data = [
-			'totalCalon' => $totalCalon,
-			'totalKriteria' => $totalKriteria,
-			'totalSubkriteria' => $totalSubkriteria
+			'totalCalon' 		=> $totalCalon,
+			'totalKriteria' 	=> $totalKriteria,
+			'totalSubkriteria' 	=> $totalSubkriteria
 		];
 
 		$this->load->view('template/V_Header');

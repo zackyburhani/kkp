@@ -10,6 +10,7 @@ class C_LapPerangkinganNilai extends CI_Controller {
         $this->load->library('Excel_generator');
     }
 
+    //halaman awal
 	public function index()
 	{
 		$this->load->view('template/V_Header');
@@ -18,6 +19,7 @@ class C_LapPerangkinganNilai extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+    //tampil data per-periode
     public function periode(){
         $periode = $this->input->get('periode_masuk');
         $getLapPerangkinganNilai = $this->M_LapPerangkinganNilai->getLapPerangkinganNilai($periode);
@@ -34,6 +36,7 @@ class C_LapPerangkinganNilai extends CI_Controller {
 		$this->load->view('template/V_Footer');
     }
 
+    //cetak laporan perangkingan dalam bentuk pdf
 	public function cetaklaporanrank($periode)
     {
         $pdf = new FPDF('P','mm','A4');
@@ -101,6 +104,7 @@ class C_LapPerangkinganNilai extends CI_Controller {
         $pdf->Output();
     }
 
+    //cetak laporan perangkingan dalam bentuk .xlsx
     public function Excel($periode)
     {
         $query = $this->M_LapPerangkinganNilai->ExportExcel($periode);
@@ -111,6 +115,7 @@ class C_LapPerangkinganNilai extends CI_Controller {
         $this->excel_generator->exportTo2007('Perangkingan Nilai Periode '.tanggal($periode));
     }
 
+    //cetak laporan perangkingan dalam bentuk .doc
     public function Word($periode)
     {
         $hasil = $this->M_LapPerangkinganNilai->getLapPerangkinganNilai($periode);

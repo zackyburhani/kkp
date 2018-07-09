@@ -117,7 +117,7 @@ Highcharts.chart('hasil_akhir_saw', {
         }
     ]
 });
-        </script>
+</script>
 
 </body>
 </html>

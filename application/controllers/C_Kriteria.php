@@ -8,6 +8,7 @@ class C_Kriteria extends CI_Controller {
 		$this->load->model(['M_Kriteria','M_Calon']);
 	}
 	
+	//halaman awal
 	public function index()
 	{
 		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
@@ -25,6 +26,7 @@ class C_Kriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 	
+	//simpan data kriteria
 	public function tambahKriteria() 
 	{
 		$kd_kriteria = $this->input->post('kd_kriteria');
@@ -46,6 +48,7 @@ class C_Kriteria extends CI_Controller {
 		}
 	}
 	
+	//update data kriteria
 	public function updateKriteria()
 	{
 		$kd_kriteria = $this->input->post('kd_kriteria');
@@ -66,6 +69,7 @@ class C_Kriteria extends CI_Controller {
 		}
 	}
 	
+	//hapus data kriteria
 	public function deleteKriteria()
 	{
 		$kd_kriteria = $this->input->post('kd_kriteria');

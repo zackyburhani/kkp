@@ -6,6 +6,7 @@ class M_LapPerangkinganNilai extends CI_Model {
 		parent::__construct();
 	}
 
+    //ambil data untuk perangkingan nilai
     public function getLapPerangkinganNilai($periode_masuk)
     {
         $result = $this->db->query("
@@ -18,6 +19,7 @@ class M_LapPerangkinganNilai extends CI_Model {
         return $result->result();
     }
 
+    //ambil data untuk perangkingan nilai excel
     public function ExportExcel($periode_masuk){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id, calon.nm_calon,

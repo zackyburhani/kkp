@@ -9,6 +9,7 @@ class C_TargetSubkriteria extends CI_Controller {
 		$this->load->model(['M_TargetSubkriteria','M_MatriksSubkriteria','M_Subkriteria','M_Kriteria','M_Calon']);
 	}
 
+	//halaman awal
 	public function index()
 	{
 		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
@@ -23,7 +24,7 @@ class C_TargetSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
-	//fungsi menampilkan data calon berdasarkan periode masuk
+	//tampil data per-periode
 	public function periode()
 	{
 		$periode 		   = $this->input->get('periode_masuk');
@@ -52,9 +53,9 @@ class C_TargetSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//simpan nilai target
 	public function simpanTarget() 
 	{
-
 		$id_calon      = $this->input->post('id_calon');
 		$periode_masuk = $this->input->post('periode_masuk');
 		$baris 		   = $this->M_Calon->jumlah('subkriteria');
@@ -98,86 +99,86 @@ class C_TargetSubkriteria extends CI_Controller {
 	}
 
 
-	public function bobot()
-	{
-		$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
-		$array = array();
-		foreach($eigenvector_sub as $key) {
-			$array[] = $key->eigenvector_sub; 
-		} return $array;
-	}
+	// public function bobot()
+	// {
+	// 	$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
+	// 	$array = array();
+	// 	foreach($eigenvector_sub as $key) {
+	// 		$array[] = $key->eigenvector_sub; 
+	// 	} return $array;
+	// }
 
-	public function max()
-	{
-		$max = $this->M_TargetSubkriteria->max();
-		$array = array();
-		foreach($max as $key) {
-			$array[] = $key->maxSK1;
-			$array[] = $key->maxSK2;
-			$array[] = $key->maxSK3;
-			$array[] = $key->maxSK4;
-			$array[] = $key->maxSK5;
-			$array[] = $key->maxSK6;
-			$array[] = $key->maxSK7;
-		} return $array;
-	}
+	// public function max()
+	// {
+	// 	$max = $this->M_TargetSubkriteria->max();
+	// 	$array = array();
+	// 	foreach($max as $key) {
+	// 		$array[] = $key->maxSK1;
+	// 		$array[] = $key->maxSK2;
+	// 		$array[] = $key->maxSK3;
+	// 		$array[] = $key->maxSK4;
+	// 		$array[] = $key->maxSK5;
+	// 		$array[] = $key->maxSK6;
+	// 		$array[] = $key->maxSK7;
+	// 	} return $array;
+	// }
 
-	//kayanya ga kepake
-	public function HitungTarget()
-	{
-		$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
+	// //kayanya ga kepake
+	// public function HitungTarget()
+	// {
+	// 	$getAllSubkriteria = $this->M_Subkriteria->getAllSubkriteria();
 
-		$nilai 			  = $this->M_TargetSubkriteria->nilaiDetail();
-		$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
+	// 	$nilai 			  = $this->M_TargetSubkriteria->nilaiDetail();
+	// 	$eigenvector_sub = $this->M_TargetSubkriteria->eigenvector_sub();
 
-		$max = $this->M_TargetSubkriteria->max();
-		$getAllSAW_sub = $this->M_TargetSubkriteria->getAllSAW_sub();
-
-
-
-		$bobot = array();
-		foreach($this->bobot() as $key=>$value) {
-			array_push($bobot, $value);
-		}
-
-		foreach ($max as $key) {
-			foreach ($getAllSAW_sub as $data) {
-				round($data->SK1/$key->maxSK1,4);
-				round($data->SK2/$key->maxSK2,4);
-				round($data->SK3/$key->maxSK3,4);
-				round($data->SK4/$key->maxSK4,4);
-				round($data->SK5/$key->maxSK5,4);
-				round($data->SK6/$key->maxSK6,4);
-				round($data->SK7/$key->maxSK7,4);
-			}
-		}
+	// 	$max = $this->M_TargetSubkriteria->max();
+	// 	$getAllSAW_sub = $this->M_TargetSubkriteria->getAllSAW_sub();
 
 
-		foreach ($max as $key) {
-			foreach ($getAllSAW_sub as $data) {
-				echo $total = round(
-					(($data->SK1/$key->maxSK1)*$bobot[0])+
-					(($data->SK2/$key->maxSK2)*$bobot[1])+
-					(($data->SK3/$key->maxSK3)*$bobot[2]),4);
-			}
-		}
 
-		foreach ($max as $key) {
-			foreach ($getAllSAW_sub as $data) {
-				echo $total = round(
-					(($data->SK4/$key->maxSK4)*$bobot[3])+
-					(($data->SK5/$key->maxSK5)*$bobot[4]),4);
-			}
-		}
+	// 	$bobot = array();
+	// 	foreach($this->bobot() as $key=>$value) {
+	// 		array_push($bobot, $value);
+	// 	}
 
-		foreach ($max as $key) {
-			foreach ($getAllSAW_sub as $data) {
-				echo $total = round(
-					(($data->SK6/$key->maxSK6)*$bobot[5])+
-					(($data->SK7/$key->maxSK7)*$bobot[6]),4);
-			}
-		}
-	}
+	// 	foreach ($max as $key) {
+	// 		foreach ($getAllSAW_sub as $data) {
+	// 			round($data->SK1/$key->maxSK1,4);
+	// 			round($data->SK2/$key->maxSK2,4);
+	// 			round($data->SK3/$key->maxSK3,4);
+	// 			round($data->SK4/$key->maxSK4,4);
+	// 			round($data->SK5/$key->maxSK5,4);
+	// 			round($data->SK6/$key->maxSK6,4);
+	// 			round($data->SK7/$key->maxSK7,4);
+	// 		}
+	// 	}
+
+
+	// 	foreach ($max as $key) {
+	// 		foreach ($getAllSAW_sub as $data) {
+	// 			echo $total = round(
+	// 				(($data->SK1/$key->maxSK1)*$bobot[0])+
+	// 				(($data->SK2/$key->maxSK2)*$bobot[1])+
+	// 				(($data->SK3/$key->maxSK3)*$bobot[2]),4);
+	// 		}
+	// 	}
+
+	// 	foreach ($max as $key) {
+	// 		foreach ($getAllSAW_sub as $data) {
+	// 			echo $total = round(
+	// 				(($data->SK4/$key->maxSK4)*$bobot[3])+
+	// 				(($data->SK5/$key->maxSK5)*$bobot[4]),4);
+	// 		}
+	// 	}
+
+	// 	foreach ($max as $key) {
+	// 		foreach ($getAllSAW_sub as $data) {
+	// 			echo $total = round(
+	// 				(($data->SK6/$key->maxSK6)*$bobot[5])+
+	// 				(($data->SK7/$key->maxSK7)*$bobot[6]),4);
+	// 		}
+	// 	}
+	// }
 
 
 }

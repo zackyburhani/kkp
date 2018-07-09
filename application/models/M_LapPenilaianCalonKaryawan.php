@@ -6,12 +6,14 @@ class M_LapPenilaianCalonKaryawan extends CI_Model {
 		parent::__construct();
 	}
 
+    //ambil data per-periode
     public function periode_masuk($id)
     {
         $result = $this->db->query("SELECT calon.periode_masuk from calon where id_calon = '$id'");
         return $result->row();
     }
 
+    //ambil data untuk laporan penilaian
     public function getLapPenilaianCalonKaryawan($awal,$akhir){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,calon.nm_calon,
@@ -28,6 +30,7 @@ class M_LapPenilaianCalonKaryawan extends CI_Model {
         return $result->result();
     }
 
+    //ambil data untuk laporan penilaian sesuai id calon
     public function getLapPenilaianCalonKaryawanDetail($awal,$akhir,$id){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,calon.nm_calon,
@@ -44,6 +47,7 @@ class M_LapPenilaianCalonKaryawan extends CI_Model {
         return $result->result();
     }
 
+    //ambil data untuk laporan untuk excel
     public function ExportExcel($awal,$akhir,$id){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,calon.nm_calon,
@@ -59,5 +63,4 @@ class M_LapPenilaianCalonKaryawan extends CI_Model {
         ");
         return $result;
     }
-    
 }

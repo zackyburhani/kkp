@@ -5,9 +5,10 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model(['M_Subkriteria','M_Calon']);
+		$this->load->model(['M_Subkriteria','M_Calon','M_Kriteria']);
 	} 
 
+	//halaman awal
 	public function index()
 	{
 		$getAllSubkriteria 	= $this->M_Subkriteria->getAllSubkriteria();
@@ -28,9 +29,9 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	} 
 
+	//perbandingan matriks
 	public function perbandinganMatriks()
 	{
-		
 		$sk1 = $this->input->post('sk1');	
 		$sk2 = $this->input->post('sk2');	
 		$sk3 = $this->input->post('sk3');
@@ -38,23 +39,79 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		$sk4 = $this->input->post('sk4');
 		$sk5 = $this->input->post('sk5');
 
+		if($sk1 >= 1){
+			$tampung1_p = $sk1/1;
+			$tampung1_n = 1/$sk1;
+		} else {
+			$tampung1_p = (1/$sk1)*-1;
+			$tampung1_n = ($sk1/1)*-1;
+		}
+
+		if($sk2 >= 1){
+			$tampung2_p = $sk2/1;
+			$tampung2_n = 1/$sk2;
+		} else {
+			$tampung2_p = (1/$sk2)*-1;
+			$tampung2_n = ($sk2/1)*-1;
+		}
+
+		if($sk3 >= 1){
+			$tampung3_p = $sk3/1;
+			$tampung3_n = 1/$sk3;
+		} else {
+			$tampung3_p = (1/$sk3)*-1;
+			$tampung3_n = ($sk3/1)*-1;
+		}
+
+		if($sk4 >= 1){
+			$tampung4_p = $sk4/1;
+			$tampung4_n = 1/$sk4;
+		} else {
+			$tampung4_p = (1/$sk4)*-1;
+			$tampung4_n = ($sk4/1)*-1;
+		}
+
+		if($sk5 >= 1){
+			$tampung5_p = $sk5/1;
+			$tampung5_n = 1/$sk5;
+		} else {
+			$tampung5_p = (1/$sk5)*-1;
+			$tampung5_n = ($sk5/1)*-1;
+		}
+
+		// $matriksA = [ 
+		// 	[1      ,  1/$sk1 , 1/$sk2],
+		// 	[$sk1/1 ,   1     , 1/$sk3],
+		// 	[$sk2/1 ,  $sk3/1 ,   1   ]
+		// ];
+
+		// $matriksA2 = [ 
+		// 	[1      ,  1/$sk4],
+		// 	[$sk4/1 ,       1]
+		// ];
+
+		// $matriksA3 = [ 
+		// 	[1      ,  1/$sk5],
+		// 	[$sk5/1 ,       1]
+		// ];
+
 		$matriksA = [ 
-			[1      ,  1/$sk1 , 1/$sk2],
-			[$sk1/1 ,   1     , 1/$sk3],
-			[$sk2/1 ,  $sk3/1 ,   1   ]
+			[     1      ,  $tampung1_n , $tampung2_n],
+			[$tampung1_p ,       1      , $tampung3_n],
+			[$tampung2_p ,  $tampung3_p ,       1    ]
 		];
 
 		$matriksA2 = [ 
-			[1      ,  1/$sk4],
-			[$sk4/1 ,       1]
+			[     1      ,  $tampung4_n],
+			[$tampung4_p ,       1     ]
 		];
 
 		$matriksA3 = [ 
-			[1      ,  1/$sk5],
-			[$sk5/1 ,       1]
+			[    1       ,  $tampung5_n],
+			[$tampung5_p ,       1     ]
 		];
 
-		$matriksB = $matriksA;
+		$matriksB  = $matriksA;
 		$matriksB2 = $matriksA2;
 		$matriksB3 = $matriksA3;
 
@@ -176,7 +233,7 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		}
 	}
 
-	//fungsi untuk menghapus data session matriks
+	//hapus data matriks
 	public function batal()
 	{
 		redirect('C_PerbandinganSubkriteria');
@@ -194,7 +251,7 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		}
 	}
 
-	//fungsi simpan nilai eigenvector
+	//simpan nilai eigenvector
 	public function simpanEigenvector()
 	{
 		//key subkriteria
@@ -232,7 +289,7 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		//kriteria
 		$kriteria1 = $this->input->post('kriteria1');
 		$kriteria2 = $this->input->post('kriteria2');
-		$kriteria3 = $this->input->post('kriteria3');		
+		$kriteria3 = $this->input->post('kriteria3');	
 
 		$baris1 = $this->M_Subkriteria->jumlah_subkriteria('subkriteria',$kriteria1);
 		$baris2 = $this->M_Subkriteria->jumlah_subkriteria('subkriteria',$kriteria2);
@@ -240,7 +297,7 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 
 		$baris_total = $this->M_Calon->jumlah('subkriteria');
 
-		//tankap nilai banding berdasarkan kd_kriteria K1
+		//tangkap nilai banding berdasarkan kd_kriteria K1
 		$n = 1;
 		$array1 = array();
 		$banding2 = "nilaiBanding2a";
@@ -252,7 +309,7 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 			}
 		}
 
-		//tankap nilai banding berdasarkan kd_kriteria K2
+		//tangkap nilai banding berdasarkan kd_kriteria K2
 		$m = 1;
 		$array2 = array();
 		$banding2 = "nilaiBanding2b";
@@ -293,30 +350,46 @@ class C_PerbandinganSubkriteria extends CI_Controller {
 		//simpan nilai banding berdasarkan kd_kriteria K2
 		$sktr = "SK";
 		$q = 0;
+		$k = 4;
+		$l = 4;
 		for($i=1; $i<=$baris2; $i++){
 			for($j=1; $j<=$baris2; $j++){
 				$data_banding1 = [
-					'kd_subkriteria' => $sktr.$i,
-					'kd_subkriteria2' => $sktr.$j,
+					'kd_subkriteria' => $sktr.$k,
+					'kd_subkriteria2' => $sktr.$l,
 					'nilaiBanding2' => $array2[$q++]
 				];
 				$this->M_Subkriteria->tambahBanding($data_banding1);
+				$l++;
 			}
+			$l = 4;
+			$k++;
 		}
+
 
 		//simpan nilai banding berdasarkan kd_kriteria K3
 		$sktr = "SK";
 		$q = 0;
+		$m = 6;
+		$n = 6;
 		for($i=1; $i<=$baris3; $i++){
 			for($j=1; $j<=$baris3; $j++){
 				$data_banding1 = [
-					'kd_subkriteria' => $sktr.$i,
-					'kd_subkriteria2' => $sktr.$j,
+					'kd_subkriteria' => $sktr.$m,
+					'kd_subkriteria2' => $sktr.$n,
 					'nilaiBanding2' => $array3[$q++]
 				];
 				$this->M_Subkriteria->tambahBanding($data_banding1);
+				$n++;
 			}
+			$n = 6;
+			$m++;
 		}
+
+
+		// echo json_encode($array1)."<br>";
+		// echo json_encode($array2)."<br>";
+		// echo json_encode($array3); die();
 
 		$result1 = $this->M_Subkriteria->InsertEigenvector($SK1,$data1);
 		$result2 = $this->M_Subkriteria->InsertEigenvector($SK2,$data2);

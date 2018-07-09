@@ -7,6 +7,7 @@ class M_Subkriteria extends CI_Model {
 		parent::__construct();
 	}
 
+	//simpan
 	public function tambahSubkriteria($data)
 	{
 		$checkinsert = false;
@@ -19,24 +20,35 @@ class M_Subkriteria extends CI_Model {
 		return $checkinsert;
 	}
 	
+	//ambil semua data subkriteria
 	public function getAllSubkriteria()
 	{
 		$result = $this->db->get('subkriteria');
 		return $result->result();
 	}
 
+	//ambil data subkriteria berdasarkan id
 	public function getSubkriteria($id)
 	{
 		$result = $this->db->query("SELECT * FROM subkriteria WHERE kd_kriteria = '".$id."'");
 		return $result->result();
 	}
 
+	//ambil nama subkriteria
 	public function getNmKriteria()
 	{
 		$result = $this->db->query("SELECT nm_kriteria,subkriteria.kd_kriteria FROM subkriteria JOIN kriteria ON subkriteria.kd_kriteria = kriteria.kd_kriteria GROUP BY nm_kriteria ORDER BY 2");
 		return $result->result();
 	}
 
+	//ambil nama subkriteria
+	public function getNamaSubkriteria($kd)
+	{
+		$result = $this->db->query("SELECT nm_subkriteria,kd_subkriteria FROM subkriteria where subkriteria.kd_subkriteria = '$kd'");
+		return $result->row();
+	}
+
+	//update
 	public function UpdateSubkriteria($id,$data)
 	{
 		$checkupdate = false;
@@ -50,6 +62,7 @@ class M_Subkriteria extends CI_Model {
 		return $checkupdate;
 	}
 
+	//hapus
 	public function DeleteSubkriteria($id)
 	{
 		$checkupdate = false;
@@ -63,6 +76,7 @@ class M_Subkriteria extends CI_Model {
 		return $checkupdate;
 	}
 
+	//autonumber subkriteria
 	public function getKdSubkriteria()
     {
     	$q = $this->db->query("select MAX(RIGHT(kd_subkriteria,1)) as kd_max from subkriteria");
@@ -78,6 +92,7 @@ class M_Subkriteria extends CI_Model {
        return "SK".$kd;
      }
 
+     //simpan eigenvector
      public function InsertEigenvector($id,$data)
      {
 		$checkupdate = false;
@@ -92,12 +107,14 @@ class M_Subkriteria extends CI_Model {
 		return $checkupdate;
 	}
 
+	//cari baris
 	public function jumlah_subkriteria($table,$id)
   	{
     	$query = $this->db->query("SELECT * FROM $table where kd_kriteria = '$id'");
     	return $query->num_rows();
   	}
 
+  	//simpan
   	public function tambahBanding($data)
   	{
 		$checkinsert = false;
@@ -109,5 +126,12 @@ class M_Subkriteria extends CI_Model {
 		}
 		return $checkinsert;
 	}
+
+	//validasi eigenvector
+  	public function cekEigenvector()
+  	{
+    	$query = $this->db->query("SELECT subkriteria.eigenvector_sub FROM subkriteria");
+    	return $query->row();
+  	}
 
 }

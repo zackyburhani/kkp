@@ -9,6 +9,7 @@ class C_TargetKriteria extends CI_Controller {
 		$this->load->model(['M_TargetKriteria','M_Kriteria']);
 	}
 
+	//halaman awal
 	public function index()
 	{
 		$getAllKriteria = $this->M_Kriteria->getAllKriteria();
@@ -23,7 +24,7 @@ class C_TargetKriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
-	//fungsi menampilkan data calon berdasarkan periode masuk
+	//tampil data per-periode
 	public function periode()
 	{
 		$periode 		 = $this->input->get('periode_masuk');
@@ -31,7 +32,6 @@ class C_TargetKriteria extends CI_Controller {
 		$getAllCalon 	 = $this->M_TargetKriteria->getAllCalon();
 		$getAllKriteria  = $this->M_Kriteria->getAllKriteria();
 		$nilaiDetail     = $this->M_TargetKriteria->nilaiDetail();
-		
 		
 		$data = [
 		 	'nilaiDetail'	  => $nilaiDetail,
@@ -50,11 +50,12 @@ class C_TargetKriteria extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 
+	//simpan target
 	public function simpanTarget() 
 	{
-		$kd_kriteria  = $this->input->post('kd_kriteria');
-		$id_calon     = $this->input->post('id_calon');
-		$nilai_target = $this->input->post('nilai_target');
+		$kd_kriteria   = $this->input->post('kd_kriteria');
+		$id_calon      = $this->input->post('id_calon');
+		$nilai_target  = $this->input->post('nilai_target');
 		$periode_masuk = $this->input->post('periode_masuk');
 		
 		$data = [

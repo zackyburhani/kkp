@@ -9,7 +9,7 @@ class C_Karyawan extends CI_Controller {
 		$this->load->model('M_Calon');
 	}
 
-	//halaman awal semua calon karyawan
+	//halaman awal 
 	public function index()
 	{
 		$getAllCalon 	= $this->M_Calon->getAllCalon();
@@ -28,7 +28,7 @@ class C_Karyawan extends CI_Controller {
 		$this->load->view('template/V_Footer');
 	}
 	
-	//fungsi menambah data calon karyawan
+	//simpan data calon
 	public function tambahKaryawan()
 	{
 		$id_calon 			= $this->input->post('id_calon');
@@ -64,7 +64,7 @@ class C_Karyawan extends CI_Controller {
 		}
 	}
 	
-	//fungsi mengupdate data calon karyawan
+	//update data calon
 	public function updateKaryawan()
 	{
 		$id_calon 			= $this->input->post('id_calon');
@@ -99,7 +99,7 @@ class C_Karyawan extends CI_Controller {
 		}
 	}
 	
-	//fungsi menghapus data calon karyawan
+	//hapus data calon
 	public function deleteKaryawan()
 	{
 		$id_calon = $this->input->post('id_calon');
@@ -120,7 +120,7 @@ class C_Karyawan extends CI_Controller {
 		}
 	}
 
-	//fungsi menampilkan data calon berdasarkan periode masuk
+	//tampil data per-periode
 	public function periode()
 	{
 		$periode 		 = $this->input->get('periode_masuk');
@@ -170,30 +170,6 @@ class C_Karyawan extends CI_Controller {
         $pdf->SetLineWidth(0);     
 			
 		$pdf->ln(10);
-        
-        //penilaian Kriteria
-        // $pdf->Cell(190,10,'Penilaian Kriteria ',0,1,'C');
-        // // Memberikan space kebawah agar tidak terlalu rapat
-        // $pdf->Cell(10,1,'',0,1);
-        // $pdf->SetFont('Arial','B',10);
-        // $pdf->Cell(10,6,'No.',1,0,'C');
-        // $pdf->Cell(50,6,'Nama Calon',1,0,'C');
-        // $pdf->Cell(43,6,'Kompetensi',1,0,'C');
-        // $pdf->Cell(43,6,'Interview',1,0,'C');
-        // $pdf->Cell(43,6,'Konsistensi',1,1,'C');
-        // $pdf->SetFont('Arial','',10);
-        // $getPeriodeCalon = $this->M_Calon->CetakPeriode($periode);
-        // $no = 1;
-        // foreach ($getPeriodeCalon as $row){
-        // 	$pdf->Cell(10,6,$no++.".",1,0,'C');
-        //     $pdf->Cell(50,6,$row->nm_calon,1,0);
-        //     $pdf->Cell(43,6,"",1,0,'C');
-        //     $pdf->Cell(43,6,"",1,0);
-        //     $pdf->Cell(43,6,"",1,1,'C');
-        // }
-
-        // //spasi
-        // $pdf->Cell(10,5,'',0,1);
 		
 		//periode masuk
 		$pdf->Cell(1,1,"Periode Masuk : ".tanggal($periode),0,1,'L');

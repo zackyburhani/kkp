@@ -6,6 +6,7 @@ class M_LapRekapitulasiPenilaian extends CI_Model {
 		parent::__construct();
 	}
 
+    //ambil data untuk rekapitulasi penilaian
     public function getLapRekapitulasiPenilaian($awal,$akhir){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,calon.nm_calon,
@@ -22,6 +23,7 @@ class M_LapRekapitulasiPenilaian extends CI_Model {
         return $result->result();
     }
 
+    //ambil data untuk rekapitulasi penilaian excel
     public function ExportExcel($awal,$akhir){
         $result = $this->db->query("
             SELECT calon.id_calon as calon_id,calon.nm_calon,
