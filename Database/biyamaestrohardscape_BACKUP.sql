@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2018 at 06:17 PM
+-- Generation Time: Jul 08, 2018 at 04:56 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -56,7 +56,7 @@ CREATE TABLE `calon` (
   `id_calon` char(5) NOT NULL,
   `nm_calon` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `alamat` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
   `jk` varchar(1) NOT NULL,
   `email` varchar(30) NOT NULL,
   `no_telp` varchar(13) NOT NULL,
@@ -69,11 +69,24 @@ CREATE TABLE `calon` (
 --
 
 INSERT INTO `calon` (`id_calon`, `nm_calon`, `tgl_lahir`, `alamat`, `jk`, `email`, `no_telp`, `pendidikan_terakhir`, `periode_masuk`) VALUES
-('CL020', 'anik nurul', '1994-08-03', 'Jl. Glintingan RT 02/RW 01, Gedawang, Banyumanik, Semarang', 'P', 'anikpratiwi51@gmail.com', '085702112994', 'S1', '2018-07-10'),
-('CL021', 'Ardian Dwi Kurnia', '1993-11-11', 'Lempongsari,Sapuran,Wonosobo', 'L', 'ardiandyan5@gmail.com', '08953388112', 'SMA', '2018-07-10'),
-('CL022', 'Bachtiar Yope Pratama', '1994-03-31', 'Jl. Yos Sudarso 12 Rt. 04/III Dliwang, Kec. Ungaran Barat,\r\nKab. Semarang, Jawa Tengah', 'L', 'pratama.yope@yahoo.com', '082225421991', 'D3', '2018-07-10'),
-('CL023', 'Ratno', '1972-02-13', 'Vila Mutiara Cikarang Blok I3, No. 9, RT 023/008\r\nBekasi – jawa Barat', 'L', 'ratno93ratno@yahoo.com', '08127398815', 'S1', '2018-07-10'),
-('CL024', 'Tri Hartanto', '1975-10-20', 'Perum Tiga Raksa Jl. Jeruk 1 Kec. Tiga Raksa\r\nTangerang', 'L', 'bagashartanto@gmail.com', '08121354304', 'SMA', '2018-07-10');
+('CL001', 'Zacky Burhani Hotib', '1997-09-13', 'Pondok Kacang', 'L', 'zackyburhani99@gmail.com', '083891778014', 'S1', '2018-05-16'),
+('CL002', 'Andy Chahyono', '1997-09-09', 'Cipadu', 'L', 'andy@gmail.com', '08389188291', 'S1', '2018-05-15'),
+('CL003', 'Aldis Fakhri Sorengpati', '1997-01-08', 'Pamulang', 'L', 'aldis@gmail.com', '081253664736', 'S1', '2018-05-15'),
+('CL004', 'Sisca Agdinsa Ramadhan', '1996-07-07', 'Graha Raya', 'P', 'sisca@gmail.com', '083891778022', 'S1', '2018-05-15'),
+('CL005', 'Tia Selviana', '1997-06-06', 'Pondok Pisang', 'P', 'akes@gmail.com', '081253664733', 'D3', '2018-05-15'),
+('CL006', 'Muhammad Faiz Alviansyah', '1997-09-09', 'Kuningan', 'L', 'faiz@gmail.com', '0839281992819', 'S1', '2018-05-16'),
+('CL007', 'Widya Pramesti', '1997-08-01', 'Pamulang', 'P', 'widya@gmail.com', '083829338928', 'S1', '2018-05-15'),
+('CL008', 'Ahmad Syarif', '1997-09-09', 'Ciledug', 'P', 'ahmad@gmail.com', '08391899829', 'D3', '2018-05-27'),
+('CL009', 'Lulu Komala', '1998-08-08', 'Jakarta', 'P', 'lulu@gmail.com', '081253664736', 'SMA', '2018-05-27'),
+('CL010', 'fadila hasana', '1997-04-22', 'palembang', 'P', 'fadila@gmail.com', '083918882718', 'S1', '2018-06-30'),
+('CL011', 'iqra habibi', '1997-09-09', 'cibinong', 'L', 'iqra@gmail.com', '08383928811', 'S2', '2018-06-30'),
+('CL012', 'ahmad zainul', '1997-08-08', 'subang', 'L', 'ahmad@gmail.com', '08389188929', 'SMA', '2018-06-30'),
+('CL013', 'aditya wibowo', '1997-07-07', 'palembang', 'L', 'adit@gmail.com', '083918229183', 'D3', '2018-06-30'),
+('CL014', 'zein hanafi', '1887-09-09', 'karawang', 'L', 'zein@gmail.com', '08156125352', 'S3', '2018-06-30'),
+('CL015', 'rinaldy', '1995-08-08', 'jakarta', 'L', 'rinaldwhy@gmail.com', '0871627716616', 'S1', '2018-06-30'),
+('CL016', 'sasa nabila', '1997-07-07', 'ciputat', 'P', 'sasa@gmail.com', '08392881721', 'SMA', '2018-06-30'),
+('CL017', 'novia indriani', '1997-07-07', 'tangerang', 'P', 'mpi@gmail.com', '083891778011', 'S1', '2018-06-30'),
+('CL018', 'anjay', '2018-07-05', 'haha', 'L', 'k@gmail.com', '088881991828', 'SMA', '2018-07-10');
 
 -- --------------------------------------------------------
 
@@ -104,9 +117,9 @@ CREATE TABLE `kriteria` (
 --
 
 INSERT INTO `kriteria` (`kd_kriteria`, `nm_kriteria`, `eigenvector`) VALUES
-('K1', 'Kompetensi', '0.3571'),
-('K2', 'Interview', '0.1194'),
-('K3', 'Konsistensi', '0.5236');
+('K1', 'Kompetensi', '0.0000'),
+('K2', 'Interview', '0.0000'),
+('K3', 'Konsistensi', '0.0000');
 
 -- --------------------------------------------------------
 
@@ -126,13 +139,13 @@ CREATE TABLE `subkriteria` (
 --
 
 INSERT INTO `subkriteria` (`kd_subkriteria`, `nm_subkriteria`, `eigenvector_sub`, `kd_kriteria`) VALUES
-('SK1', 'Jurusan', '0.1030', 'K1'),
-('SK2', 'Skill', '0.2573', 'K1'),
-('SK3', 'Tanggung Jawab', '0.6397', 'K1'),
-('SK4', 'Kesiapan Kerja', '0.1250', 'K2'),
-('SK5', 'Perilaku', '0.8750', 'K2'),
-('SK6', 'Ketelitian', '0.1250', 'K3'),
-('SK7', 'Kejujuran', '0.8750', 'K3');
+('SK1', 'Jurusan', '0.0000', 'K1'),
+('SK2', 'Skill', '0.0000', 'K1'),
+('SK3', 'Tanggung Jawab', '0.0000', 'K1'),
+('SK4', 'Kesiapan Kerja', '0.0000', 'K2'),
+('SK5', 'Perilaku', '0.0000', 'K2'),
+('SK6', 'Ketelitian', '0.0000', 'K3'),
+('SK7', 'Kejujuran', '0.0000', 'K3');
 
 -- --------------------------------------------------------
 
